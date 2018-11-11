@@ -4,3 +4,4 @@
 // 3. at least one reps entered
 // 4. at least one set entered
 //5. a note that can be left blank
+//6. the amount of weight used in the set

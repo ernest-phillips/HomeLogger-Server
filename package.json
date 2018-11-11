@@ -1,20 +1,23 @@
 {
-  "name": "nodejs_capstone3",
-  "version": "1.0.0",
-  "description": "Thinkful Capstone 3",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "nodejs",
-    "javascript",
-    "thinkful"
-  ],
-  "author": "Ernest L. Phillips",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-config-google": "^0.11.0"
-  }
+    "name": "nodejs_capstone3",
+    "version": "1.0.0",
+    "description": "Thinkful Capstone 3",
+    "main": "server.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "keywords": [
+        "nodejs",
+        "javascript",
+        "thinkful"
+    ],
+    "author": "Ernest L. Phillips",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^5.9.0",
+        "eslint-config-google": "^0.11.0"
+    },
+    "dependencies": {
+        "bcrypt": "^3.0.2"
+    }
 }

@@ -19,6 +19,7 @@ const {
     localStrategy,
     jwtStrategy
 } = require('./auth/auth.strategy');
+
 let server;
 const app = express(); //Initialize express server
 passport.use(localStrategy);

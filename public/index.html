@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fit-Journal | Log It All!</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <main>
+        <header class="header">
+            <div class="logo">Fit-Journal</div>
+            <nav class="nav-login">
+                <button>Log In</button>
+            </nav>
+        </header>
+
+        <div class="container">
+            <form action="action_page.php">
+                <div class="imgcontainer">
+                    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <label for="uname" class="row"><b>Username</b></label>
+                    <input class="row" type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label for="psw" class="row"><b>Password</b></label>
+                    <input class="row" type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button class="row" type="submit">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+
+    </main>
+    <footer></footer>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
+//Login endpoint to create users
 const express = require('express');
-// To learn more about the jsonwebtoken standard, see:
-// https://jwt.io/introduction/
+//Create and issue json Web tokens
 const jwt = require('jsonwebtoken');
 
 const {
@@ -14,6 +14,8 @@ const {
 
 const authRouter = express.Router();
 
+//Receives user we can turn into JSON web token to be issued out 
+//to users to access protected endpoints
 function createJwtToken(user) {
     return jwt.sign({
         user
@@ -23,7 +25,7 @@ function createJwtToken(user) {
         algorithm: 'HS256'
     });
 }
-
+//Login endpoint
 authRouter.post('/login', localPassportMiddleware, (request, response) => {
     const user = request.user.serialize();
     const jwtToken = createJwtToken(user);
@@ -32,7 +34,7 @@ authRouter.post('/login', localPassportMiddleware, (request, response) => {
         user
     });
 });
-
+//Receives JSON web token user can renew
 authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
     const user = request.user;
     const jwtToken = createJwtToken(user);

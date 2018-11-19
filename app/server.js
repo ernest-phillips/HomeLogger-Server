@@ -20,6 +20,10 @@ const {
     jwtStrategy
 } = require('./auth/auth.strategy');
 
+const {
+    workoutRouter
+} = require('./workout/workout.router');
+
 let server;
 const app = express(); //Initialize express server
 passport.use(localStrategy);
@@ -33,6 +37,7 @@ app.use(express.static('./public')); //Intercepts all HTTP requests that match f
 //ROUTER SETUP
 app.use('/api/auth', authRouter); //Redirects all calls to /api/user to userRouter
 app.use('/api/user', userRouter);
+app.use('/api/workout', workoutRouter);
 
 app.use('*', function(req, res) {
     res.status(HTTP_STATUS_CODES.NOT_FOUND).json({
@@ -40,11 +45,7 @@ app.use('*', function(req, res) {
     });
 });
 
-module.exports = {
-    app,
-    startServer,
-    stopServer
-};
+module.exports = { app, startServer, stopServer };
 
 function startServer(testEnv) {
     return new Promise((resolve, reject) => {

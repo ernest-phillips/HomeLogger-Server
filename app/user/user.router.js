@@ -84,6 +84,4 @@ userRouter.get('/:userid', (request, response) => {
         });
 });
 
-module.exports = {
-    userRouter
-};
+module.exports = { userRouter };

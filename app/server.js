@@ -3,26 +3,12 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const {
-    PORT,
-    HTTP_STATUS_CODES,
-    MONGO_URL,
-    TEST_MONGO_URL
-} = require('./config');
-const {
-    authRouter
-} = require('./auth/auth.router');
-const {
-    userRouter
-} = require('./user/user.router');
-const {
-    localStrategy,
-    jwtStrategy
-} = require('./auth/auth.strategy');
+const { PORT, HTTP_STATUS_CODES, MONGO_URL, TEST_MONGO_URL } = require('./config');
+const { authRouter } = require('./auth/auth.router');
+const { userRouter } = require('./user/user.router');
+const { localStrategy, jwtStrategy } = require('./auth/auth.strategy');
 
-const {
-    workoutRouter
-} = require('./workout/workout.router');
+const { workoutRouter } = require('./workout/workout.router');
 
 let server;
 const app = express(); //Initialize express server

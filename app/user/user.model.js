@@ -44,7 +44,4 @@ const UserJoiSchema = Joi.object().keys({
 
 
 const User = mongoose.model('user', userSchema);
-module.exports = {
-    User,
-    UserJoiSchema
-};
+module.exports = { User, UserJoiSchema };

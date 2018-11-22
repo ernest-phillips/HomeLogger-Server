@@ -26,8 +26,10 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-authRouter.post('/login', localPassportMiddleware, (request, response) => {
-    const user = request.user.serialize();
+authRouter.post('/login', (request, response) => {
+    console.log("login started", request.body);
+
+    const user = request.body.user.serialize();
     const jwtToken = createJwtToken(user);
     response.json({
         jwtToken,

@@ -2,14 +2,19 @@ const express = require('express');
 
 const Joi = require('joi');
 
-const { HTTP_STATUS_CODES } = require('../config.js');
-const { User, UserJoiSchema } = require('./user.model.js');
+const {
+    HTTP_STATUS_CODES
+} = require('../config.js');
+const {
+    User,
+    UserJoiSchema
+} = require('./user.model.js');
 
 const userRouter = express.Router();
 
 // CREATE NEW USER
 userRouter.post('/', (request, response) => {
-
+    console.log("User Added")
     const newUser = {
         name: request.body.name,
         email: request.body.email,
@@ -27,9 +32,12 @@ userRouter.post('/', (request, response) => {
     }
 
     User.findOne({
-        $or: [
-            { email: newUser.email },
-            { username: newUser.username }
+        $or: [{
+                email: newUser.email
+            },
+            {
+                username: newUser.username
+            }
         ]
     }).then(user => {
         if (user) {
@@ -43,7 +51,10 @@ userRouter.post('/', (request, response) => {
 
         User.create(newUser)
             .then(createdUser => {
-                return response.status(HTTP_STATUS_CODES.CREATED).json(createdUser.serialize());
+                // return response.status(HTTP_STATUS_CODES.CREATED).json(createdUser.serialize());
+                // console.log("The user has been created.")
+                // return "The user has been created."
+                return response.redirect('/api/workout');
             })
             .catch(error => {
                 console.error(error);
@@ -56,7 +67,7 @@ userRouter.post('/', (request, response) => {
 
 // RETRIEVE USERS
 userRouter.get('/', (request, response) => {
-
+    console.log("Retrieving All Users");
     User.find()
         .then(users => {
             // Step 2A: Return the correct HTTP status code, and the users correctly formatted via serialization.
@@ -84,4 +95,6 @@ userRouter.get('/:userid', (request, response) => {
         });
 });
 
-module.exports = { userRouter };
+module.exports = {
+    userRouter
+};

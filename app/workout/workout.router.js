@@ -2,9 +2,16 @@ const express = require('express');
 const Joi = require('joi');
 const workoutRouter = express.Router();
 
-const { HTTP_STATUS_CODES } = require('../config');
-const { jwtPassportMiddleware } = require('../auth/auth.strategy');
-const { Workout, WorkoutJoiSchema } = require('./workout.model');
+const {
+    HTTP_STATUS_CODES
+} = require('../config');
+const {
+    jwtPassportMiddleware
+} = require('../auth/auth.strategy');
+const {
+    Workout,
+    WorkoutJoiSchema
+} = require('./workout.model');
 
 //CREATE NEW WORKOUT
 workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
@@ -19,7 +26,9 @@ workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
 
     const validation = Joi.validate(newWorkout, WorkoutJoiSchema);
     if (validation.error) {
-        return response.status(HTTP_STATUS_CODES.BAD_REQUEST).json({ error: validation.error });
+        return response.status(HTTP_STATUS_CODES.BAD_REQUEST).json({
+            error: validation.error
+        });
     }
 
     Workout.create(newWorkout)
@@ -31,4 +40,6 @@ workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
         })
 })
 
-module.exports = { workoutRouter };
+module.exports = {
+    workoutRouter
+};

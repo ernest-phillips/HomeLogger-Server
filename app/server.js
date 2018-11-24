@@ -28,16 +28,16 @@ let server;
 const app = express(); //Initialize express server
 passport.use(localStrategy);
 passport.use(jwtStrategy);
-
+// . / public / auth / signup.html
 //MIDLEWARE
 app.use(morgan('combined')); //allows morgan to intercept and alog all http requests to console
 app.use(express.json()); // Required so AJAX request JSON data payload can be parsed and saved into request.body
-app.use(express.static('./public')); //Intercepts all HTTP requests that match files inside /public
+app.use(express.static('./public/auth')); //Intercepts all HTTP requests that match files inside /public
 app.use(express.urlencoded());
 // app.use(express.multipart());
 //ROUTER SETUP
-app.use('/api/auth', authRouter); //Redirects all calls to /api/user to userRouter
-app.use('/api/user', userRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter); //Redirects all calls to /api/user to userRouter
 app.use('/api/workout', workoutRouter);
 
 app.use('*', function(req, res) {

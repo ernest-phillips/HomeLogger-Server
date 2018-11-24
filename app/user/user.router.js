@@ -87,7 +87,9 @@ userRouter.get('/:userid', (request, response) => {
     User.findById(request.params.userid)
         .then(user => {
             // Step 2A: Return the correct HTTP status code, and the user correctly formatted via serialization.
-            return response.status(HTTP_STATUS_CODES.OK).json(user.serialize());
+            // return response.status(HTTP_STATUS_CODES.OK).json(user.serialize());
+            return response.redirect('/api/workout');
+
         })
         .catch(error => {
             // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.

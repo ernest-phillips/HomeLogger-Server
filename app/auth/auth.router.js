@@ -2,7 +2,7 @@
 const express = require('express');
 //Create and issue json Web tokens
 const jwt = require('jsonwebtoken');
-
+const path = require('path');
 const {
     localPassportMiddleware,
     jwtPassportMiddleware
@@ -26,11 +26,11 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-authRouter.post('/login', localPassportMiddleware, (request, response) => {
+authRouter.get('/login', (request, response) => {
     console.log("login started")
-    const user = request.user.serialize();
-    const jwtToken = createJwtToken(user);
-    //response.redirect({});
+        // const user = request.user.serialize();
+        // const jwtToken = createJwtToken(user);
+    response.sendFile(path.resolve('./app/views/login.html'));
     // response.json({
     //     jwtToken,
     //     user

@@ -26,15 +26,16 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-authRouter.post('/login', (request, response) => {
-    console.log("login started", request.body);
-
-    const user = request.body.user.serialize();
+authRouter.post('/login', localPassportMiddleware, (request, response) => {
+    console.log("login started")
+    const user = request.user.serialize();
     const jwtToken = createJwtToken(user);
-    response.json({
-        jwtToken,
-        user
-    });
+    //response.redirect({});
+    // response.json({
+    //     jwtToken,
+    //     user
+
+    // });
 });
 //Receives JSON web token user can renew
 authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {

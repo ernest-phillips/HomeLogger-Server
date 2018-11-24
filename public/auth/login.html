@@ -22,13 +22,13 @@
 
         <div class="login-page">
             <div class="form">
-                <form action="/api/auth/login" class="login-form" method="post">
-                    <label for="username">Username</label>
-                    <input id="username" type="text" placeholder="username" name="username" autocomplete="off" />
-                    <label for="password">Password</label>
-                    <input id="password" type="password" placeholder="password" name="password" autocomplete="off" />
-                    <button type="submit"> login </button>
-                    <!-- <p class="message"> Not registered? <a href="#"> Create an account </a></p> -->
+                <form class="register-form" action="/login">
+
+                    <input type="text" placeholder="name" />
+                    <input type="password" placeholder="password" />
+                    <input type="text" placeholder="email address" />
+                    <button>create</button>
+                    <p class="message">Already registered? <a href="#">Sign In</a></p>
                 </form>
             </div>
         </div>

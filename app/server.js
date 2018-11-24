@@ -3,12 +3,26 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const { PORT, HTTP_STATUS_CODES, MONGO_URL, TEST_MONGO_URL } = require('./config');
-const { authRouter } = require('./auth/auth.router');
-const { userRouter } = require('./user/user.router');
-const { localStrategy, jwtStrategy } = require('./auth/auth.strategy');
+const {
+    PORT,
+    HTTP_STATUS_CODES,
+    MONGO_URL,
+    TEST_MONGO_URL
+} = require('./config');
+const {
+    authRouter
+} = require('./auth/auth.router');
+const {
+    userRouter
+} = require('./user/user.router');
+const {
+    localStrategy,
+    jwtStrategy
+} = require('./auth/auth.strategy');
 
-const { workoutRouter } = require('./workout/workout.router');
+const {
+    workoutRouter
+} = require('./workout/workout.router');
 
 let server;
 const app = express(); //Initialize express server
@@ -19,7 +33,8 @@ passport.use(jwtStrategy);
 app.use(morgan('combined')); //allows morgan to intercept and alog all http requests to console
 app.use(express.json()); // Required so AJAX request JSON data payload can be parsed and saved into request.body
 app.use(express.static('./public')); //Intercepts all HTTP requests that match files inside /public
-
+app.use(express.urlencoded());
+// app.use(express.multipart());
 //ROUTER SETUP
 app.use('/api/auth', authRouter); //Redirects all calls to /api/user to userRouter
 app.use('/api/user', userRouter);
@@ -31,7 +46,11 @@ app.use('*', function(req, res) {
     });
 });
 
-module.exports = { app, startServer, stopServer };
+module.exports = {
+    app,
+    startServer,
+    stopServer
+};
 
 function startServer(testEnv) {
     return new Promise((resolve, reject) => {

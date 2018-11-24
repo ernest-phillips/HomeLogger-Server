@@ -7,10 +7,22 @@ const bcrypt = require('bcryptjs');
 
 // Each Mongoose schema maps to a MongoDB collection and defines the shape of the documents within that collection.
 const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    username: { type: String, required: true },
-    password: { type: String, required: true }
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
 });
 
 //Is this globablly accessible?
@@ -44,4 +56,7 @@ const UserJoiSchema = Joi.object().keys({
 
 
 const User = mongoose.model('user', userSchema);
-module.exports = { User, UserJoiSchema };
+module.exports = {
+    User,
+    UserJoiSchema
+};

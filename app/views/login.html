@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fit-Journal | Log It All!</title>
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="login.css" />
+    <!-- /Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/auth/main.css  -->
+    <!-- /Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/app/views/login.html -->
+    <link rel="stylesheet" href="/Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/auth/main.css" />
+
+    <link rel="stylesheet" href="/Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/auth/login.css" />
 
 </head>
 
@@ -20,7 +23,7 @@
     </main>
 
     <section class="container js-container">
-
+        <h1>Sign into your account</h1>
         <div class="login-page">
             <div class="form">
                 <form action="/api/auth/login" class="login-form" method="post">
@@ -29,7 +32,7 @@
                     <label for="password">Password</label>
                     <input id="password" type="password" placeholder="password" name="password" autocomplete="off" />
                     <button type="submit"> login </button>
-                    <p class="message"> Not registered? <a href="/api/user/"> Create an account </a></p>
+                    <p class="message"> Not registered? <a href="/"> Create an account </a></p>
                 </form>
             </div>
         </div>

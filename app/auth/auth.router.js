@@ -37,6 +37,17 @@ authRouter.get('/login', (request, response) => {
 
     // });
 });
+authRouter.get('/api/user', (request, response) => {
+    console.log("Signup page")
+        // const user = request.user.serialize();
+        // const jwtToken = createJwtToken(user);
+    response.sendFile(path.resolve('./app/views/index.html'));
+    // response.json({
+    //     jwtToken,
+    //     user
+
+    // });
+});
 //Receives JSON web token user can renew
 authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
     const user = request.user;

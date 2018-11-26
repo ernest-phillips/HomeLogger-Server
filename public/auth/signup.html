@@ -6,37 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fit-Journal | Log It All!</title>
-    <!-- /Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/auth/main.css  -->
-    <!-- /Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/app/views/login.html -->
-    <link rel="stylesheet" href="/Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/auth/main.css" />
+    <link rel="stylesheet" href="/Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/main.css" />
 
-    <link rel="stylesheet" href="/Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/auth/login.css" />
-
+    <link rel="stylesheet" href="/Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/login.css" />
 </head>
 
 <body>
     <main>
         <header class="header">
             <div class="logo">Fit-Journal</div>
-            <nav class="nav-login"><button> <a href="/index.html">Log In</a> </button></nav>
+            <nav class="nav-login"><button>
+                    <a href="/api/auth/login">Log In</a>
+                </button></nav>
         </header>
     </main>
 
     <section class="container js-container">
-        <h1>Sign into your account</h1>
+
+
         <div class="login-page">
+            <h1>Sign Up</h1>
             <div class="form">
-                <form action="/api/auth/login" class="login-form" method="post">
-                    <label for="username">Username</label>
-                    <input id="username" type="text" placeholder="username" name="username" autocomplete="off" />
-                    <label for="password">Password</label>
+                <form class="register-form" action="/api/user" method="POST">
+                    <input id="name" type="text" placeholder="name" name="name" />
+                    <input id="username" type="text" placeholder="username" name="username" autocomplete="off">
                     <input id="password" type="password" placeholder="password" name="password" autocomplete="off" />
-                    <button type="submit"> login </button>
-                    <p class="message"> Not registered? <a href="/"> Create an account </a></p>
+                    <input id="email" type="text" placeholder="email address" name="email" />
+                    <button type="submit">Register</button>
+                    <p class="message">Already registered? <a href="/api/auth/login">Sign In</a></p>
                 </form>
             </div>
         </div>
-
     </section>
 
     <footer>
@@ -65,6 +65,10 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="app/app.js"></script>
+    <script src="../utilities/cache.module.js"></script>
+    <script src="../utilities/render.module.js"></script>
+    <script src="../utilities/http.module.js"></script>
+    <script src="./auth.page.js"></script>
 </body>
 
 </html>

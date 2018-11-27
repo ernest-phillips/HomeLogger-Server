@@ -10,7 +10,8 @@ html {
 }
 
 body {
-    background-image: -moz-linear-gradient(#67B26F, #4ca2cd), linear-gradient(#67B26F, #4ca2cd);
+    background-color: #fff;
+    /* background-image: -moz-linear-gradient(#67B26F, #4ca2cd), linear-gradient(#67B26F, #4ca2cd); */
 }
 
 .nav-bar {
@@ -24,7 +25,7 @@ main {
     justify-content: center;
     min-height: 1040px;
     margin: 0 auto;
-    background-color: aliceblue;
+    background-color: #fff;
 }
 
 .container {
@@ -37,7 +38,7 @@ main {
 
 .wo-container {
     width: 1040px;
-    background-color: azure;
+    background-color: #fff;
 }
 
 .header {
@@ -47,7 +48,7 @@ main {
     background-color: #131313;
     color: #fff;
     justify-content: center;
-    transform: translateZ(-40)
+    margin-top: -40px;
 }
 
 .row {

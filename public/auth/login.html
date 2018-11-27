@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fit-Journal | Log It All!</title>
-    <!-- /Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/public/auth/main.css  -->
-    <!-- /Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/app/views/login.html -->
+
     <link rel="stylesheet" href="../main.css" />
 
     <link rel="stylesheet" href="../login.css" />
@@ -15,26 +14,31 @@
 </head>
 
 <body>
-    <main>
-        <header class="header">
-            <div class="logo">Fit-Journal</div>
-            <nav class="nav-login"><button> <a href="/index.html">Log In</a> </button></nav>
-        </header>
+    <main class="login-page">
+
 
 
         <section class="container js-container">
-            <h1>Sign into your account</h1>
+
             <div class="login-page">
+                <h1>Sign into your account</h1>
                 <div class="form column">
-                    <form action="/api/auth/login" method="post">
-                        <label class="label" for="username">Username</label>
-                        <input class="item" id="username" type="text" placeholder="username" name="username" autocomplete="off" />
-                        <label class="label" for="password">Password</label>
+                    <form class="#" action="/api/auth/login" method="POST">
+
+                        <input class="item" id="username" type="text" placeholder="username" name="username" autocomplete="off">
                         <input class="item" id="password" type="password" placeholder="password" name="password" autocomplete="off" />
+
+
                         <button class="login-btn" type="submit"> Log In </button>
-                        <p class="message"> Not registered? <a href="signup.html"> Create an account </a></p>
                     </form>
                 </div>
+                <p class="message"> Not registered?
+                    <a href="signup.html"> Create an account </a>
+                </p>
+            </div>
+            <div class="not-reg">
+
+            </div>
             </div>
 
         </section>

@@ -28,20 +28,28 @@ function createJwtToken(user) {
 //Login endpoint
 authRouter.get('/login', (request, response) => {
     console.log("login started")
-    const user = request.user.serialize();
-    const jwtToken = createJwtToken(user);
-    response.sendFile(path.resolve('../../public/auth/home.html'));
+
+    response.sendFile(path.resolve('./app/views/auth/login.html'));
+    // 
     // response.json({
     //     jwtToken,
     //     user
 
     // });
 });
+authRouter.post('/login', localPassportMiddleware, (request, response) => {
+    const user = request.user.serialize();
+    const jwtToken = createJwtToken(user);
+    response.redirect('/api/workout');
+
+
+});
+
 authRouter.get('/api/user', localPassportMiddleware, (request, response) => {
     console.log("Signup page")
     const user = request.user.serialize();
     const jwtToken = createJwtToken(user);
-    response.sendFile(path.resolve('../../public/auth/login.html'));
+    response.sendFile(path.resolve('./app/views/auth/login.html'));
     // response.json({
     //     jwtToken,
     //     user

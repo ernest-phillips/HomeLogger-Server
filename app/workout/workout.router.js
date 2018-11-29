@@ -1,6 +1,7 @@
 const express = require('express');
 const Joi = require('joi');
 const workoutRouter = express.Router();
+const path = require('path');
 
 const {
     HTTP_STATUS_CODES
@@ -38,6 +39,10 @@ workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
         .catch(error => {
             return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
         })
+})
+workoutRouter.get('/', (request, response) => {
+    response.sendFile(path.resolve('./app/views/auth/home.html'));
+    // response.send('Text here')
 })
 
 module.exports = {

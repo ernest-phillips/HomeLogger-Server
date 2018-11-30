@@ -1,9 +1,18 @@
 const passport = require('passport');
-const { Strategy: LocalStrategy } = require('passport-local');
-const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
+const {
+    Strategy: LocalStrategy
+} = require('passport-local');
+const {
+    Strategy: JwtStrategy,
+    ExtractJwt
+} = require('passport-jwt');
 
-const { User } = require('../user/user.model');
-const { JWT_SECRET } = require('../config');
+const {
+    User
+} = require('../user/user.model');
+const {
+    JWT_SECRET
+} = require('../config');
 
 // Passport authentication strategies are used to define how authentication middleware works.
 // For more on how Passport authentication works using strategies, see:
@@ -64,7 +73,8 @@ const localPassportMiddleware = passport.authenticate('local', {
     session: false
 });
 const jwtPassportMiddleware = passport.authenticate('jwt', {
-    session: false
+    successRedirect: '/api/workout',
+    failureRedirect: '/api/auth/login'
 });
 
 module.exports = {

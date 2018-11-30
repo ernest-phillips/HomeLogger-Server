@@ -40,7 +40,7 @@ workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
             return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
         })
 })
-workoutRouter.get('/', (request, response) => {
+workoutRouter.get('/', jwtPassportMiddleware, (request, response) => {
     response.sendFile(path.resolve('./app/views/auth/home.html'));
     // response.send('Text here')
 })

@@ -26,8 +26,6 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-
-
 authRouter.post('/', localPassportMiddleware, (request, response) => {
     const user = request.user.serialize();
     const jwtToken = createJwtToken(user);
@@ -36,7 +34,6 @@ authRouter.post('/', localPassportMiddleware, (request, response) => {
         jwtToken,
         user
     });
-
 });
 
 // Receives JSON web token user can renew

@@ -26,21 +26,26 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-authRouter.get('/login', (request, response) => {
-    console.log("login started")
-    response.sendFile(path.resolve('./app/views/auth/login.html'));
-    // 
-    // response.json({
-    //     jwtToken,
-    //     user
+authRouter.get('/', localPassportMiddleware, (request, response) => {
+    console.log("Welcome to login")
 
-    // });
-});
-authRouter.post('/login', localPassportMiddleware, (request, response) => {
     const user = request.user.serialize();
     const jwtToken = createJwtToken(user);
-    response.redirect('/api/workout');
 
+    response.json({
+        jwtToken,
+        user
+    });
+});
+
+authRouter.post('/', localPassportMiddleware, (request, response) => {
+    const user = request.user.serialize();
+    const jwtToken = createJwtToken(user);
+    // response.redirect('/api/workout');
+    response.json({
+        jwtToken,
+        user
+    });
 
 });
 
@@ -49,22 +54,22 @@ authRouter.get('/api/user', jwtPassportMiddleware, (request, response) => {
     const user = request.user.serialize();
     const jwtToken = createJwtToken(user);
     // response.sendFile(path.resolve('./app/views/auth/login.html'));
-    // response.json({
-    //     jwtToken,
-    //     user
+    response.json({
+        jwtToken,
+        user
 
-    // });
+    });
 });
-//Receives JSON web token user can renew
-// authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
-//     const user = request.user;
-//     const jwtToken = createJwtToken(user);
-//     response.redirect('/api/workout');
-//     // response.json({
-//     //     jwtToken,
-//     //     user
-//     // });
-// });
+// Receives JSON web token user can renew
+authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
+    const user = request.user;
+    const jwtToken = createJwtToken(user);
+    // response.redirect('/api/workout');
+    response.json({
+        jwtToken,
+        user
+    });
+});
 
 module.exports = {
     authRouter

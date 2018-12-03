@@ -40,14 +40,20 @@ userSchema.statics.hashPassword = function(password) {
     return bcrypt.hash(password, 10);
 };
 
+userSchema.methods.generateAuthToken = function() {
+
+}
 
 userSchema.methods.validatePassword = function(password) {
+    console.log("Password =", password)
+    console.log("This Password", this.password)
+    console.log("Bcrypt Password", bcrypt.compare(password, this.password))
     return bcrypt.compare(password, this.password);
+
 };
 
 
 const UserJoiSchema = Joi.object().keys({
-
     name: Joi.string().min(1).trim().required(),
     username: Joi.string().alphanum().min(4).max(30).trim().required(),
     password: Joi.string().min(8).max(30).trim().required(),

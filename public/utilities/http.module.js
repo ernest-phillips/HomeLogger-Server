@@ -31,6 +31,7 @@ function signupUser(options) {
 }
 
 function loginUser(options) {
+    console.log("login user called")
     const {
         userData,
         onSuccess,

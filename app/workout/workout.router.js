@@ -27,6 +27,7 @@ workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
 
     const validation = Joi.validate(newWorkout, WorkoutJoiSchema);
     if (validation.error) {
+        console.log("Validation Error")
         return response.status(HTTP_STATUS_CODES.BAD_REQUEST).json({
             error: validation.error
         });
@@ -41,8 +42,9 @@ workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
         })
 })
 workoutRouter.get('/', jwtPassportMiddleware, (request, response) => {
-    response.sendFile(path.resolve('./app/views/auth/home.html'));
-    // response.send('Text here')
+    console.log("Your Workouts")
+        // response.sendFile(path.resolve('./app/views/auth/home.html'));
+        // response.send('Text here')
 })
 
 module.exports = {

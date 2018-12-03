@@ -26,17 +26,7 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-authRouter.get('/', localPassportMiddleware, (request, response) => {
-    console.log("Welcome to login")
 
-    const user = request.user.serialize();
-    const jwtToken = createJwtToken(user);
-
-    response.json({
-        jwtToken,
-        user
-    });
-});
 
 authRouter.post('/', localPassportMiddleware, (request, response) => {
     const user = request.user.serialize();
@@ -49,17 +39,6 @@ authRouter.post('/', localPassportMiddleware, (request, response) => {
 
 });
 
-authRouter.get('/api/user', jwtPassportMiddleware, (request, response) => {
-    console.log("Signup page")
-    const user = request.user.serialize();
-    const jwtToken = createJwtToken(user);
-    // response.sendFile(path.resolve('./app/views/auth/login.html'));
-    response.json({
-        jwtToken,
-        user
-
-    });
-});
 // Receives JSON web token user can renew
 authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
     const user = request.user;

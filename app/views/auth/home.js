@@ -25,7 +25,7 @@ function onLogoutBtnClick(event) {
     const confirmation = confirm('Are you sure you want to logout?');
     if (confirmation) {
         CACHE.deleteAuthenticatedUserFromCache();
-        window.open('/auth/login.html', '_self');
+        window.open('/index.html', '_self');
     }
 }
 

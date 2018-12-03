@@ -35,7 +35,6 @@ passport.use(jwtStrategy);
 app.use(morgan('combined')); //allows morgan to intercept and alog all http requests to console
 app.use(express.json()); // Required so AJAX request JSON data payload can be parsed and saved into request.body
 app.use(express.static('./public'));
-
 app.use(express.urlencoded());
 
 //ROUTER SETUP

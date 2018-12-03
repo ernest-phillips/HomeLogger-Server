@@ -2,10 +2,10 @@ window.HTTP_MODULE = {
     signupUser,
     loginUser,
     getUserNotes,
-    getNoteById,
-    createNote,
-    updateNote,
-    deleteNote
+    getWorkoutById,
+    createWorkout,
+    updateWorkout,
+    deleteWorkout
 };
 
 function signupUser(options) {
@@ -39,7 +39,7 @@ function loginUser(options) {
     } = options;
     $.ajax({
         type: 'POST',
-        url: '/api/auth/login',
+        url: '/',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(userData),
@@ -61,7 +61,7 @@ function getUserNotes(options) {
     } = options;
     $.ajax({
         type: 'GET',
-        url: '/api/note',
+        url: '/api/workout',
         contentType: 'application/json',
         dataType: 'json',
         data: undefined,
@@ -83,7 +83,7 @@ function getNoteById(options) {
         noteId,
         onSuccess
     } = options;
-    $.getJSON(`/api/note/${noteId}`, onSuccess);
+    $.getJSON(`/api/workout/${workoutId}`, onSuccess);
 }
 
 function createNote(options) {
@@ -96,7 +96,7 @@ function createNote(options) {
 
     $.ajax({
         type: 'POST',
-        url: '/api/note',
+        url: '/api/workout',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(newNote),
@@ -124,7 +124,7 @@ function updateNote(options) {
 
     $.ajax({
         type: 'PUT',
-        url: `/api/note/${noteId}`,
+        url: `/api/workout/${noteId}`,
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(newNote),
@@ -150,7 +150,7 @@ function deleteNote(options) {
     } = options;
     $.ajax({
         type: 'delete',
-        url: `/api/note/${noteId}`,
+        url: `/api/workout/${workoutId}`,
         contentType: 'application/json',
         dataType: 'json',
         data: undefined,

@@ -5,32 +5,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Fit-Journal | Login</title>
+    <title>Fit-Journal | Log It All!</title>
+    <link rel="stylesheet" href="../main.css" />
 
-    <link rel="stylesheet" href="/main.css" />
-    <link rel="stylesheet" href="/login.css" />
-
+    <link rel="stylesheet" href="../login.css" />
 </head>
 
 <body>
-    <main class="login-page">
+    <main>
+        <header class="header">
+            <div class="logo">Fit-Journal</div>
+            <nav class="nav-login"><button>
+                    <a href="/api/auth/login">Log In</a>
+                </button></nav>
+        </header>
+
+
         <section class="container js-container">
             <div class="login-page">
-                <h1>Sign into your account</h1>
+                <h1>Sign Up</h1>
                 <div class="form column">
-                    <form id="login-form" action="/api/workout" method="POST">
+                    <form class="#" action="/api/user" method="POST">
+                        <input class="item" id="name-txt" type="text" placeholder="name" name="name" />
                         <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="off">
                         <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="off" />
-                        <button class="login-btn" type="submit"> Log In </button>
+                        <input class="item" id="email-txt" type="text" placeholder="email address" name="email" />
+                        <button class="item" type="submit">Register</button>
+                        <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
                     </form>
                 </div>
-                <p class="message"> Not registered?<a class="js-signUp" href="#">
-                        Create an account </a>
-                </p>
-            </div>
-
-            <div class="not-reg">
-
             </div>
 
 
@@ -61,11 +64,11 @@
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-    <script src="/utilities/cache.module.js"></script>
-    <!-- <script src="/utilities/render.module.js"></script> -->
-    <script src="/utilities/http.module.js"></script>
-    <script src="/auth.page.js"></script>
+    <script src="app/app.js"></script>
+    <script src="../utilities/cache.module.js"></script>
+    <script src="../utilities/render.module.js"></script>
+    <script src="../utilities/http.module.js"></script>
+    <script src="./auth.page.js"></script>
 </body>
 
 </html>

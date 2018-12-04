@@ -33,6 +33,7 @@ function onSignUpSubmit(event) {
 }
 
 function onLoginSubmit(event) {
+    console.log("OnLogin Running")
     event.preventDefault();
 
     const userData = {
@@ -47,7 +48,7 @@ function onLoginSubmit(event) {
             authenticatedUser.jwtToken = response.jwtToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
             alert('Login succesful, redirecting you to homepage ...');
-            window.open('/', '_self');
+            window.open('/api/workout', '_self');
         },
         onError: err => {
             alert('Incorrect username or password. Please try again.');

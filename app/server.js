@@ -38,7 +38,7 @@ app.use(express.static('./public'));
 app.use(express.urlencoded());
 
 //ROUTER SETUP
-app.use('/', authRouter);
+app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter); //Redirects all calls to /api/user to userRouter
 app.use('/api/workout', workoutRouter);
 

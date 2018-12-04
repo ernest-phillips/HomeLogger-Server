@@ -1,7 +1,7 @@
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
-    getUserNotes,
+    getUserWorkouts,
     getWorkoutById,
     createWorkout,
     updateWorkout,
@@ -39,7 +39,7 @@ function loginUser(options) {
     } = options;
     $.ajax({
         type: 'POST',
-        url: '/',
+        url: '/api/auth/login',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(userData),
@@ -53,7 +53,7 @@ function loginUser(options) {
     });
 }
 
-function getUserNotes(options) {
+function getUserWorkouts(options) {
     const {
         jwtToken,
         onSuccess,
@@ -78,18 +78,18 @@ function getUserNotes(options) {
     });
 }
 
-function getNoteById(options) {
+function getWorkoutById(options) {
     const {
-        noteId,
+        workoutId,
         onSuccess
     } = options;
     $.getJSON(`/api/workout/${workoutId}`, onSuccess);
 }
 
-function createNote(options) {
+function createWorkout(options) {
     const {
         jwtToken,
-        newNote,
+        newworkout,
         onSuccess,
         onError
     } = options;
@@ -99,7 +99,7 @@ function createNote(options) {
         url: '/api/workout',
         contentType: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(newNote),
+        data: JSON.stringify(newworkout),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
@@ -113,21 +113,21 @@ function createNote(options) {
     });
 }
 
-function updateNote(options) {
+function updateWorkout(options) {
     const {
         jwtToken,
-        noteId,
-        newNote,
+        workoutId,
+        newworkout,
         onSuccess,
         onError
     } = options;
 
     $.ajax({
         type: 'PUT',
-        url: `/api/workout/${noteId}`,
+        url: `/api/workout/${workoutId}`,
         contentType: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(newNote),
+        data: JSON.stringify(newworkout),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
@@ -141,9 +141,9 @@ function updateNote(options) {
     });
 }
 
-function deleteNote(options) {
+function deleteWorkout(options) {
     const {
-        noteId,
+        workoutId,
         jwtToken,
         onSuccess,
         onError

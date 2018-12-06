@@ -48,7 +48,7 @@ function onLoginSubmit(event) {
             authenticatedUser.jwtToken = response.jwtToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
             alert('Login succesful, redirecting you to homepage ...');
-            window.open('/api/workout', '_self');
+            window.open('/index.html', '_self');
         },
         onError: err => {
             alert('Incorrect username or password. Please try again.');

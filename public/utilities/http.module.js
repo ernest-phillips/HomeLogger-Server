@@ -1,3 +1,4 @@
+const axios = require('axios');
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
@@ -39,7 +40,7 @@ function loginUser(options) {
     } = options;
     $.ajax({
         type: 'POST',
-        url: '/api/auth/login',
+        url: '/api/workout',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(userData),
@@ -52,7 +53,7 @@ function loginUser(options) {
         }
     });
 }
-
+// beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', Bearer ${jwtToken}); }
 function getUserWorkouts(options) {
     const {
         jwtToken,

@@ -1,23 +1,35 @@
-function userLogin() {
+const axios = require('axios');
+const CACHE = window.CACHE_MODULE;
 
-    $('.nav-login').on('click', function() {
-        console.log("you clicked login");
-        Window.location.replace()
+function getWorkouts() {
+    CACHE.getAuthenticatedUserFromCache()
+    $.ajax({
+        type: 'GET',
+        url: '/api/workout',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: undefined,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', `Bearer ${CACHE.jwtToken}`);
+        },
+        success: console.log(CACHE.jwtToken),
+        error: err => {
+            console.error(err);
+            if (onError) {
+                onError(err);
+            }
+        }
     });
 }
 
-
-function userSignUp() {
-    $(".js-signUp").on('click', function() {
-        $().html(``);
-    })
+function clearInputs() {
+    console.log("clear inputs")
+    $('input').val("");
 }
 
-
 function onPageLoad() {
-
-    userLogin();
-    userSignUp();
+    getWorkouts()
+    clearInputs();
 };
 
-// $(onPageLoad);
+$(onPageLoad);

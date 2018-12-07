@@ -1,4 +1,3 @@
-const axios = require('axios');
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
@@ -40,7 +39,7 @@ function loginUser(options) {
     } = options;
     $.ajax({
         type: 'POST',
-        url: '/api/workout',
+        url: '/api/auth/login',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(userData),

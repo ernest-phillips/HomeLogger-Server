@@ -45,9 +45,7 @@ userSchema.methods.generateAuthToken = function() {
 }
 
 userSchema.methods.validatePassword = function(password) {
-    console.log("Password =", password)
-    console.log("This Password", this.password)
-    console.log("Bcrypt Password", bcrypt.compare(password, this.password))
+
     return bcrypt.compare(password, this.password);
 
 };

@@ -52,8 +52,7 @@ userRouter.post('/', (request, response) => {
         User.create(newUser)
             .then(createdUser => {
                 // return response.status(HTTP_STATUS_CODES.CREATED).json(createdUser.serialize());
-                // console.log("The user has been created.")
-                // return "The user has been created."
+
                 return response.redirect('/api/workout');
             })
             .catch(error => {

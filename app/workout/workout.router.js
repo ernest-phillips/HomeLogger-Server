@@ -16,7 +16,7 @@ const {
 
 //CREATE NEW WORKOUT
 workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
-    console.log(request.body)
+
     const newWorkout = {
         user: request.user.id,
         exercise: request.body.exercise,

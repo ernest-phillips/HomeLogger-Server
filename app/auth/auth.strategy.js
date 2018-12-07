@@ -27,20 +27,20 @@ const localStrategy = new LocalStrategy((username, password, passportVerify) => 
     }).then(_user => {
         user = _user;
         if (!user) {
-            console.log("User Not Validated")
-                // Step 2A: If user is not found on the database, reject promise with an error.
+
+            // Step 2A: If user is not found on the database, reject promise with an error.
             return Promise.reject({
                 reason: 'LoginError',
                 message: 'Incorrect username or password'
             });
         }
         // Step 2B: Compare the user's password against the stored password hash by running it against the same algorithm.
-        console.log(password)
+
         return user.validatePassword(password);
     }).then(isValid => {
         if (!isValid) {
-            console.log("Password Not Validated")
-                // Step 3A: If password doesn't match the stored password hash, reject promise with an error.
+
+            // Step 3A: If password doesn't match the stored password hash, reject promise with an error.
             return Promise.reject({
                 reason: 'LoginError',
                 message: 'Incorrect username or password'
@@ -55,7 +55,7 @@ const localStrategy = new LocalStrategy((username, password, passportVerify) => 
         // To learn more about how the passportVerify callback works, see:
         // http://www.passportjs.org/docs/configure/#verify-callback
         if (err.reason === 'LoginError') {
-            console.log("Login Error")
+
             return passportVerify(null, false, err.message);
         }
         return passportVerify(err, false);

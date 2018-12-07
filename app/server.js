@@ -101,7 +101,7 @@ function stopServer() {
                     return reject(err);
                 } else {
                     //Step 3B: If server shutdown correctly, log success message.
-                    console.log('Expres sever stopped');
+                    console.log('Express sever stopped');
                     resolve();
                 }
             });

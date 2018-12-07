@@ -34,21 +34,22 @@ function onSignUpSubmit(event) {
 
 function onLoginSubmit(event) {
     console.log("OnLogin Running")
-    event.preventDefault();
+
 
     const userData = {
         username: $('#username-txt').val(),
         password: $('#password-txt').val()
     };
-
+    // event.preventDefault();
     HTTP.loginUser({
         userData,
         onSuccess: response => {
             const authenticatedUser = response.user;
             authenticatedUser.jwtToken = response.jwtToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
+
             alert('Login succesful, redirecting you to homepage ...');
-            window.open('/index.html', '_self');
+            window.open('/home.html', '_self');
         },
         onError: err => {
             alert('Incorrect username or password. Please try again.');

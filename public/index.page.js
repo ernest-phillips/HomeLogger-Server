@@ -12,7 +12,7 @@ function getWorkouts() {
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${CACHE.jwtToken}`);
         },
-        success: console.log(CACHE.jwtToken),
+        success: console.log("Success"),
         error: err => {
             console.error(err);
             if (onError) {

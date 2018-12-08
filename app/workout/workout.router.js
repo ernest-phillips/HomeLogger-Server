@@ -42,7 +42,7 @@ workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
             })
     })
     // jwtPassportMiddleware,
-workoutRouter.get('/', (request, response) => {
+workoutRouter.get('/', jwtPassportMiddleware, (request, response) => {
     console.log("Your Workouts")
     response.sendFile(path.resolve('./app/views/auth/home.html'));
     // response.send('Text here')

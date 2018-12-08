@@ -40,7 +40,7 @@ app.use(express.urlencoded());
 //ROUTER SETUP
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter); //Redirects all calls to /api/user to userRouter
-app.use('/api/workout', workoutRouter);
+app.use('/api/home', workoutRouter);
 
 app.use('*', function(req, res) {
     res.status(HTTP_STATUS_CODES.NOT_FOUND).json({

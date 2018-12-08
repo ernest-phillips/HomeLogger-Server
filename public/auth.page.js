@@ -35,12 +35,12 @@ function onSignUpSubmit(event) {
 function onLoginSubmit(event) {
     console.log("OnLogin Running")
 
-
+    event.preventDefault();
     const userData = {
         username: $('#username-txt').val(),
         password: $('#password-txt').val()
     };
-    // event.preventDefault();
+
     HTTP.loginUser({
         userData,
         onSuccess: response => {

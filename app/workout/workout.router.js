@@ -15,10 +15,10 @@ const {
 } = require('./workout.model');
 
 //CREATE NEW WORKOUT
-workoutRouter.post('/', jwtPassportMiddleware, (request, response) => {
+workoutRouter.post('/', (request, response) => {
 
         const newWorkout = {
-            user: request.user.id,
+            // user: request.user.id,
             exercise: request.body.exercise,
             reps: request.body.reps,
             weight: request.body.weight,

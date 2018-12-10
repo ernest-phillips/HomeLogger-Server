@@ -23,7 +23,9 @@ const {
 const {
     workoutRouter
 } = require('./workout/workout.router');
-
+const {
+    exerciseRouter
+} = require('./exercise/exercise.router')
 
 
 let server;
@@ -41,6 +43,8 @@ app.use(express.urlencoded());
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter); //Redirects all calls to /api/user to userRouter
 app.use('/api/home', workoutRouter);
+app.use('/api/exercises', exerciseRouter);
+
 
 app.use('*', function(req, res) {
     res.status(HTTP_STATUS_CODES.NOT_FOUND).json({

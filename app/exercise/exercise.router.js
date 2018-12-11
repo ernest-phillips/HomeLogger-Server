@@ -18,7 +18,7 @@ const {
 exerciseRouter.post('/', (request, response) => {
 
     const newExercise = {
-        // user: request.user.id,
+
         exercise: request.body.exercise,
         ex_type: request.body.ex_type,
         bodypart: request.body.bodypart
@@ -48,10 +48,9 @@ exerciseRouter.get('/', (request, response) => {
     console.log("Retrieving All Exercises");
     Exercise.find()
         .then(exercises => {
-            // Step 2A: Return the correct HTTP status code, and the users correctly formatted via serialization.
-
             return response.status(HTTP_STATUS_CODES.OK).json(
                 exercises.map(exercise => exercise.serialize())
+
             );
         })
         .catch(error => {
@@ -60,14 +59,16 @@ exerciseRouter.get('/', (request, response) => {
         });
 });
 // RETRIEVE ONE EXERCISE
-exerciseRouter.get('/:exerciseid', (request, response) => {
+exerciseRouter.get('/:id', (request, response) => {
+
     // Step 1: Attempt to retrieve a specific user using Mongoose.Model.findById()
     // https://mongoosejs.com/docs/api.html#model_Model.findById
-    Exercise.findById(request.params.exerciserid)
+    Exercise.findById(request.params.id)
         .then(exercise => {
-            // Step 2A: Return the correct HTTP status code, and the user correctly formatted via serialization.
-            // return response.status(HTTP_STATUS_CODES.OK).json(user.serialize());
-            return response.resolve('/api/exercises');
+            console.log(exercise)
+                // Step 2A: Return the correct HTTP status code, and the user correctly formatted via serialization.
+                // return response.status(HTTP_STATUS_CODES.OK).json(user.serialize());
+            return response.json(exercise);
 
         })
         .catch(error => {

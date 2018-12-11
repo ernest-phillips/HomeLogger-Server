@@ -18,12 +18,15 @@ const {
 workoutRouter.post('/', (request, response) => {
 
         const newWorkout = {
-            // user: request.user.id,
+            user: request.body.user,
             exercise: request.body.exercise,
             reps: request.body.reps,
             weight: request.body.weight,
-            set: request.body.set
+            set: request.body.set,
+            date: request.body.date
+
         };
+        console.log(newWorkout)
 
         const validation = Joi.validate(newWorkout, WorkoutJoiSchema);
         if (validation.error) {
@@ -35,17 +38,31 @@ workoutRouter.post('/', (request, response) => {
 
         Workout.create(newWorkout)
             .then(createdWorkout => {
+                console.log("Workout Created")
                 return response.status(HTTP_STATUS_CODES.CREATED).json(createdWorkout.serialize());
             })
             .catch(error => {
-                return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
+                console.log(error)
+                return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).send(error);
             })
     })
     // jwtPassportMiddleware,
-workoutRouter.get('/', jwtPassportMiddleware, (request, response) => {
+workoutRouter.get('/', (request, response) => {
     console.log("Your Workouts")
-    response.sendFile(path.resolve('./app/views/auth/home.html'));
-    // response.send('Text here')
+    Workout.find()
+        .then(workouts => {
+            // Step 2A: Return the correct HTTP status code, and the users correctly formatted via serialization.
+
+            return response.status(HTTP_STATUS_CODES.OK).json(
+                workouts.map(workout => workout.serialize())
+            );
+
+
+        })
+        .catch(error => {
+            // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
+            return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
+        });
 })
 
 module.exports = {

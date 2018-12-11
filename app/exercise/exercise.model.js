@@ -27,12 +27,12 @@ const exerciseSchema = new mongoose.Schema({
 });
 
 exerciseSchema.methods.serialize = function() {
-    let user;
-    if (typeof this.user.serialize === "function") {
-        user = this.user.serialize();
-    } else {
-        user = this.user;
-    }
+    // let user;
+    // if (typeof this.user.serialize === "function") {
+    //     user = this.user.serialize();
+    // } else {
+    //     user = this.user;
+    // }
     return {
         id: this._id,
         // user: user,

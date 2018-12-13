@@ -1,4 +1,4 @@
-// const CACHE = window.CACHE_MODULE;
+const CACHE = window.CACHE_MODULE;
 
 function getWorkouts() {
     CACHE.getAuthenticatedUserFromCache()
@@ -20,13 +20,6 @@ function getWorkouts() {
         }
     });
 }
-
-function clearInputs() {
-    console.log("clear inputs")
-    $('input').val("");
-}
-
-
 
 count = 1
 
@@ -98,7 +91,7 @@ function onPageLoad() {
     changeDate();
     workoutHeader()
     getWorkouts()
-    clearInputs();
+
 }
 
 

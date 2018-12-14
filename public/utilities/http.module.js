@@ -1,3 +1,4 @@
+// const axios = require('axios')
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
@@ -5,7 +6,8 @@ window.HTTP_MODULE = {
     getWorkoutById,
     createWorkout,
     updateWorkout,
-    deleteWorkout
+    deleteWorkout,
+
 };
 
 function signupUser(options) {

@@ -30,8 +30,6 @@ function onLogoutBtnClick(event) {
     } catch {
         console.error(error);
     }
-
-
 }
 
 // Handle opening Workout details

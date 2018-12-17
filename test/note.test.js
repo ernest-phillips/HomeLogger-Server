@@ -20,8 +20,8 @@ const {
     User
 } = require('../app/user/user.model');
 const {
-    Note
-} = require('../app/note/note.model');
+    Workout
+} = require('../app/workout/workout.model');
 
 const expect = chai.expect; // So we can do "expect" instead of always typing "chai.expect"
 chai.use(chaiHttp); // implements chai http plugin
@@ -137,11 +137,11 @@ describe('Integration tests for: /api/note', function() {
 
     it('Should return a specific note', function() {
         let foundNote;
-        return Note.find()
+        return Workout.find()
             .then(notes => {
                 expect(notes).to.be.a('array');
                 expect(notes).to.have.lengthOf.at.least(1);
-                foundNote = notes[0];
+                foundWorkout = workouts[0];
 
                 return chai.request(app)
                     .get(`/api/note/${foundNote.id}`)

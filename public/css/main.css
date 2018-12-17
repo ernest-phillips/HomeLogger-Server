@@ -13,6 +13,22 @@ body {
     background-color: #fff;
 }
 
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem
+}
+
 .nav-bar {
     height: 40px;
     background-color: #131313;
@@ -182,10 +198,6 @@ max-width:370px;
     /* margin-bottom: auto; */
 }
 
-h1 {
-    font-size: 2.5rem;
-}
-
 .item {
     border: 2px solid black;
     padding: 10px;
@@ -310,13 +322,6 @@ h1 {
 
 .add-ex a: {}
 
-.search-ex {
-    height: 40px;
-    border-radius: 10px;
-    width: 422px;
-    padding: 5px;
-}
-
 .ex-item {
     display: flex;
     font-size: 1.25em;
@@ -328,15 +333,16 @@ h1 {
 .typeahead,
 .tt-query,
 .tt-hint {
-    height: 30px;
+    height: 50px;
     padding: 8px 12px;
-    font-size: 15px;
-    line-height: 30px;
+    font-size: 1.75em;
+    line-height: 50px;
     border: 2px solid #ccc;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
     outline: none;
+    min-width: 75%;
 }
 
 .typeahead {
@@ -390,9 +396,10 @@ h1 {
     text-align: left;
 }
 
-.twitter-typeahead {
+
+/* .twitter-typeahead {
     width: 100%;
-}
+} */
 
 
 /* Date Navigation */
@@ -434,3 +441,114 @@ h1 {
 
 
 /*End Date Navigation CSS*/
+
+
+/* Search/Add workout Styles */
+
+.ex-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+    flex-direction: column;
+}
+
+.set-wkout {
+    display: flex;
+    width: 300px;
+    min-height: 200px;
+    background-color: #ecc309;
+    /* border: #131313 2px solid; */
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #131313;
+}
+
+#the-basics {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.set-input {
+    margin-top: 15px;
+    font-size: 1.25em;
+}
+
+.search-btn {
+    /* justify-content: flex-end; */
+    height: 50px;
+    border: 0px;
+    background-color: #465C8b;
+    color: #FFF;
+    font-size: 1.75em;
+    padding: 5px 10px 5px 10px;
+    border-radius: 7px;
+    margin-left: 10px;
+    min-width: 25%;
+}
+
+.search-ex {
+    height: 50px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1.75em;
+}
+
+.form-save {
+    width: 100%;
+}
+
+.save-set {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    font-size: 2em;
+    border: none;
+    padding: 5px 10px;
+    background-color: #465C8b;
+    border-radius: 5px;
+    color: #fff;
+    border: #FFF 2px solid;
+}
+
+.save-set:hover {
+    color: #ecc309;
+}
+
+#POST-weight {
+    border-radius: 3px;
+    height: 25px;
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+}
+
+#weight-lbl {
+    font-size: 1.25em;
+    vertical-align: text-top;
+}
+
+#POST-reps {
+    border-radius: 3px;
+    height: 25px;
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+}
+
+#reps-lbl {
+    margin-right: 13px;
+    font-size: 1.25em;
+    vertical-align: text-top;
+}
+
+.alphalist {
+    margin-top: 30px;
+}

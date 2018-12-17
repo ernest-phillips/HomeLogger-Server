@@ -17,18 +17,39 @@
     <header class="header">
         <div class="logo">Fit-Journal</div>
         <nav class="nav-login">
-            <a id="logout-btn" href="">Log Out</a>
+            <a id="logout-btn" href="/logout">Log Out</a>
         </nav>
     </header>
 
     <main>
 
-        <section class="wo-container ">
-            <div id="the-basics">
+        <section class="ex-container ">
+            <div id="the-basics" class="">
                 <input class="search-ex typeahead" type="text" placeholder="Search Exercises" />
+                <button type="button" class="search-btn">Add Exercise</button>
             </div>
-            <div class="js-container"></div>
-
+            <div class="set-wkout">
+                <form action="/api/workout" class="js-setworkOut" method="POST">
+                    <h3 class="exerciseName "></h3>
+                    <div class="set-input">
+                        <label id="reps-lbl" for="POST-reps">Number of reps:</label>
+                        <input id="POST-reps" type="text" name="reps">
+                    </div>
+                    <div class="set-input">
+                        <label id="weight-lbl" for="POST-weight">Amount of weight:</label>
+                        <input id="POST-weight" type="text" name="weight">
+                    </div>
+                    <div class="form-save">
+                        <button class="save-set">Save Set</button>
+                    </div>
+                </form>
+            </div>
+            <div class="js-container alphalist"></div>
+            <ul>
+                <li>
+                    <h3>A</h3>
+                </li>
+            </ul>
 
         </section>
 

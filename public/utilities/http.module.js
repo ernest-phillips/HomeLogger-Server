@@ -54,6 +54,36 @@ function loginUser(options) {
         }
     });
 }
+// app.get('/logout', function(req, res) {
+//     req.logout();
+//     res.redirect('/');
+// });
+
+function logoutUser(options) {
+    console.log("logout user called")
+    axios.post('')
+        .then()
+        .catch()
+    const {
+        userData,
+        onSuccess,
+        onError
+    } = options;
+    $.ajax({
+        type: 'POST',
+        url: '/api/auth/logout',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(userData),
+        success: onSuccess,
+        error: err => {
+            console.error(err);
+            if (onError) {
+                onError(err);
+            }
+        }
+    });
+}
 // beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', Bearer ${jwtToken}); }
 function getUserWorkouts(options) {
     const {
@@ -101,7 +131,7 @@ function createWorkout(options) {
         url: '/api/workout',
         contentType: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(newworkout),
+        data: JSON.stringify(newWorkout),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },

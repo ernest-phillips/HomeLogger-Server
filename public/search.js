@@ -25,7 +25,7 @@ function typeAhead(exercises) {
     }, {
         name: 'exercises',
         source: substringMatcher(exercises)
-    })
+    });
 }
 // GET EXERCISES
 function getUserExercises() {
@@ -40,27 +40,42 @@ function getUserExercises() {
         });
 }
 
-function showExercises(item) {
-    let exercises = [];
-    console.log(item)
-        // exercises.push(item.exercise);    
-        // for (let i=0; i < item.length)
-        // $('.js-container').append(`<p class="ex-item">${item.exercise}</p>`)
-        // typeAhead(exercises);
-}
-
 function exerciseLoop(res) {
     let exercises = []
-        // res.map((item, index) => showExercises(item));
     res.map(item => exercises.push(item.exercise))
     console.log(exercises)
     typeAhead(exercises)
 }
 
-function onPageLoad() {
-    typeAhead();
-    getUserExercises();
+function clearInput() {
+    $('input').val("")
+}
 
+
+
+// Save exercise set to workout
+// capture name of exercise
+function selectExercise() {
+    $('.search-btn').on('click', function() {
+        let searchVal = $('.search-ex').val();
+        $('.exerciseName').html(`${searchVal}`);
+    });
+
+}
+// unhide set adder
+function showSetAdd() {
+
+}
+
+function
+// save to workout
+
+
+function onPageLoad() {
+    // typeAhead();
+    clearInput();
+    getUserExercises();
+    selectExercise();
 }
 
 

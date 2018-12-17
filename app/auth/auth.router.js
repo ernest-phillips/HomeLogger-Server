@@ -56,4 +56,4 @@ authRouter.post('/logout', localPassportMiddleware, (req, res) => {
         }
         module.exports = {
             authRouter
-        };
+        });

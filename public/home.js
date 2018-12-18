@@ -16,7 +16,7 @@ function onPageLoad() {
     //     });
     // }
     { /* <nav class="nav-login"><a id="logout-btn" href="">Log Out</a> </nav> */ }
-    $('body').on('click', '#logout-btn', onLogoutBtnClick());
+
     // $('#workout-list').on('click', '#delete-workout-btn', onDeleteWorkoutBtnClick);
     // $('#workout-list').on('click', '#workout-card', onWorkoutCardClick);
 }

@@ -7,6 +7,7 @@ window.HTTP_MODULE = {
     createWorkout,
     updateWorkout,
     deleteWorkout,
+    logoutUser
 
 };
 
@@ -61,14 +62,12 @@ function loginUser(options) {
 
 function logoutUser(options) {
     console.log("logout user called")
-    axios.post('')
-        .then()
-        .catch()
     const {
         userData,
         onSuccess,
         onError
     } = options;
+
     $.ajax({
         type: 'POST',
         url: '/api/auth/logout',

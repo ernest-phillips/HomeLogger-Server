@@ -26,10 +26,8 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-authRouter.get('/login.html', (req, res) => {
+authRouter.get('/login.html', (req, res) => {});
 
-
-});
 authRouter.post('/login', localPassportMiddleware, (request, response) => {
     const user = request.user.serialize();
     const jwtToken = createJwtToken(user);
@@ -51,7 +49,14 @@ authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
     });
 });
 
-authRouter.post('/logout', localPassportMiddleware, (req, res) => {
-            res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-        });
-module.exports = {authRouter};
+authRouter.get('/logout', localPassportMiddleware, (req, res) => {
+    console.log("logging out")
+    res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    res.json({
+        jwtToken,
+        user
+    })
+});
+module.exports = {
+    authRouter
+};

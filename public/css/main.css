@@ -364,7 +364,7 @@ max-width:370px;
 }
 
 .tt-dropdown-menu {
-    width: 422px;
+    width: 100%;
     margin-top: 3px;
     padding: 8px 0;
     background-color: #fff;
@@ -396,10 +396,9 @@ max-width:370px;
     text-align: left;
 }
 
-
-/* .twitter-typeahead {
-    width: 100%;
-} */
+.twitter-typeahead {
+    width: 75%;
+}
 
 
 /* Date Navigation */

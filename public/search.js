@@ -58,7 +58,8 @@ function clearInput() {
 function selectExercise() {
     $('.search-btn').on('click', function() {
         let searchVal = $('.search-ex').val();
-        $('.exerciseName').html(`${searchVal}`);
+        console.log(searchVal)
+            // $('.exerciseName').append(`${searchVal}`);
     });
 
 }
@@ -67,8 +68,7 @@ function showSetAdd() {
 
 }
 
-function
-// save to workout
+
 
 
 function onPageLoad() {

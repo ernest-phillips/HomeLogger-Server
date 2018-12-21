@@ -20,7 +20,7 @@ describe('Integration tests for: /', function() {
 
         return startServer(true);
     });
-    .
+
     after(function() {
 
         return stopServer();

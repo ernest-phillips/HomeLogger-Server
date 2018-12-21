@@ -45,7 +45,12 @@ const WorkoutJoiSchema = Joi.object().keys({
   reps: Joi.number()
     .min(1)
     .required(),
+<<<<<<< HEAD
   weight: Joi.number().min(1)
+=======
+  weight: Joi.number().min(1),
+  date: Joi.date()
+>>>>>>> c67b88e6bca7463a4270d6b72836ffa09870c8f9
 });
 
 module.exports = { Workout };

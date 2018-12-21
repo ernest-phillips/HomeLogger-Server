@@ -1,5 +1,4 @@
 const express = require('express');
-
 const Joi = require('joi');
 
 const {
@@ -70,9 +69,12 @@ userRouter.get('/', (request, response) => {
     User.find()
         .then(users => {
             // Step 2A: Return the correct HTTP status code, and the users correctly formatted via serialization.
+
             return response.status(HTTP_STATUS_CODES.OK).json(
                 users.map(user => user.serialize())
             );
+
+
         })
         .catch(error => {
             // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.

@@ -2,13 +2,6 @@
     box-sizing: border-box;
 }
 
-main {
-    max-width: 1040px;
-    margin: 0 auto;
-    /*   background-color: grey; */
-    padding-top: 30px;
-}
-
 .workout-entry {
     display: flex;
     justify-content: center;

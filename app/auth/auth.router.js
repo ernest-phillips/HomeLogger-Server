@@ -26,11 +26,10 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-authRouter.get('/login', (req, res) => {
+authRouter.get('/login.html', (req, res) => {
 
-    res.sendFile('/Users/macBoss/Desktop/THINKFUL/Projects/Capstones/NodeJS_Capstone3/app/views/auth/login.html');
 
-})
+});
 authRouter.post('/login', localPassportMiddleware, (request, response) => {
     const user = request.user.serialize();
     const jwtToken = createJwtToken(user);

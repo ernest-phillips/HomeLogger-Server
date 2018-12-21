@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-//Is this globablly accessible?
+
 userSchema.methods.serialize = function() {
     return {
         id: this._id,

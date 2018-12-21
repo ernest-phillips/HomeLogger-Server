@@ -8,10 +8,6 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 
 const exerciseSchema = new mongoose.Schema({
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "user"
-    // },
     exercise: {
         type: String,
         required: true
@@ -24,18 +20,13 @@ const exerciseSchema = new mongoose.Schema({
         type: String,
         enum: ["cardiovascular", "strength training"]
     }
+
 });
 
 exerciseSchema.methods.serialize = function() {
-    // let user;
-    // if (typeof this.user.serialize === "function") {
-    //     user = this.user.serialize();
-    // } else {
-    //     user = this.user;
-    // }
+
     return {
         id: this._id,
-        // user: user,
         exercise: this.exercise,
         bodypart: this.bodypart,
         ex_type: this.ex_type
@@ -56,5 +47,6 @@ const ExerciseJoiSchema = Joi.object().keys({
 });
 
 module.exports = {
-    Exercise
+    Exercise,
+    ExerciseJoiSchema
 };

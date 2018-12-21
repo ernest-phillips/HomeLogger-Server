@@ -60,16 +60,11 @@ function onLoginSubmit(event) {
 }
 
 function onLogoutSubmit(event) {
-    console.log("Logging out")
     event.preventDefault();
     HTTP.logoutUser({
-
         onSuccess: response => {
-            const authenticatedUser = response.user;
-            console.log(authenticatedUser);
-            authenticatedUser.jwtToken = response.jwtToken;
-            CACHE.deleteAuthenticatedUserFromCache(authenticatedUser);
-            alert('Please come again');
+            CACHE.deleteAuthenticatedUserFromCache();
+
             window.open('/', '_self');
         }
     })

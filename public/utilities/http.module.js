@@ -55,10 +55,7 @@ function loginUser(options) {
         }
     });
 }
-// app.get('/logout', function(req, res) {
-//     req.logout();
-//     res.redirect('/');
-// });
+
 
 function logoutUser(options) {
     console.log("logout user called")
@@ -120,7 +117,7 @@ function getWorkoutById(options) {
 function createWorkout(options) {
     const {
         jwtToken,
-        newworkout,
+        newWorkout,
         onSuccess,
         onError
     } = options;

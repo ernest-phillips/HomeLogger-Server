@@ -50,16 +50,13 @@ function exerciseLoop(res) {
 function clearInput() {
     $('input').val("")
 }
-
-
-
 // Save exercise set to workout
 // capture name of exercise
 function selectExercise() {
     $('.search-btn').on('click', function() {
-        let searchVal = $('.search-ex').val();
+        let searchVal = $('.search-ex')[1].value;
         console.log(searchVal)
-            // $('.exerciseName').append(`${searchVal}`);
+        $('.exerciseName').append(`${searchVal}`);
     });
 
 }
@@ -68,7 +65,22 @@ function showSetAdd() {
 
 }
 
+function saveSet() {
+    let reps;
+    let sets;
+    let weight;
+    $('button').on('click', '.save-set'function() {
+        reps = $('#POST-reps').value()
+        console.log(reps);
+        weight = $('#POST-weight').value();
+        console.log(weight);
+    });
 
+}
+
+function updateWorkout(reps, weight) {
+
+}
 
 
 function onPageLoad() {

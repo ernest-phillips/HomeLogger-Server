@@ -15,24 +15,27 @@ const workoutSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
     },
-    exercise: {
-        type: String,
-        required: true
+    date: {
+        type: Date,
+        default: Date.now
     },
-    set: {
-        type: Number,
-
-    },
-    reps: {
-        type: Number,
-
-    },
-    weight: {
-        type: Number
-    }
-    // date: {
-    //     type: Date
-    // }
+    sets: [{
+        exercise: {
+            type: String,
+            required: true
+        },
+        set: {
+            type: Number,
+            required: true
+        },
+        reps: {
+            type: Number,
+            required: true
+        },
+        weight: {
+            type: Number
+        }
+    }]
 });
 
 workoutSchema.methods.serialize = function() {

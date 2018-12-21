@@ -78,7 +78,7 @@ userRouter.get('/', (request, response) => {
         })
         .catch(error => {
             // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
-            return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
+            return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).send(error);
         });
 });
 // RETRIEVE ONE USER

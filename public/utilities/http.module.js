@@ -1,3 +1,4 @@
+// const axios = require('axios')
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
@@ -5,7 +6,9 @@ window.HTTP_MODULE = {
     getWorkoutById,
     createWorkout,
     updateWorkout,
-    deleteWorkout
+    deleteWorkout,
+    logoutUser
+
 };
 
 function signupUser(options) {
@@ -40,6 +43,31 @@ function loginUser(options) {
     $.ajax({
         type: 'POST',
         url: '/api/auth/login',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(userData),
+        success: onSuccess,
+        error: err => {
+            console.error(err);
+            if (onError) {
+                onError(err);
+            }
+        }
+    });
+}
+
+
+function logoutUser(options) {
+    console.log("logout user called")
+    const {
+        userData,
+        onSuccess,
+        onError
+    } = options;
+
+    $.ajax({
+        type: 'POST',
+        url: '/api/auth/logout',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(userData),
@@ -89,7 +117,7 @@ function getWorkoutById(options) {
 function createWorkout(options) {
     const {
         jwtToken,
-        newworkout,
+        newWorkout,
         onSuccess,
         onError
     } = options;
@@ -99,7 +127,7 @@ function createWorkout(options) {
         url: '/api/workout',
         contentType: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(newworkout),
+        data: JSON.stringify(newWorkout),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },

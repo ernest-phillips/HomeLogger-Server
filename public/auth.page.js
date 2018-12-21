@@ -1,13 +1,15 @@
 // All these modules are are defined in /public/utilities
 const RENDER = window.RENDER_MODULE;
-const HTTP = window.HTTP_MODULE;
-const CACHE = window.CACHE_MODULE;
+// const HTTP = window.HTTP_MODULE;
+// const CACHE = window.CACHE_MODULE;
 
 $(document).ready(onPageLoad);
 
 function onPageLoad() {
     $('#sign-up-form').submit(onSignUpSubmit);
     $('#login-form').submit(onLoginSubmit);
+    $('#logout-btn').on('click', onLogoutSubmit);
+
 }
 
 function onSignUpSubmit(event) {
@@ -55,4 +57,15 @@ function onLoginSubmit(event) {
             alert('Incorrect username or password. Please try again.');
         }
     });
+}
+
+function onLogoutSubmit(event) {
+    event.preventDefault();
+    HTTP.logoutUser({
+        onSuccess: response => {
+            CACHE.deleteAuthenticatedUserFromCache();
+
+            window.open('/', '_self');
+        }
+    })
 }

@@ -11,7 +11,22 @@ html {
 
 body {
     background-color: #fff;
-    /* background-image: -moz-linear-gradient(#67B26F, #4ca2cd), linear-gradient(#67B26F, #4ca2cd); */
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem
 }
 
 .nav-bar {
@@ -21,10 +36,10 @@ body {
 
 main {
     display: flex;
-    width: 992px;
-    justify-content: center;
-    min-height: 1040px;
+    width: 100%;
+    /* justify-content: center; */
     margin: 0 auto;
+    min-height: 1040px;
     background-color: #fff;
 }
 
@@ -38,17 +53,23 @@ main {
 
 .wo-container {
     display: flex;
-    width: 100%;
+    min-width: 800px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding-top: 30px;
+    flex-direction: column;
 }
 
 .header {
     display: flex;
-    width: 100%;
+    max-width: 990px;
     height: 40px;
     background-color: #131313;
     color: #fff;
     justify-content: center;
     margin-top: -40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .row {
@@ -91,6 +112,9 @@ main {
     line-height: 40px;
     font-size: 1.5rem;
 }
+
+
+/* FOOTER STYLES */
 
 footer {
     background-color: #131313;
@@ -138,3 +162,392 @@ line-height:50px;
 color:#fff;
 max-width:370px;
 @media (max-width: 1024px) */
+
+
+/*LOGIN CSSS*/
+
+.login-page {
+    width: 100%;
+    padding: 8% 0 0;
+    margin: auto;
+    /* display: none; */
+}
+
+.column {
+    flex-direction: column;
+    float: left;
+}
+
+.form {
+    margin: 10px;
+    background-color: #e6e6ea;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: background: #FFFFFF;
+    min-width: 430px;
+    height: 380px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.not-reg {
+    background-color: beige;
+    border-top: #92a2aa solid 2px;
+    /* margin-bottom: auto; */
+}
+
+.item {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 240px;
+}
+
+.label {
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.login-btn {
+    width: 240px;
+    background-color: #4ca2cd;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+.login-page {
+    background-color: transparent;
+}
+
+
+/*WORKOUTS CSS*/
+
+.workout-entry {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.log-header {
+    display: flex;
+    /*   justify-content: space-evenly; */
+    margin: 0px;
+    height: 50px;
+}
+
+.stat-labels {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 50px;
+}
+
+.log-stat-lbl {
+    background-color: #465C8b;
+    color: #FFF;
+    width: 100%;
+    border-right: #fff solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0
+}
+
+.log-stat {
+    background-color: #DFDCE3;
+    width: 100%;
+    height: 75%;
+    display: flex;
+    border-right: #fff solid 2px;
+    border-top: #fff solid 2px;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+}
+
+.ex-head {
+    display: flex;
+    /*   justify-content: flex-start; */
+    width: 50%;
+    padding-left: 10px;
+}
+
+.ex-name {
+    display: flex;
+    /*   justify-content: flex-start; */
+    background-color: #DFDCE3;
+    align-items: center;
+    width: 50%;
+    height: 75%;
+    margin: 0;
+    border-right: #fff solid 2px;
+    border-top: #fff solid 2px;
+    padding-left: 20px;
+    font-weight: normal;
+}
+
+.ex-list {
+    width: 95%;
+}
+
+.delete {
+    width: 5%;
+    border: #fff solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #ggg
+}
+
+.add-ex {
+    padding-left: 10px;
+}
+
+.add-ex a {
+    text-decoration: none;
+}
+
+.add-ex a:visited {
+    color: blue
+}
+
+.add-ex a:hover {
+    color: green
+}
+
+.add-ex a: {}
+
+.ex-item {
+    display: flex;
+    font-size: 1.25em;
+}
+
+
+/************ TypeAhead Styles *****************/
+
+.typeahead,
+.tt-query,
+.tt-hint {
+    height: 50px;
+    padding: 8px 12px;
+    font-size: 1.75em;
+    line-height: 50px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    outline: none;
+    min-width: 75%;
+}
+
+.typeahead {
+    background-color: #fff;
+}
+
+.typeahead:focus {
+    border: 2px solid #0097cf;
+}
+
+.tt-query {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+    color: #999
+}
+
+.tt-dropdown-menu {
+    width: 100%;
+    margin-top: 3px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.tt-suggestion {
+    padding: 3px 20px;
+    font-size: 18px;
+    line-height: 24px;
+    color: black;
+}
+
+.tt-suggestion.tt-cursor {
+    color: #fff;
+    background-color: #0097cf;
+}
+
+.tt-suggestion p {
+    margin: 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.twitter-typeahead {
+    width: 75%;
+}
+
+
+/* Date Navigation */
+
+.date-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 50px;
+}
+
+.fa-caret-left {
+    display: flex;
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+    width: 50px;
+    border-right: 2px solid lightgrey;
+}
+
+.fa-caret-right {
+    font-size: 30px;
+    align-items: stretch;
+    width: 50px;
+    text-align: center;
+    align-items: center;
+    border-left: 2px solid lightgrey;
+}
+
+.date-sel {
+    min-width: 200px;
+    /*   border: 2px solid lightgrey; */
+    text-align: center;
+    align-items: center;
+    font-size: 26px;
+    padding: 10px;
+}
+
+
+/*End Date Navigation CSS*/
+
+
+/* Search/Add workout Styles */
+
+.ex-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+    flex-direction: column;
+}
+
+.set-wkout {
+    display: flex;
+    width: 300px;
+    min-height: 200px;
+    background-color: #ecc309;
+    /* border: #131313 2px solid; */
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #131313;
+}
+
+#the-basics {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.set-input {
+    margin-top: 15px;
+    font-size: 1.25em;
+}
+
+.search-btn {
+    /* justify-content: flex-end; */
+    height: 50px;
+    border: 0px;
+    background-color: #465C8b;
+    color: #FFF;
+    font-size: 1.75em;
+    padding: 5px 10px 5px 10px;
+    border-radius: 7px;
+    margin-left: 10px;
+    min-width: 25%;
+}
+
+.search-ex {
+    height: 50px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1.75em;
+}
+
+.form-save {
+    width: 100%;
+}
+
+.save-set {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    font-size: 2em;
+    border: none;
+    padding: 5px 10px;
+    background-color: #465C8b;
+    border-radius: 5px;
+    color: #fff;
+    border: #FFF 2px solid;
+}
+
+.save-set:hover {
+    color: #ecc309;
+}
+
+#POST-weight {
+    border-radius: 3px;
+    height: 25px;
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+}
+
+#weight-lbl {
+    font-size: 1.25em;
+    vertical-align: text-top;
+}
+
+#POST-reps {
+    border-radius: 3px;
+    height: 25px;
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+}
+
+#reps-lbl {
+    margin-right: 13px;
+    font-size: 1.25em;
+    vertical-align: text-top;
+}
+
+.alphalist {
+    margin-top: 30px;
+}

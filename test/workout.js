@@ -20,13 +20,13 @@ const {
     User
 } = require('../app/user/user.model');
 const {
-    Note
-} = require('../app/note/note.model');
+    Workout
+} = require('../app/workout/workout.model');
 
 const expect = chai.expect; // So we can do "expect" instead of always typing "chai.expect"
 chai.use(chaiHttp); // implements chai http plugin
 
-describe('Integration tests for: /api/note', function() {
+describe('Integration tests for: /api/workout', function() {
     let testUser, jwtToken;
 
     // Mocha Hook: Runs before ALL the "it" test blocks.
@@ -75,11 +75,11 @@ describe('Integration tests for: /api/note', function() {
 
                 const seedData = [];
                 for (let i = 1; i <= 10; i++) {
-                    const newNote = createFakerNote();
-                    newNote.user = createdUser.id;
-                    seedData.push(newNote);
+                    const newWorkout = createFakerWorkout();
+                    newWorkout.user = createdUser.id;
+                    seedData.push(newWorkout);
                 }
-                return Note.insertMany(seedData)
+                return Workout.insertMany(seedData)
                     .catch(err => {
                         console.error(err);
                         throw new Error(err);
@@ -113,20 +113,20 @@ describe('Integration tests for: /api/note', function() {
         return stopServer();
     });
 
-    it('Should return user notes', function() {
+    it('Should return user workouts', function() {
         return chai.request(app)
-            .get('/api/note')
+            .get('/api/workout')
             .set('Authorization', `Bearer ${jwtToken}`)
             .then(res => {
                 expect(res).to.have.status(HTTP_STATUS_CODES.OK);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('array');
                 expect(res.body).to.have.lengthOf.at.least(1);
-                const note = res.body[0];
-                expect(note).to.include.keys('user', 'title', 'content');
-                expect(note.user).to.be.a('object');
-                expect(note.user).to.include.keys('name', 'email', 'username');
-                expect(note.user).to.deep.include({
+                const workout = res.body[0];
+                expect(workout).to.include.keys('user', 'exercise', 'set');
+                expect(workout.user).to.be.a('object');
+                expect(workout.user).to.include.keys('name', 'email', 'username');
+                expect(workout.user).to.deep.include({
                     id: testUser.id,
                     username: testUser.username,
                     email: testUser.email,
@@ -135,16 +135,16 @@ describe('Integration tests for: /api/note', function() {
             });
     });
 
-    it('Should return a specific note', function() {
-        let foundNote;
-        return Note.find()
-            .then(notes => {
-                expect(notes).to.be.a('array');
-                expect(notes).to.have.lengthOf.at.least(1);
-                foundNote = notes[0];
+    it('Should return a specific workout', function() {
+        let foundWorkout;
+        return Workout.find()
+            .then(workouts => {
+                expect(workouts).to.be.a('array');
+                expect(workouts).to.have.lengthOf.at.least(1);
+                foundWorkout = workouts[0];
 
                 return chai.request(app)
-                    .get(`/api/note/${foundNote.id}`)
+                    .get(`/api/workout/${foundWorkout.id}`)
                     .set('Authorization', `Bearer ${jwtToken}`);
             })
             .then(res => {
@@ -153,61 +153,60 @@ describe('Integration tests for: /api/note', function() {
                 expect(res.body).to.be.a('object');
                 expect(res.body).to.include.keys('user', 'title', 'content');
                 expect(res.body).to.deep.include({
-                    id: foundNote.id,
-                    title: foundNote.title,
-                    content: foundNote.content
+                    id: foundWorkout.id,
+                    exercise: foundWorkout.exercise
+
                 });
             });
     });
 
-    it('Should update a specific note', function() {
-        let noteToUpdate;
-        const newNoteData = createFakerNote();
-        return Note.find()
-            .then(notes => {
-                expect(notes).to.be.a('array');
-                expect(notes).to.have.lengthOf.at.least(1);
-                noteToUpdate = notes[0];
+    it('Should update a specific workout', function() {
+        let workoutToUpdate;
+        const newWorkoutData = createFakerWorkout();
+        return Workout.find()
+            .then(workouts => {
+                expect(workouts).to.be.a('array');
+                expect(workouts).to.have.lengthOf.at.least(1);
+                workoutToUpdate = workouts[0];
 
                 return chai.request(app)
-                    .put(`/api/note/${noteToUpdate.id}`)
+                    .put(`/api/workout/${workoutToUpdate.id}`)
                     .set('Authorization', `Bearer ${jwtToken}`)
-                    .send(newNoteData);
+                    .send(newWorkoutData);
             })
             .then(res => {
                 expect(res).to.have.status(HTTP_STATUS_CODES.NO_CONTENT);
 
-                return Note.findById(noteToUpdate.id);
+                return Workout.findById(workoutToUpdate.id);
             })
-            .then(note => {
-                expect(note).to.be.a('object');
-                expect(note).to.deep.include({
-                    id: noteToUpdate.id,
-                    title: newNoteData.title,
-                    content: newNoteData.content
+            .then(workout => {
+                expect(workout).to.be.a('object');
+                expect(workout).to.deep.include({
+                    id: workoutToUpdate.id,
+                    exercise: newWorkoutData.title,
                 });
             });
     });
 
-    it('Should delete a specific note', function() {
-        let noteToDelete;
-        return Note.find()
-            .then(notes => {
-                expect(notes).to.be.a('array');
-                expect(notes).to.have.lengthOf.at.least(1);
-                noteToDelete = notes[0];
+    it('Should delete a specific workout', function() {
+        let workoutToDelete;
+        return Workout.find()
+            .then(workouts => {
+                expect(workouts).to.be.a('array');
+                expect(workouts).to.have.lengthOf.at.least(1);
+                workoutToDelete = workouts[0];
 
                 return chai.request(app)
-                    .delete(`/api/note/${noteToDelete.id}`)
+                    .delete(`/api/workout/${workoutToDelete.id}`)
                     .set('Authorization', `Bearer ${jwtToken}`);
             })
             .then(res => {
                 expect(res).to.have.status(HTTP_STATUS_CODES.NO_CONTENT);
 
-                return Note.findById(noteToDelete.id);
+                return Workout.findById(workoutToDelete.id);
             })
-            .then(note => {
-                expect(note).to.not.exist;
+            .then(workout => {
+                expect(workout).to.not.exist;
             });
     });
 
@@ -220,7 +219,7 @@ describe('Integration tests for: /api/note', function() {
         };
     }
 
-    function createFakerNote() {
+    function createFakerworkout() {
         return {
             title: faker.lorem.sentence(),
             content: faker.lorem.paragraphs()

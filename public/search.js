@@ -69,7 +69,7 @@ function saveSet() {
     let reps;
     let sets;
     let weight;
-    $('button').on('click', '.save-set'function() {
+    $('button').on('click', '.save-set', function() {
         reps = $('#POST-reps').value()
         console.log(reps);
         weight = $('#POST-weight').value();

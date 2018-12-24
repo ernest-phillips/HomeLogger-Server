@@ -1,5 +1,3 @@
-const CACHE = window.CACHE_MODULE;
-
 function getWorkouts() {
     CACHE.getAuthenticatedUserFromCache()
     $.ajax({
@@ -21,12 +19,33 @@ function getWorkouts() {
     });
 }
 
-count = 1
+function displayWorkout(d) {
+    axios.get(`/api/home/${d}`)
+        .then(function(res) {
+            console.log(res.data.sets[0])
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+    $('.js-exList').append(`<div class="log-header">
+    <h3 class="ex-name js-exName"></h3>
+    <div class="stat-labels">
+        <p class="log-stat js-setLbl"></p>
+        <p class="log-stat js-repsLbl"></p>
+        <p class="log-stat js-weightsLbl"></p>
+    </div>
+    <!--end stat-label-->
+    <div class="delete js-delete">x</div>
+</div>
+<!--end log-header-->`)
+}
 
 function currentDate() {
     var d = moment().format("dddd, MMMM Do");
     $(".js-dateSel").html(d);
     console.log(d)
+    displayWorkout(d)
 }
 
 function changeDate(count) {
@@ -63,7 +82,8 @@ function onPageLoad() {
     // typeAhead();
     currentDate();
     changeDate();
-    getWorkouts()
+    getWorkouts();
+    // displayWorkout();
 
 }
 

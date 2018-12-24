@@ -13,7 +13,7 @@ const userRouter = express.Router();
 
 // CREATE NEW USER
 userRouter.post('/', (request, response) => {
-    console.log("User Added")
+
     const newUser = {
         name: request.body.name,
         email: request.body.email,

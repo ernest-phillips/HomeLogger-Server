@@ -1,9 +1,8 @@
-// const axios = require('axios')
+import axios from 'axios';
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
     getUserWorkouts,
-    getWorkoutById,
     createWorkout,
     updateWorkout,
     deleteWorkout,
@@ -105,13 +104,7 @@ function getUserWorkouts(options) {
     });
 }
 
-function getWorkoutById(options) {
-    const {
-        workoutId,
-        onSuccess
-    } = options;
-    $.getJSON(`/api/home/${workoutId}`, onSuccess);
-}
+
 
 function createWorkout(options) {
     const {

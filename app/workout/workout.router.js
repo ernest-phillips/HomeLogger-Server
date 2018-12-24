@@ -19,15 +19,14 @@ workoutRouter.post('/', (request, response) => {
 
         const newWorkout = {
             user: request.body.user,
-            sets: {
+            sets: [{
                 exercise: request.body.exercise,
                 reps: request.body.reps,
                 weight: request.body.weight,
                 set: request.body.set
-            },
+            }],
             date: request.body.date
         };
-        console.log(newWorkout)
 
         const validation = Joi.validate(newWorkout, WorkoutJoiSchema);
         if (validation.error) {
@@ -38,7 +37,7 @@ workoutRouter.post('/', (request, response) => {
         }
         Workout.create(newWorkout)
             .then(createdWorkout => {
-                console.log("Workout Created")
+
                 return response.status(HTTP_STATUS_CODES.CREATED).json(createdWorkout.serialize());
             })
             .catch(error => {
@@ -48,7 +47,7 @@ workoutRouter.post('/', (request, response) => {
     })
     // jwtPassportMiddleware,
 workoutRouter.get('/', (request, response) => {
-    console.log("Your Workouts")
+
     Workout.find()
         .then(workouts => {
             // Step 2A: Return the correct HTTP status code, and the users correctly formatted via serialization.
@@ -63,7 +62,7 @@ workoutRouter.get('/', (request, response) => {
         });
 })
 
-workoutRouter.get('/:id', (req, res) => {
+workoutRouter.get('/:workoutid', (req, res) => {
     Workout.findOne(req.params.date)
         .then(workout => {
             return res.status(HTTP_STATUS_CODES.OK).json(workout.serialize());

@@ -1,6 +1,9 @@
 const STATE = {};
+const HTTP = window.HTTP_MODULE;
+const CACHE = window.CACHE_MODULE;
+const ETC = window.ETC_MODULE;
+// const axios = require('axios');
 
-// const CACHE = window.CACHE_MODULE;
 $(document).ready(onPageLoad);
 
 

@@ -34,7 +34,6 @@ function signupUser(options) {
 }
 
 function loginUser(options) {
-    console.log("login user called")
     const {
         userData,
         onSuccess,
@@ -80,7 +79,7 @@ function logoutUser(options) {
         }
     });
 }
-// beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', Bearer ${jwtToken}); }
+
 function getUserWorkouts(options) {
     const {
         jwtToken,
@@ -111,7 +110,7 @@ function getWorkoutById(options) {
         workoutId,
         onSuccess
     } = options;
-    $.getJSON(`/api/workout/${workoutId}`, onSuccess);
+    $.getJSON(`/api/home/${workoutId}`, onSuccess);
 }
 
 function createWorkout(options) {

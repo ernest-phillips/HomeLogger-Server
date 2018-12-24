@@ -63,7 +63,17 @@ workoutRouter.get('/', (request, response) => {
         });
 })
 
-workoutRouter.get('/', )
+workoutRouter.get('/:id', (req, res) => {
+    Workout.findOne(req.params.date)
+        .then(workout => {
+            return res.status(HTTP_STATUS_CODES.OK).json(workout.serialize());
+        })
+        .catch(error => {
+            // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
+            return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
+        });
+});
+
 module.exports = {
     workoutRouter
 };

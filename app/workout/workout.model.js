@@ -52,8 +52,9 @@ workoutSchema.methods.serialize = function() {
         sets: [{
             reps: this.reps,
             weight: this.weight,
-            date: this.date
-        }]
+
+        }],
+        date: this.date
     };
 };
 

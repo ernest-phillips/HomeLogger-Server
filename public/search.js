@@ -1,3 +1,9 @@
+// import {
+//     Http2ServerRequest
+// } from "http2";
+// const HTTP = window.HTTP_MODULE;
+// const CACHE = window.CACHE_MODULE;
+
 var substringMatcher = function(strs) {
     return function findMatches(q, cb) {
         let matches;
@@ -69,18 +75,31 @@ function saveSet() {
     let reps;
     let sets;
     let weight;
+    let exercise;
+    let userInfo = CACHE.getAuthenticatedUserFromCache();
+
     $('button').on('click', '.save-set', function() {
         reps = $('#POST-reps').value()
         console.log(reps);
         weight = $('#POST-weight').value();
         console.log(weight);
+        exercise = $('.exerciseName').value()
+        HTTP.createWorkout({
+            newWorkout: {
+                reps: reps,
+                weight: weight,
+                exercise: excercise,
+                userId: userInfo.userid,
+                jwtToken: userInfo.jwtToken
+
+            },
+            jwtToken: userInfo.jwtToken
+        })
     });
 
 }
 
-function updateWorkout(reps, weight) {
 
-}
 
 
 function onPageLoad() {
@@ -88,6 +107,7 @@ function onPageLoad() {
     clearInput();
     getUserExercises();
     selectExercise();
+    saveSet();
 }
 
 

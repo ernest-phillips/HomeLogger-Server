@@ -145,7 +145,7 @@ function updateWorkout(options) {
     const {
         jwtToken,
         workoutId,
-        newworkout,
+        newWorkout,
         onSuccess,
         onError
     } = options;

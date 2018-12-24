@@ -19,12 +19,13 @@ workoutRouter.post('/', (request, response) => {
 
         const newWorkout = {
             user: request.body.user,
-            exercise: request.body.exercise,
-            reps: request.body.reps,
-            weight: request.body.weight,
-            set: request.body.set,
+            sets: {
+                exercise: request.body.exercise,
+                reps: request.body.reps,
+                weight: request.body.weight,
+                set: request.body.set
+            },
             date: request.body.date
-
         };
         console.log(newWorkout)
 
@@ -35,7 +36,6 @@ workoutRouter.post('/', (request, response) => {
                 error: validation.error
             });
         }
-
         Workout.create(newWorkout)
             .then(createdWorkout => {
                 console.log("Workout Created")
@@ -56,8 +56,6 @@ workoutRouter.get('/', (request, response) => {
             return response.status(HTTP_STATUS_CODES.OK).json(
                 workouts.map(workout => workout.serialize())
             );
-
-
         })
         .catch(error => {
             // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.

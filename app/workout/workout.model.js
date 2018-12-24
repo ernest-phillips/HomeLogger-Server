@@ -19,7 +19,7 @@ const workoutSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    sets: [{
+    sets: {
         exercise: {
             type: String,
             required: true
@@ -35,7 +35,7 @@ const workoutSchema = new mongoose.Schema({
         weight: {
             type: Number
         }
-    }]
+    }
 });
 
 workoutSchema.methods.serialize = function() {
@@ -58,11 +58,13 @@ workoutSchema.methods.serialize = function() {
 const Workout = mongoose.model("workout", workoutSchema);
 
 const WorkoutJoiSchema = Joi.object().keys({
-    user: Joi.string().optional(),
-    exercise: Joi.string().min(1).required(),
-    reps: Joi.number(),
-    set: Joi.number(),
-    weight: Joi.number(),
+    user: Joi.string().required(),
+    sets: Joi.object().keys({
+        exercise: Joi.string(),
+        reps: Joi.number(),
+        set: Joi.number(),
+        weight: Joi.number()
+    }),
     date: Joi.date().min('1-1-1980')
 });
 

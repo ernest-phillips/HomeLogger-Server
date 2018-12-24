@@ -63,6 +63,7 @@ workoutRouter.get('/', (request, response) => {
         });
 })
 
+workoutRouter.get('/', )
 module.exports = {
     workoutRouter
 };

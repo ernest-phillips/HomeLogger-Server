@@ -49,9 +49,11 @@ workoutSchema.methods.serialize = function() {
         id: this._id,
         user: user,
         exercise: this.exercise,
-        reps: this.reps,
-        weight: this.weight,
-        date: this.date
+        sets: [{
+            reps: this.reps,
+            weight: this.weight,
+            date: this.date
+        }]
     };
 };
 

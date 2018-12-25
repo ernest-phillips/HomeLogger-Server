@@ -52,7 +52,7 @@ userRouter.post('/', (request, response) => {
             .then(createdUser => {
                 // return response.status(HTTP_STATUS_CODES.CREATED).json(createdUser.serialize());
 
-                return response.redirect('/api/workout');
+                return response.redirect('/api/login');
             })
             .catch(error => {
                 console.error(error);

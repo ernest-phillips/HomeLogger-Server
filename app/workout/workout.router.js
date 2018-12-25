@@ -16,7 +16,7 @@ const {
 
 //CREATE NEW WORKOUT
 workoutRouter.post('/', (request, response) => {
-
+        console.log("Workout Router started")
         const newWorkout = {
             user: request.body.user,
             sets: {

@@ -29,7 +29,7 @@ function typeAhead(exercises) {
 }
 // GET EXERCISES
 function getUserExercises() {
-    console.log("Exercises listed")
+
     axios.get('/api/exercises')
         .then(function(response) {
             // console.log(response.data)
@@ -42,8 +42,8 @@ function getUserExercises() {
 
 function exerciseLoop(res) {
     let exercises = []
-    res.map(item => exercises.push(item.exercise))
-    console.log(exercises)
+    res.map(item => exercises.push(item.exercise));
+
     typeAhead(exercises)
 }
 
@@ -55,8 +55,8 @@ function clearInput() {
 function selectExercise() {
     $('.search-btn').on('click', function() {
         let searchVal = $('.search-ex')[1].value;
-        console.log(searchVal)
-        $('.exerciseName').append(`${searchVal}`);
+
+        $('#exerciseName').append(`${searchVal}`);
     });
 
 }
@@ -66,28 +66,29 @@ function showSetAdd() {
 }
 
 function saveSet() {
-    let reps;
-    let sets;
-    let weight;
-    let exercise;
-    let userInfo = CACHE.getAuthenticatedUserFromCache();
 
-    $('button').on('click', '.save-set', function() {
-        reps = $('#POST-reps').value()
+    let date = moment().format()
 
-        weight = $('#POST-weight').value();
+    $('body').on('submit', '#saveSet', function(event) {
+        event.preventDefault()
 
-        exercise = $('.exerciseName').value()
-        HTTP.createWorkout({
+        let userInfo = window.CACHE_MODULE.getAuthenticatedUserFromCache();
+        let reps = $('#POST-reps').val()
+        let weight = $('#POST-weight').val();
+        let exerciseName = $('#exerciseName').val();
+        console.log(exerciseName);
+        console.log(window.HTTP_MODULE)
+        window.HTTP_MODULE.createWorkout({
             newWorkout: {
                 reps: reps,
                 weight: weight,
-                exercise: excercise,
-                userId: userInfo.userid,
-                jwtToken: userInfo.jwtToken
-
+                exercise: exerciseName,
+                user: userInfo.userid,
+                jwtToken: userInfo.jwtToken,
+                date: date
             },
             jwtToken: userInfo.jwtToken
+
         })
     });
 

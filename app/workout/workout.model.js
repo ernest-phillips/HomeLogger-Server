@@ -43,10 +43,11 @@ workoutSchema.methods.serialize = function() {
     } else {
         user = this.user;
     }
+    console.log(this.exercise)
     return {
-
         user: this.user,
         sets: {
+
             exercise: this.exercise,
             reps: this.reps,
             weight: this.weight

@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
@@ -87,7 +87,7 @@ function getUserWorkouts(options) {
     } = options;
     $.ajax({
         type: 'GET',
-        url: '/api/workout',
+        url: '/api/home',
         contentType: 'application/json',
         dataType: 'json',
         data: undefined,
@@ -104,8 +104,6 @@ function getUserWorkouts(options) {
     });
 }
 
-
-
 function createWorkout(options) {
     const {
         jwtToken,
@@ -113,10 +111,10 @@ function createWorkout(options) {
         onSuccess,
         onError
     } = options;
-
+    console.log(newWorkout)
     $.ajax({
         type: 'POST',
-        url: '/api/workout',
+        url: '/api/home',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(newWorkout),

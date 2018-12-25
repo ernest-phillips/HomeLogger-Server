@@ -26,9 +26,7 @@ const {
 const {
     exerciseRouter
 } = require('./exercise/exercise.router')
-const {
-    setsRouter
-} = require('./sets/sets.router')
+
 
 let server;
 const app = express(); //Initialize express server
@@ -46,7 +44,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter); //Redirects all calls to /api/user to userRouter
 app.use('/api/home', workoutRouter);
 app.use('/api/exercises', exerciseRouter);
-app.use('/api/sets', setsRouter);
+
 
 
 app.use('*', function(req, res) {

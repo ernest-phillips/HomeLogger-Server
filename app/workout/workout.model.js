@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const dateFns = require('date-fns');
-const Set = require('../sets/sets.model')
+
 
 const workoutSchema = new mongoose.Schema({
     user: {
@@ -12,8 +12,29 @@ const workoutSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    sets: [Set.Objectid]
+    sets: {
+        exercise: {
+            type: String,
+            required: true
+        },
+        set: {
+            type: Number,
+            required: true
+        },
+        reps: {
+            type: Number,
+            required: true
+        },
+        weight: {
+            type: Number
+        },
+        date: {
+            type: Date,
+            default: Date.now
+        }
+    }
 });
+
 
 workoutSchema.methods.serialize = function() {
     let user;
@@ -23,23 +44,23 @@ workoutSchema.methods.serialize = function() {
         user = this.user;
     }
     return {
-        id: this._id,
-        user: user,
-        sets: [{
+
+        user: this.user,
+        sets: {
             exercise: this.exercise,
             reps: this.reps,
-            weight: this.weight,
-            set: this.set
-        }],
+            weight: this.weight
+        },
         date: this.date
     };
 };
+
 
 const Workout = mongoose.model("workout", workoutSchema);
 
 const WorkoutJoiSchema = Joi.object().keys({
     user: Joi.string().required(),
-    sets: Joi.array().items({
+    sets: Joi.object({
         exercise: Joi.string(),
         reps: Joi.number(),
         set: Joi.number(),

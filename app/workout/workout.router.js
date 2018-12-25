@@ -19,12 +19,12 @@ workoutRouter.post('/', (request, response) => {
 
         const newWorkout = {
             user: request.body.user,
-            sets: [{
+            sets: {
                 exercise: request.body.exercise,
                 reps: request.body.reps,
                 weight: request.body.weight,
                 set: request.body.set
-            }],
+            },
             date: request.body.date
         };
 
@@ -37,7 +37,6 @@ workoutRouter.post('/', (request, response) => {
         }
         Workout.create(newWorkout)
             .then(createdWorkout => {
-
                 return response.status(HTTP_STATUS_CODES.CREATED).json(createdWorkout.serialize());
             })
             .catch(error => {

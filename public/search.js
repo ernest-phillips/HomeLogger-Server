@@ -69,26 +69,26 @@ function saveSet() {
 
     let date = moment().format()
 
-    $('body').on('submit', '#saveSet', function(event) {
-        event.preventDefault()
+    $('form').on('submit', '#saveSet', function(event) {
+        event.preventDefault();
 
         let userInfo = window.CACHE_MODULE.getAuthenticatedUserFromCache();
         let reps = $('#POST-reps').val()
         let weight = $('#POST-weight').val();
         let exerciseName = $('#exerciseName').val();
+        console.log(reps);
+        console.log(weight);
         console.log(exerciseName);
-        console.log(window.HTTP_MODULE)
+        // console.log(window.HTTP_MODULE)
         window.HTTP_MODULE.createWorkout({
             newWorkout: {
                 reps: reps,
                 weight: weight,
-                exercise: exerciseName,
                 user: userInfo.userid,
                 jwtToken: userInfo.jwtToken,
+                exercise: exerciseName,
                 date: date
-            },
-            jwtToken: userInfo.jwtToken
-
+            }
         })
     });
 

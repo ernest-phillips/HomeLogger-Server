@@ -30,18 +30,20 @@
             </div>
             <div class="set-wkout">
                 <form id="saveSet" action="/api/home" class="js-setworkOut" method="POST">
-                    <h3 id="exerciseName"></h3>
-                    <div class="set-input">
-                        <label id="reps-lbl" for="POST-reps">Number of reps:</label>
-                        <input id="POST-reps" type="text" name="reps">
-                    </div>
-                    <div class="set-input">
-                        <label id="weight-lbl" for="POST-weight">Amount of weight:</label>
-                        <input id="POST-weight" type="text" name="weight">
-                    </div>
-                    <div class="form-save">
-                        <button class="save-set">Save Set</button>
-                    </div>
+                    <fieldset>
+                        <h3 id="exerciseName"></h3>
+                        <div class="set-input">
+                            <label id="reps-lbl" for="POST-reps">Number of reps:</label>
+                            <input id="POST-reps" type="text" name="reps">
+                        </div>
+                        <div class="set-input">
+                            <label id="weight-lbl" for="POST-weight">Amount of weight:</label>
+                            <input id="POST-weight" type="text" name="weight">
+                        </div>
+                        <div class="form-save">
+                            <button class="save-set">Save Set</button>
+                        </div>
+                    </fieldset>
                 </form>
             </div>
             <div class="js-container alphalist"></div>

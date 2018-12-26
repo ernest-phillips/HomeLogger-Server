@@ -7,7 +7,6 @@ window.HTTP_MODULE = {
     updateWorkout,
     deleteWorkout,
     logoutUser
-
 };
 
 function signupUser(options) {
@@ -145,7 +144,7 @@ function updateWorkout(options) {
         url: `/api/workout/${workoutId}`,
         contentType: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(newworkout),
+        data: JSON.stringify(newWorkout),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },

@@ -1,6 +1,6 @@
-$(document).ready(onPageLoad);
+$(document).ready(onPageLoadHome);
 
-function onPageLoad() {
+function onPageLoadHome() {
     updateAuthenticatedUI();
 
     // if (STATE.authUser) {
@@ -15,6 +15,9 @@ function onPageLoad() {
     // $('#workout-list').on('click', '#delete-workout-btn', onDeleteWorkoutBtnClick);
     // $('#workout-list').on('click', '#workout-card', onWorkoutCardClick);
 }
+HTTP.getUserWorkouts({
+    onSuccess:
+})
 
 function onLogoutBtnClick(event) {
     event.preventDefault();

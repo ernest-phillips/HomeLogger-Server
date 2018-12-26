@@ -2,14 +2,11 @@ var substringMatcher = function(strs) {
     return function findMatches(q, cb) {
         let matches;
         var substringRegex;
-        // an array that will be populated with substring matches
         matches = [];
-        // regex used to determine if a string contains the substring `q`
-        substrRegex = new RegExp(q, 'i');
-        // iterate through the pool of strings and for any string that
-        // contains the substring `q`, add it to the `matches` array
+        substringRegex = new RegExp(q, 'i');
+
         $.each(strs, function(i, str) {
-            if (substrRegex.test(str)) {
+            if (substringRegex.test(str)) {
                 matches.push(str);
             }
         });
@@ -66,39 +63,41 @@ function showSetAdd() {
 }
 
 function saveSet() {
+    console.log("Save Set Called")
 
-    let date = moment().format()
 
-    $('form').on('submit', '#saveSet', function(event) {
+    $('main').on('submit', '#saveSet', function(event) {
+        console.log(event)
+
         event.preventDefault();
-
         let userInfo = window.CACHE_MODULE.getAuthenticatedUserFromCache();
-        let reps = $('#POST-reps').val()
+        let reps = $('#POST-reps').val();
         let weight = $('#POST-weight').val();
-        let exerciseName = $('#exerciseName').val();
+        let exerciseName = $('#exerciseName').text();
+        let date = moment().format();
+        let set = 1;
         console.log(reps);
         console.log(weight);
-        console.log(exerciseName);
-        // console.log(window.HTTP_MODULE)
+        console.log("Your excercise name is:", exerciseName);
+
         window.HTTP_MODULE.createWorkout({
             newWorkout: {
+                set: set,
                 reps: reps,
                 weight: weight,
                 user: userInfo.userid,
                 jwtToken: userInfo.jwtToken,
                 exercise: exerciseName,
                 date: date
-            }
+            },
+            user: userInfo.userid
         })
+        document.location.replace('/home.html')
     });
 
 }
 
-
-
-
-function onPageLoad() {
-    // typeAhead();
+function onPageLoadSearch() {
     clearInput();
     getUserExercises();
     selectExercise();
@@ -106,4 +105,4 @@ function onPageLoad() {
 }
 
 
-$(onPageLoad)
+$(onPageLoadSearch);

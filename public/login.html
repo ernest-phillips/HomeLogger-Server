@@ -24,8 +24,8 @@
                 <h1>Sign into your account</h1>
                 <div class="form column">
                     <form id="login-form" action="" method="POST">
-                        <input class="item" id="username-txt" type="text" placeholder="username" name="username">
-                        <input class="item" id="password-txt" type="password" placeholder="password" name="password" />
+                        <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="false">
+                        <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="false" />
                         <button class="login-btn" input=text>Login</button>
                     </form>
                 </div>
@@ -60,12 +60,15 @@
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/moment.js"></script>
     <script src="/utilities/cache.module.js"></script>
-    <!-- <script src="/utilities/render.module.js"></script> -->
+    <script src="/typeahead.js"></script>
+    <!-- <script src="../utilities/render.module.js"></script> -->
     <script src="/utilities/http.module.js"></script>
+    <script src="/utilities/index.js"></script>
     <script src="/auth.page.js"></script>
-    <script src="/index.page.js"></script>
+    <script src="/search.js"></script>
     <script src="/home.js"></script>
 </body>
 

@@ -15,5 +15,3 @@ module.exports = {
     JWT_SECRET: process.env.JWT_SECRET || 'default',
     JWT_EXPIRY: process.env.JWT_EXPIRY || '7d'
 };
-
-mongo ds237932.mlab.com: 37932 / fit - journal - u admin - p "W\!nner05"

@@ -430,6 +430,14 @@ max-width:370px;
     border-left: 2px solid lightgrey;
 }
 
+.fa-caret-left:hover {
+    color: #9aa0ab;
+}
+
+.fa-caret-right:hover {
+    color: #9aa0ab;
+}
+
 .date-sel {
     min-width: 200px;
     /*   border: 2px solid lightgrey; */

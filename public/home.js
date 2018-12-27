@@ -15,9 +15,7 @@ function onPageLoadHome() {
     // $('#workout-list').on('click', '#delete-workout-btn', onDeleteWorkoutBtnClick);
     // $('#workout-list').on('click', '#workout-card', onWorkoutCardClick);
 }
-HTTP.getUserWorkouts({
-    onSuccess:
-})
+
 
 function onLogoutBtnClick(event) {
     event.preventDefault();

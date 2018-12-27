@@ -89,7 +89,7 @@ function getUserWorkouts(options) {
         url: '/api/home',
         contentType: 'application/json',
         dataType: 'json',
-        data: undefined,
+        data: console.log(data),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },

@@ -1,5 +1,5 @@
 module.exports = {
-    PORT: process.env.PORT || 8080,
+    PORT: process.env.PORT || 5000,
     HTTP_STATUS_CODES: {
         OK: 200,
         CREATED: 201,
@@ -15,3 +15,5 @@ module.exports = {
     JWT_SECRET: process.env.JWT_SECRET || 'default',
     JWT_EXPIRY: process.env.JWT_EXPIRY || '7d'
 };
+
+console.log( process.env.CONFIG_VARIABLE) 

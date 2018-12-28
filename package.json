@@ -33,8 +33,6 @@
         "handlebars": "^4.0.12",
         "joi": "^14.0.6",
         "jquery": "^3.3.1",
-        "jshint": "^2.9.6",
-        "jslint": "^0.12.0",
         "jsonwebtoken": "^8.3.0",
         "micromodal": "^0.3.2",
         "mocha": "^5.2.0",

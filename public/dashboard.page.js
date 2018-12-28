@@ -12,9 +12,9 @@ function getWorkouts() {
         success: console.log("Success"),
         error: err => {
             console.error(err);
-            if (onError) {
-                onError(err);
-            }
+            // if (onError) {
+            //     onError(err);
+            // }
         }
     });
 
@@ -38,23 +38,24 @@ function retrieveSets(d) {
 
 function formatWorkout(data) {
 
-    data.map((item, index) => displayWorkout(item))
+    data.map((item, index) => displayWorkout(item, index))
     console.log("Your data", data)
         // displayWorkout(exercise, weight, reps)
 
 }
 
-function displayWorkout(item) {
+function displayWorkout(item, index) {
     let exercise = item.sets.exercise;
     let weight = item.sets.weight;
     let reps = item.sets.reps
-    let thisUser = item.user;
+
+
 
 
     $('.js-exList').append(`<div class="log-header">
     <h3 class="ex-name js-exName">${exercise}</h3>
     <div class="stat-labels">
-        <p class="log-stat js-exerLbl">${thisUser}</p>
+        <p class="log-stat js-exerLbl">${index +1}</p>
         <p class="log-stat js-repsLbl">${reps}</p>
         <p class="log-stat js-weightsLbl">${weight}</p>
     </div>
@@ -68,12 +69,7 @@ function currentDate() {
     var d = moment().format("dddd, MMMM Do");
     $(".js-dateSel").html(d);
     // console.log(d);
-
-
 }
-
-
-
 
 function changeDate() {
     let count = 0;
@@ -84,8 +80,9 @@ function changeDate() {
         count++
         $(".js-dateSel").html(d.format("dddd, MMMM Do"));
         let isoDate = d.startOf('day');
+        $('.js-exList').html('');
         retrieveSets(isoDate.format());
-        console.log("Yesterday is", isoDate.format())
+
     });
 
     $('.js-caretRT').on('click', () => {
@@ -94,33 +91,19 @@ function changeDate() {
 
         $(".js-dateSel").html(d.format("dddd, MMMM Do"));
         let isoDate = d.startOf('day');
+        $('.js-exList').html('');
         retrieveSets(isoDate.format());
-        console.log("Today is", isoDate.format())
     });
 }
-
-
 
 function dateSelectTemplate() {
 
 }
 
-
-
-
-let searchBar = `<p>This will be on a modal or different page</p>
-         <div id="the-basics">
-           <input class="search-ex typeahead" type="text" placeholder="Search Exercises"/>
-         </div>`
-
 function onPageLoad() {
-
     currentDate();
     changeDate();
     getWorkouts();
-
-
-
 }
 
 

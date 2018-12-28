@@ -290,6 +290,11 @@ max-width:370px;
     font-weight: normal;
 }
 
+.workoutInfo {
+    border: 1px solid gray;
+    padding: 10px;
+}
+
 .ex-list {
     width: 95%;
 }

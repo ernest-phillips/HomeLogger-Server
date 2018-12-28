@@ -47,6 +47,7 @@ workoutRouter.post('/', (request, response) => {
     // jwtPassportMiddleware,
 workoutRouter.get('/', (request, response) => {
 
+
     Workout.find()
         .then(workouts => {
             // Step 2A: Return the correct HTTP status code, and the users correctly formatted via serialization.

@@ -44,7 +44,10 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter); //Redirects all calls to /api/user to userRouter
 app.use('/api/home', workoutRouter);
 app.use('/api/exercises', exerciseRouter);
-
+app.use(express.static('./public', {
+    extensions: ['html', 'htm']
+        // Other options here
+}));
 
 
 app.use('*', function(req, res) {

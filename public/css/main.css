@@ -311,6 +311,10 @@ max-width:370px;
     color: #465C8b
 }
 
+#icon {
+    background-color: #fff;
+}
+
 .delete:hover {
     color: rgb(205, 0, 0)
 }

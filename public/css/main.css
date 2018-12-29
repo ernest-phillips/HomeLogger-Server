@@ -236,14 +236,14 @@ max-width:370px;
     display: flex;
     /*   justify-content: space-evenly; */
     margin: 0px;
-    height: 50px;
+    height: 40px;
 }
 
 .stat-labels {
     display: flex;
     justify-content: space-evenly;
     width: 50%;
-    height: 50px;
+    height: 40px;
 }
 
 .log-stat-lbl {
@@ -258,6 +258,7 @@ max-width:370px;
 }
 
 .log-stat {
+    font-size: 1.25em;
     background-color: #DFDCE3;
     width: 100%;
     height: 100%;
@@ -290,10 +291,11 @@ max-width:370px;
     font-weight: normal;
 }
 
-.workoutInfo {
+
+/* .workoutInfo {
     border: 1px solid gray;
     padding: 10px;
-}
+} */
 
 .ex-list {
     width: 95%;
@@ -305,8 +307,12 @@ max-width:370px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
-    color: #ggg
+    font-size: 20px;
+    color: #465C8b
+}
+
+.delete:hover {
+    color: rgb(205, 0, 0)
 }
 
 .add-ex {
@@ -414,7 +420,7 @@ max-width:370px;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    height: 50px;
+    height: 30px;
 }
 
 .fa-caret-left {
@@ -448,7 +454,7 @@ max-width:370px;
     /*   border: 2px solid lightgrey; */
     text-align: center;
     align-items: center;
-    font-size: 26px;
+    font-size: 1.75em;
     padding: 10px;
 }
 

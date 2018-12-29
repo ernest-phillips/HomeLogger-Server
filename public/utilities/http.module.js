@@ -141,7 +141,7 @@ function updateWorkout(options) {
 
     $.ajax({
         type: 'PUT',
-        url: `/api/workout/${workoutId}`,
+        url: `/api/home/${workoutId}`,
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(newWorkout),
@@ -167,7 +167,7 @@ function deleteWorkout(options) {
     } = options;
     $.ajax({
         type: 'delete',
-        url: `/api/workout/${workoutId}`,
+        url: `/api/home/${workoutId}`,
         contentType: 'application/json',
         dataType: 'json',
         data: undefined,

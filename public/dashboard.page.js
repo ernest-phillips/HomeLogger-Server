@@ -26,7 +26,6 @@ function retrieveSets(d) {
     console.log(d)
     axios.get(`/api/home/${user.userid}/${d}`)
         .then(function(res) {
-            // console.log(res.data)
             formatWorkout(res.data)
         })
         .catch(function(error) {
@@ -39,7 +38,6 @@ function retrieveSets(d) {
 function formatWorkout(data) {
 
     data.map((item, index) => displayWorkout(item, index))
-    console.log("Your data", data)
         // displayWorkout(exercise, weight, reps)
 
 }
@@ -49,9 +47,6 @@ function displayWorkout(item, index) {
     let weight = item.sets.weight;
     let reps = item.sets.reps
 
-
-
-
     $('.js-exList').append(`<div class="log-header">
     <h3 class="ex-name js-exName">${exercise}</h3>
     <div class="stat-labels">
@@ -60,7 +55,9 @@ function displayWorkout(item, index) {
         <p class="log-stat js-weightsLbl">${weight}</p>
     </div>
     <!--end stat-label-->
-    <div class="delete js-delete">x</div>
+    <div class="delete js-delete">
+    <i class="fas fa-minus-circle"></i>
+    </div>
 </div>
 <!--end log-header-->`)
 }
@@ -100,10 +97,19 @@ function dateSelectTemplate() {
 
 }
 
+function deleteSet(data) {
+    let deleteId = HTTP.deleteWorkout()
+    $('.delete').on('click', function() {
+        $('.js-exName').closest('p')
+        console.log(data)
+    });
+}
+
 function onPageLoad() {
     currentDate();
     changeDate();
     getWorkouts();
+    // deleteSet();
 }
 
 

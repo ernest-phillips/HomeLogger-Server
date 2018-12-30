@@ -40,64 +40,76 @@ function getUserExercises() {
 function exerciseLoop(res) {
     let exercises = []
     res.map(item => exercises.push(item.exercise));
-
     typeAhead(exercises)
 }
 
 function clearInput() {
-    $('input').val("")
+    $('input').val("");
 }
 // Save exercise set to workout
 // capture name of exercise
 function selectExercise() {
     $('.search-btn').on('click', function() {
+        showSetAdd();
+        $('.search-btn').attr("disabled", "disabled")
         let searchVal = $('.search-ex')[1].value;
 
         $('#exerciseName').append(`${searchVal}`);
     });
 
 }
-// unhide set adder
-function showSetAdd() {
 
+function hideSaveSet() {
+    $('.set-wkout').hide();
+}
+// unhide set save
+function showSetAdd() {
+    $('.set-wkout').show();
 }
 
 function saveSet() {
     console.log("Save Set Called")
-
-
     $('main').on('submit', '#saveSet', function(event) {
-        console.log(event)
 
         event.preventDefault();
-        let userInfo = window.CACHE_MODULE.getAuthenticatedUserFromCache();
-        let reps = $('#POST-reps').val();
-        let weight = $('#POST-weight').val();
-        let exerciseName = $('#exerciseName').text();
-        let date = moment().format();
-        let set = 1;
-        console.log(reps);
-        console.log(weight);
-        console.log("Your excercise name is:", exerciseName);
+        getSetData();
 
-        window.HTTP_MODULE.createWorkout({
-            newWorkout: {
-                set: set,
-                reps: reps,
-                weight: weight,
-                user: userInfo.userid,
-                jwtToken: userInfo.jwtToken,
-                exercise: exerciseName,
-                date: date
-            },
-            user: userInfo.userid
-        })
-        document.location.replace('/home.html')
     });
+}
 
+function getSetData() {
+    let userInfo = CACHE.getAuthenticatedUserFromCache();
+
+    let reps = $('#POST-reps').val();
+    let weight = $('#POST-weight').val();
+    let exerciseName = $('#exerciseName').text();
+    let date = moment().format("MM-DD-YYYY");
+    let set = 1;
+
+    console.log(userInfo.userid)
+    console.log(date);
+    console.log(reps);
+    console.log(weight);
+    console.log("Your excercise name is:", exerciseName);
+
+    window.HTTP_MODULE.createWorkout({
+        newWorkout: {
+            set: set,
+            reps: reps,
+            weight: weight,
+            user: userInfo.userid,
+            jwtToken: userInfo.jwtToken,
+            exercise: exerciseName,
+            date: date,
+            user: userInfo.userid
+        }
+    })
+    document.location.replace('/home.html');
+    retrieveSets();
 }
 
 function onPageLoadSearch() {
+    hideSaveSet();
     clearInput();
     getUserExercises();
     selectExercise();

@@ -38,17 +38,17 @@ function retrieveSets(d) {
 function formatWorkout(data) {
 
     data.map((item, index) => displayWorkout(item, index))
-        // displayWorkout(exercise, weight, reps)
-
 }
 
 function displayWorkout(item, index) {
     let exercise = item.sets.exercise;
     let weight = item.sets.weight;
     let reps = item.sets.reps
+    let setID = item._id
 
-    $('.js-exList').append(`<div class="log-header">
-    <h3 class="ex-name js-exName">${exercise}</h3>
+    $('.js-exList').append(`<div class="log-header" data-setID="${setID}">
+    <h3 class="ex-name js-exName ">${exercise}</h3>
+    
     <div class="stat-labels">
         <p class="log-stat js-exerLbl">${index +1}</p>
         <p class="log-stat js-repsLbl">${reps}</p>
@@ -63,9 +63,11 @@ function displayWorkout(item, index) {
 }
 
 function currentDate() {
-    var d = moment().format("dddd, MMMM Do");
+    let d = moment().format("dddd, MMMM Do");
     $(".js-dateSel").html(d);
-    // console.log(d);
+    let refresh = moment().format('MM-DD-YYYY')
+    retrieveSets(refresh);
+
 }
 
 function changeDate() {
@@ -78,7 +80,7 @@ function changeDate() {
         $(".js-dateSel").html(d.format("dddd, MMMM Do"));
         let isoDate = d.startOf('day');
         $('.js-exList').html('');
-        retrieveSets(isoDate.format());
+        retrieveSets(isoDate.format("MM-DD-YYYY"));
 
     });
 
@@ -89,7 +91,7 @@ function changeDate() {
         $(".js-dateSel").html(d.format("dddd, MMMM Do"));
         let isoDate = d.startOf('day');
         $('.js-exList').html('');
-        retrieveSets(isoDate.format());
+        retrieveSets(isoDate.format("MM-DD-YYYY"));
     });
 }
 
@@ -97,11 +99,16 @@ function dateSelectTemplate() {
 
 }
 
-function deleteSet(data) {
-    let deleteId = HTTP.deleteWorkout()
-    $('.delete').on('click', function() {
-        $('.js-exName').closest('p')
-        console.log(data)
+function deleteSet() {
+    let userInfo = CACHE.getAuthenticatedUserFromCache()
+    $('body').on('click', '.delete', function() {
+        let workoutId = $(this).parent('.log-header').attr('data-setID');
+        HTTP.deleteWorkout({
+            jwtToken: userInfo.jwtToken,
+            workoutId
+        });
+        console.log(workoutId);
+
     });
 }
 
@@ -109,7 +116,8 @@ function onPageLoad() {
     currentDate();
     changeDate();
     getWorkouts();
-    // deleteSet();
+    deleteSet();
+
 }
 
 

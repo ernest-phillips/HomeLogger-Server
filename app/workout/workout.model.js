@@ -9,8 +9,7 @@ const workoutSchema = new mongoose.Schema({
         ref: "user"
     },
     date: {
-        type: Date,
-        default: Date.now
+        type: Date
     },
     sets: {
         exercise: {
@@ -29,8 +28,7 @@ const workoutSchema = new mongoose.Schema({
             type: Number
         },
         date: {
-            type: Date,
-            default: Date.now
+            type: Date
         }
     }
 });
@@ -43,11 +41,10 @@ workoutSchema.methods.serialize = function() {
     } else {
         user = this.user;
     }
-    console.log(this.exercise)
+
     return {
         user: this.user,
         sets: {
-
             exercise: this.exercise,
             reps: this.reps,
             weight: this.weight

@@ -489,11 +489,25 @@ max-width:370px;
     box-shadow: 1px 1px 5px #131313;
 }
 
+#saveSet {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.reveal {
+    visibility: visible;
+}
+
 #the-basics {
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-top: 100px;
     margin-bottom: 50px;
     width: 100%;
 }
@@ -531,7 +545,7 @@ max-width:370px;
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 70px;
+    margin-top: 30px;
     font-size: 2em;
     border: none;
     padding: 5px 10px;
@@ -548,7 +562,7 @@ max-width:370px;
 #POST-weight {
     border-radius: 3px;
     height: 25px;
-    width: 50%;
+    width: 50px;
     padding: 5px;
     text-align: center;
 }
@@ -561,7 +575,7 @@ max-width:370px;
 #POST-reps {
     border-radius: 3px;
     height: 25px;
-    width: 50%;
+    width: 50px;
     padding: 5px;
     text-align: center;
 }
@@ -581,4 +595,16 @@ max-width:370px;
 
 fieldset {
     border: none;
+}
+
+.avatar {
+    height: 100px;
+    border: 5px solid #0098cfd7;
+    border-radius: 25%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

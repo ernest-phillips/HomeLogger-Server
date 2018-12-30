@@ -104,6 +104,7 @@ function getUserWorkouts(options) {
 }
 
 function createWorkout(options) {
+
     const {
         jwtToken,
         newWorkout,

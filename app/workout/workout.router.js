@@ -45,8 +45,12 @@ workoutRouter.post('/', (request, response) => {
             })
     })
     // jwtPassportMiddleware,
-workoutRouter.get('/', (request, response) => {
 
+workoutRouter.get('/journal/:date', (req, res) => {
+    res.sendFile('../views/home.html');
+})
+
+workoutRouter.get('/', (request, response) => {
 
     Workout.find()
         .then(workouts => {

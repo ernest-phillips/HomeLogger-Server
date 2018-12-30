@@ -70,6 +70,12 @@ function currentDate() {
 
 }
 
+function refreshDate() {
+    let date =
+        $('js-dateSel').attr('data-setID', "")
+    retrieveSets(refresh);
+}
+
 function changeDate() {
     let count = 0;
     let d = moment(new Date()).subtract(count, 'day');

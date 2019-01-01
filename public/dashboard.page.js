@@ -20,10 +20,17 @@ function getWorkouts() {
 
 }
 
+function welcomeUser() {
+    let user = CACHE.getAuthenticatedUserFromCache();
+    $('.welcome').html(`<h4>Welcome <a href="#">${user.username}</a></h4>`)
+}
+
 function retrieveSets(d) {
     console.log("retrieving sets")
     let user = window.CACHE_MODULE.getAuthenticatedUserFromCache();
     console.log(d)
+    localStorage.setItem('date', d);
+    $('.ex-container').html(`<div class="this-date" date="${d}">`);
     axios.get(`/api/home/${user.userid}/${d}`)
         .then(function(res) {
             formatWorkout(res.data)
@@ -31,8 +38,6 @@ function retrieveSets(d) {
         .catch(function(error) {
             console.log(error);
         });
-
-
 }
 
 function formatWorkout(data) {
@@ -65,15 +70,7 @@ function displayWorkout(item, index) {
 function currentDate() {
     let d = moment().format("dddd, MMMM Do");
     $(".js-dateSel").html(d);
-    let refresh = moment().format('MM-DD-YYYY')
-    retrieveSets(refresh);
 
-}
-
-function refreshDate() {
-    let date =
-        $('js-dateSel').attr('data-setID', "")
-    retrieveSets(refresh);
 }
 
 function changeDate() {
@@ -119,6 +116,7 @@ function deleteSet() {
 }
 
 function onPageLoad() {
+    welcomeUser();
     currentDate();
     changeDate();
     getWorkouts();

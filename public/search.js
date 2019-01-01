@@ -29,7 +29,7 @@ function getUserExercises() {
 
     axios.get('/api/exercises')
         .then(function(response) {
-            // console.log(response.data)
+
             exerciseLoop(response.data)
         })
         .catch(function(error) {
@@ -67,6 +67,7 @@ function showSetAdd() {
     $('.set-wkout').show();
 }
 
+
 function saveSet() {
     console.log("Save Set Called")
     $('main').on('submit', '#saveSet', function(event) {
@@ -83,11 +84,11 @@ function getSetData() {
     let reps = $('#POST-reps').val();
     let weight = $('#POST-weight').val();
     let exerciseName = $('#exerciseName').text();
-    let date = moment().format("MM-DD-YYYY");
+    let calendar = localStorage.getItem(date);
     let set = 1;
 
     console.log(userInfo.userid)
-    console.log(date);
+    console.log("The date is", date);
     console.log(reps);
     console.log(weight);
     console.log("Your excercise name is:", exerciseName);
@@ -100,12 +101,12 @@ function getSetData() {
             user: userInfo.userid,
             jwtToken: userInfo.jwtToken,
             exercise: exerciseName,
-            date: date,
+            date: calendar,
             user: userInfo.userid
         }
     })
     document.location.replace('/home.html');
-    retrieveSets();
+    retrieveSets(calendar);
 }
 
 function onPageLoadSearch() {
@@ -113,7 +114,7 @@ function onPageLoadSearch() {
     clearInput();
     getUserExercises();
     selectExercise();
-    saveSet();
+
 }
 
 

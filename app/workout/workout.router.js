@@ -46,9 +46,6 @@ workoutRouter.post('/', (request, response) => {
     })
     // jwtPassportMiddleware,
 
-workoutRouter.get('/journal/:date', (req, res) => {
-    res.sendFile('../views/home.html');
-})
 
 workoutRouter.get('/', (request, response) => {
 

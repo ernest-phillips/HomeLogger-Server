@@ -463,9 +463,6 @@ max-width:370px;
 }
 
 
-/*End Date Navigation CSS*/
-
-
 /* Search/Add workout Styles */
 
 .ex-container {
@@ -607,4 +604,14 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.welcome {
+    display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    flex-direction: column;
 }

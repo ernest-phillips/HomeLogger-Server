@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    background-color: #fff;
+    background-color: #131313;
 }
 
 h1 {
@@ -43,11 +43,15 @@ main {
     background-color: #fff;
 }
 
+#splash {
+    max-width: 1220px;
+}
+
 .container {
     display: flex;
     justify-content: center;
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
 }
 
@@ -85,6 +89,12 @@ main {
     line-height: 40px;
 }
 
+.login-logo {
+    justify-content: center;
+    width: 100%;
+    font-size: 2rem;
+}
+
 .nav-login {
     justify-content: flex-end;
     text-align: right;
@@ -92,15 +102,19 @@ main {
     font-size: 2rem;
 }
 
-.nav-login a {
+.login {
+    padding-right: 20px;
+}
+
+.login {
     text-decoration: none;
 }
 
-.nav-login a:visited {
+.login:visited {
     color: #fff;
 }
 
-.nav-login a:hover {
+.login:hover {
     color: #ecc309;
 }
 
@@ -221,6 +235,20 @@ max-width:370px;
 
 .login-page {
     background-color: transparent;
+}
+
+.sign-up {
+    padding: 10px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.sign-up :hover {
+    color: #ecc309;
+}
+
+.sign-up :visited {
+    color: #fff;
 }
 
 
@@ -625,15 +653,51 @@ input[type=number]::-webkit-outer-spin-button {
     background: url("../img/fit_splash_5.jpg");
     background-size: cover;
     width: 100%;
-    min-height: 400px;
+    min-height: 600px;
+}
+
+.home-container {
+    top: 50%;
+    margin-top: 400px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.home-reg {
+    display: flex;
+    width: 300px;
+    height: 60px;
+    color: #465C8b;
+    font-size: 3em;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background-color: #ecc309;
+    justify-content: center;
+}
+
+.home-reg a {
+    text-decoration: none;
+}
+
+.home-reg a:visited {
+    color: #465C8b;
+}
+
+.home-reg a:hover {
+    color: #fff;
 }
 
 .bg-info {
     display: flex;
-    background-color: #4ca2cd;
+    background-color: #DFDCE3;
     height: 550px;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .introduction {
@@ -647,9 +711,11 @@ input[type=number]::-webkit-outer-spin-button {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
+    font-size: 4em;
 }
 
 #home-container {
+    background-color: #465C8b;
     width: 100%;
     height: 100%;
     display: -webkit-box;
@@ -663,4 +729,93 @@ input[type=number]::-webkit-outer-spin-button {
     -ms-flex-align: center;
     align-items: center;
     flex-direction: column;
+}
+
+
+/* Splash Page Graphics */
+
+.activites {
+    display: flex;
+    height: 390px;
+    width: 280px;
+    background-color: #465C8b;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    color: #FFF;
+    box-shadow: #0e1015 1px 5px 5px;
+    border: 10px solid #fff;
+    border-radius: 10px;
+}
+
+.activites h2 {
+    margin-bottom: 50px;
+    text-shadow: #0e1015 1px 5px 5px;
+}
+
+.strength {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.cardio {
+    height: 200px;
+    display: flex;
+    vertical-align: bottom;
+    justify-content: center;
+}
+
+.graph {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.devices {
+    background-color: #465C8b;
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    width: 100%;
+    align-items: center;
+}
+
+.device-text {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    padding-left: 40px;
+    color: #fff;
+    flex-direction: column;
+}
+
+.device-imgs {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 50%;
+}
+
+.mobile-img {
+    max-height: 300px;
+}
+
+.already {
+    color: #fff;
+    margin-top: 20px;
+    font-size: 1.25px;
+    height: 15px;
+}
+
+
+/* .already a {} */
+
+.already a:hover {
+    color: #fff;
+}
+
+.already a:visited {
+    color: #fff;
 }

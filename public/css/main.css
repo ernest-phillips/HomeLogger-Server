@@ -694,13 +694,14 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     width: 300px;
     height: 60px;
-    color: #465C8b;
+    color: #000;
     font-size: 3em;
     font-weight: 600;
     border: none;
     border-radius: 10px;
     background-color: #ecc309;
     justify-content: center;
+    font-family: 'Righteous', cursive;
 }
 
 .home-reg a {
@@ -708,7 +709,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .home-reg a:visited {
-    color: #465C8b;
+    color: #000;
 }
 
 .home-reg a:hover {
@@ -736,7 +737,8 @@ input[type=number]::-webkit-outer-spin-button {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    font-size: 4em;
+    font-size: 7em;
+    font-family: 'Righteous', cursive;
 }
 
 #home-container {
@@ -773,6 +775,7 @@ input[type=number]::-webkit-outer-spin-button {
     box-shadow: #0e1015 1px 5px 5px;
     border: 10px solid #fff;
     border-radius: 10px;
+    font-family: 'Righteous', cursive;
 }
 
 .activites h2 {
@@ -815,6 +818,9 @@ input[type=number]::-webkit-outer-spin-button {
     padding-left: 40px;
     color: #fff;
     flex-direction: column;
+    font-family: 'Righteous', cursive;
+    font-size: 3em;
+    font-weight: 400
 }
 
 .device-imgs {

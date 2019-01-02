@@ -13,27 +13,32 @@
 
 <body>
     <section class="nav-bar"></section>
-    <main>
-        <header class="header">
-            <div class="login-logo">
-                <a href="/">Fit-Journal</a>
-            </div>
 
-        </header>
+
+    <header class="header">
+        <div class="logo">Fit-Journal</div>
+        <nav class="nav-login">
+            <a href="/signup.html" class="sign-up">Sign Up</a>
+        </nav>
+    </header>
+    <main id="splash">
+
 
         <section class="container js-container">
             <div class="login-page">
-                <h1>Sign into your account</h1>
-                <div class="form column">
+
+                <div class="form">
+                    <h1>Sign into your account</h1>
                     <form id="login-form" action="" method="POST">
                         <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="false">
                         <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="false" />
                         <button class="login-btn" input=text>Login</button>
                     </form>
+                    <p class="message"> Not registered?
+                        <a class="js-signUp" href="/signup.html">Create an account </a>
+                    </p>
                 </div>
-                <p class="message"> Not registered?
-                    <a class="js-signUp" href="/signup.html">Create an account </a>
-                </p>
+
             </div>
         </section>
     </main>

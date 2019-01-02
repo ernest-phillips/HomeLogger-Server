@@ -615,3 +615,52 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 40px;
     flex-direction: column;
 }
+
+
+/* INDEX PAGE STYLE */
+
+#jumbotron {
+    display: flex;
+    flex-direction: column;
+    background: url("../img/fit_splash_5.jpg");
+    background-size: cover;
+    width: 100%;
+    min-height: 400px;
+}
+
+.bg-info {
+    display: flex;
+    background-color: #4ca2cd;
+    height: 550px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.introduction {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    /* line-height: 300px; */
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+#home-container {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    flex-direction: column;
+}

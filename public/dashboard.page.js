@@ -1,3 +1,6 @@
+let cDate = moment().format("dddd, MMMM Do");
+// localStorage.setItem(date, cDate);
+
 function getWorkouts() {
     CACHE.getAuthenticatedUserFromCache()
     $.ajax({
@@ -29,7 +32,7 @@ function retrieveSets(d) {
     console.log("retrieving sets")
     let user = window.CACHE_MODULE.getAuthenticatedUserFromCache();
     console.log(d)
-    localStorage.setItem('date', d);
+
     $('.ex-container').html(`<div class="this-date" date="${d}">`);
     axios.get(`/api/home/${user.userid}/${d}`)
         .then(function(res) {
@@ -69,19 +72,19 @@ function displayWorkout(item, index) {
 
 function currentDate() {
     let d = moment().format("dddd, MMMM Do");
-    $(".js-dateSel").html(d);
+    $(".js-dateSel").html(cDate);
 
 }
 
 function changeDate() {
     let count = 0;
-    let d = moment(new Date()).subtract(count, 'day');
+    let cDate = moment(new Date()).subtract(count, 'day');
     $('.js-caretLFT').on('click', function() {
 
-        d = d.subtract(1, 'day');
+        cDate = cDate.subtract(1, 'day');
         count++
-        $(".js-dateSel").html(d.format("dddd, MMMM Do"));
-        let isoDate = d.startOf('day');
+        $(".js-dateSel").html(cDate.format("dddd, MMMM Do"));
+        let isoDate = cDate.startOf('day');
         $('.js-exList').html('');
         retrieveSets(isoDate.format("MM-DD-YYYY"));
 
@@ -89,10 +92,10 @@ function changeDate() {
 
     $('.js-caretRT').on('click', () => {
 
-        d = d.add(1, 'day');
+        cDate = cDate.add(1, 'day');
 
-        $(".js-dateSel").html(d.format("dddd, MMMM Do"));
-        let isoDate = d.startOf('day');
+        $(".js-dateSel").html(cDate.format("dddd, MMMM Do"));
+        let isoDate = cDate.startOf('day');
         $('.js-exList').html('');
         retrieveSets(isoDate.format("MM-DD-YYYY"));
     });
@@ -121,6 +124,7 @@ function onPageLoad() {
     changeDate();
     getWorkouts();
     deleteSet();
+
 
 }
 

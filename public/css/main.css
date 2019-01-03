@@ -32,6 +32,7 @@ h4 {
 .nav-bar {
     height: 40px;
     background-color: #131313;
+    outline: solid #fff 5px;
 }
 
 main {
@@ -150,7 +151,8 @@ footer {
     color: aliceblue;
     display: flex;
     justify-content: center;
-    border-top: #67B26F 3px solid;
+    /* border-top: #67B26F 3px solid; */
+    border-top: #FFF 3px solid;
 }
 
 .foot-col {
@@ -208,7 +210,7 @@ max-width:370px;
     flex-direction: column;
     justify-content: center;
     background: #FFFFFF;
-    width: 100%;
+    width: 500px;
     height: 100%;
     align-items: center;
     margin-left: auto;
@@ -216,6 +218,7 @@ max-width:370px;
     padding: 45px;
     text-align: center;
     border-radius: 15px;
+    border: #4ca2cd 1px solid;
 }
 
 .not-reg {
@@ -225,15 +228,16 @@ max-width:370px;
 }
 
 .item {
-    border: 2px solid black;
+    border: 2px solid #4ca2cd;
+    border-radius: 5px;
     padding: 10px;
     margin: 10px;
-    width: 300px;
-    height: 50px;
+    width: 350px;
+    height: 70px;
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 .label {
@@ -242,12 +246,24 @@ max-width:370px;
 }
 
 .login-btn {
-    width: 300px;
+    width: 350px;
+    height: 70px;
     background-color: #4ca2cd;
     color: #fff;
     border: none;
     padding: 10px;
     margin: 10px;
+    border-radius: 5px;
+    font-size: 3em;
+    font-weight: 500;
+}
+
+.login-btn:hover {
+    background-color: #465C8b;
+}
+
+#splash-login {
+    background-color: #DFDCE3;
 }
 
 #login-form {
@@ -679,6 +695,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: cover;
     width: 100%;
     min-height: 600px;
+    /* border-top: solid #fff 5px; */
 }
 
 .home-container {
@@ -699,7 +716,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: 600;
     border: none;
     border-radius: 10px;
-    background-color: #ecc309;
+    background-color: #E8B10C;
     justify-content: center;
     font-family: 'Righteous', cursive;
 }
@@ -718,12 +735,15 @@ input[type=number]::-webkit-outer-spin-button {
 
 .bg-info {
     display: flex;
-    background-color: #DFDCE3;
+    /* background-color: #DFDCE3; */
+    background: rgb(2, 0, 36);
+    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(75, 75, 75, 1) 98%);
     height: 550px;
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    border-top: solid #fff 5px;
 }
 
 .introduction {
@@ -761,17 +781,38 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Splash Page Graphics */
 
-.activites {
+.activites1 {
     display: flex;
     height: 390px;
     width: 280px;
-    background-color: #465C8b;
+    background: linear-gradient(rgba(106, 17, 203, 0.45), rgba(37, 117, 252, 0.45)), url('../img/strength-act.jpg');
+    background-size: cover;
+    /* background-color: #E8B10C; */
     flex-direction: column;
     padding-top: 30px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
-    color: #FFF;
+    color: #E8B10C;
+    box-shadow: #0e1015 1px 5px 5px;
+    border: 10px solid #fff;
+    border-radius: 10px;
+    font-family: 'Righteous', cursive;
+}
+
+.activites2 {
+    display: flex;
+    height: 390px;
+    width: 280px;
+    background: linear-gradient(rgba(106, 17, 203, 0.45), rgba(37, 117, 252, 0.45)), url('../img/stairs-act.jpg');
+    background-size: cover;
+    /* background-color: #E8B10C; */
+    flex-direction: column;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    color: #E8B10C;
     box-shadow: #0e1015 1px 5px 5px;
     border: 10px solid #fff;
     border-radius: 10px;
@@ -780,20 +821,22 @@ input[type=number]::-webkit-outer-spin-button {
 
 .activites h2 {
     margin-bottom: 50px;
-    text-shadow: #0e1015 1px 5px 5px;
+    text-shadow: #0e1015 2px 5px 5px;
 }
 
 .strength {
-    height: 200px;
+    height: 390px;
     display: flex;
     justify-content: center;
+    background-image: url("./img/strength-act.jpg");
 }
 
 .cardio {
-    height: 200px;
+    height: 390px;
     display: flex;
     vertical-align: bottom;
     justify-content: center;
+    background-image: url(./img/stairs-act.jpg)
 }
 
 .graph {
@@ -809,6 +852,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 400px;
     width: 100%;
     align-items: center;
+    border-top: solid #fff 5px;
 }
 
 .device-text {
@@ -849,4 +893,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .already a:visited {
     color: #fff;
+}
+
+.message {
+    font-size: 1.75em;
+    margin-top: 10px;
 }

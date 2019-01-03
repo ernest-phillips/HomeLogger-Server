@@ -11,30 +11,24 @@
 </head>
 
 <body>
-    <section class="nav-bar"></section>
-    <header class="header">
-        <div class="logo">
-            <a href="/">Fit-Journal</a>
-        </div>
-        <nav class="nav-login">
-            <a href="/login.html" class="login">Log In</a>
-        </nav>
-    </header>
-    <main>
+
+
+    <main id='splash-login'>
 
 
 
         <section class="container js-container">
             <div class="login-page">
-
+                <h1><a href="/">Fit-Journal</a></h1>
                 <div class="form">
-                    <h1>Sign Up</h1>
-                    <form class="#" action="/api/user" method="POST">
+
+                    <h1>Create Free Account</h1>
+                    <form class="signup-form" action="/api/user" method="POST">
                         <input class="item" id="name-txt" type="text" placeholder="name" name="name" autocomplete="false" />
                         <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="false">
                         <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="false" />
                         <input class="item" id="email-txt" type="text" placeholder="email address" name="email" autocomplete="false" />
-                        <button class="item" type="submit">Register</button>
+                        <button class="login-btn" type="submit">Register</button>
                         <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
                     </form>
                 </div>
@@ -43,30 +37,7 @@
 
         </section>
     </main>
-    <footer>
-        <div class="foot-col">
-            <ul>
-                <li class="ftLinks"><a href="#"> Features </a></li>
-                <li class="ftLinks"><a href="#"> About </a></li>
-                <li class="ftLinks"><a href="#"> Blog</a></li>
-                <li class="ftLinks"><a href="#"> Contact Us </a></li>
-            </ul>
-        </div>
-        <div class="foot-col">
-            <ul>
-                <li class="ftLinks"><a href="#">Facebook</a></li>
-                <li class="ftLinks"><a href="#">Instagram</a></li>
-                <li class="ftLinks"><a href="#">Twitter</a></li>
-                <li class="ftLinks"><a href="#">Youtube</a></li>
-            </ul>
-        </div>
-        <div class="foot-col">
-            <ul>
-                <li class="ftLinks"><a href="#">SIGN UP</a></li>
-                <li class="ftLinks"><a href="#">LOG IN</a></li>
-            </ul>
-        </div>
-    </footer>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="/moment.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

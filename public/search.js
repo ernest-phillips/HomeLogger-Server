@@ -96,6 +96,7 @@ function getSetData() {
 
     window.HTTP_MODULE.createWorkout({
         newWorkout: {
+
             set: set,
             reps: reps,
             weight: weight,
@@ -107,7 +108,7 @@ function getSetData() {
         }
     })
     document.location.replace('/home.html');
-    retrieveSets(date);
+
 }
 
 function onPageLoadSearch() {

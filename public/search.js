@@ -87,7 +87,7 @@ function getSetData() {
     let date = moment().format('YYYY-MM-DD');
 
     let set = 1;
-
+    let success = retrieveSets(date);
     console.log(userInfo.userid)
     console.log(date);
     console.log(reps);
@@ -96,7 +96,7 @@ function getSetData() {
 
     window.HTTP_MODULE.createWorkout({
         newWorkout: {
-
+            onSuccess: success,
             set: set,
             reps: reps,
             weight: weight,

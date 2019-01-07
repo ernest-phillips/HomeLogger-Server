@@ -163,7 +163,7 @@ function deleteWorkout(options) {
     const {
         workoutId,
         jwtToken,
-        onSuccess,
+        deleteSuccess,
         onError
     } = options;
     $.ajax({
@@ -175,7 +175,7 @@ function deleteWorkout(options) {
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
-        success: onSuccess,
+        success: deleteSuccess,
         error: err => {
             console.error(err);
             if (onError) {

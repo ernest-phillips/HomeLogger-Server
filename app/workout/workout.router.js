@@ -76,7 +76,7 @@ workoutRouter.get('/:user/:date', (req, res) => {
 });
 
 // Remove set from workout by id
-workoutRouter.delete('/:workoutid', jwtPassportMiddleware, (req, res) => {
+workoutRouter.delete('/:workoutid', (req, res) => {
     Workout.findByIdAndDelete(req.params.workoutid)
         .then(() => {
             return res.status(HTTP_STATUS_CODES.NO_CONTENT).end();

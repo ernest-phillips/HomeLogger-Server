@@ -1,54 +1,102 @@
-let cDate = moment().format("dddd, MMMM Do");
-// localStorage.setItem(date, cDate);
-
-function getWorkouts() {
-    CACHE.getAuthenticatedUserFromCache()
-    $.ajax({
-        type: 'GET',
-        url: '/api/home',
-        contentType: 'application/json',
-        dataType: 'json',
-        data: undefined,
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('Authorization', `Bearer ${CACHE.jwtToken}`);
-        },
-        success: console.log("Success"),
-        error: err => {
-            console.error(err);
-            // if (onError) {
-            //     onError(err);
-            // }
-        }
-    });
-
-}
-
 function welcomeUser() {
     let user = CACHE.getAuthenticatedUserFromCache();
     $('.welcome').html(`<h4>Welcome <a href="#">${user.username}</a></h4>`)
 }
 
-function retrieveSets(d) {
-    console.log("retrieving sets")
-    let user = window.CACHE_MODULE.getAuthenticatedUserFromCache();
-    console.log(d)
+function checkDate() {
+    let count = 0;
 
-    $('.ex-container').html(`<div class="this-date" date="${d}">`);
-    axios.get(`/api/home/${user.userid}/${d}`)
-        .then(function(res) {
-            formatWorkout(res.data)
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+    if (localStorage.getItem('currentDate') == null) {
+        let cDate = moment(new Date()).subtract(count, 'day');
+        console.log("No local storage date: ", cDate)
+        changeDate(count, cDate);
+    } else {
+        let cDate = moment(localStorage.getItem('currentDate'));
+        console.log("Moment Converted:", moment(localStorage.getItem('currentDate')));
+        changeDate(count, cDate);
+    }
+
+
+    // localStorage.setItem('currentDate', cDate.format('YYYY-MM-DD'));
+
+
+}
+
+function changeDate(count, cDate) {
+
+    console.log("The current date is:", cDate)
+    $('.js-caretLFT').on('click', function() {
+        cDate = cDate.subtract(1, 'day');
+        count++
+        $(".js-dateSel").html(cDate.format("dddd, MMMM Do"));
+
+        $('.js-exList').html('');
+        localStorage.setItem('currentDate', cDate.format('YYYY-MM-DD'));
+        localStorage.setItem('dateString', cDate.format("dddd, MMMM Do"))
+        getSetDataFromAPI();
+        // retrieveSets(cDate.format('YYYY-MM-DD'));
+
+    });
+
+    $('.js-caretRT').on('click', () => {
+        cDate = cDate.add(1, 'day');
+
+        $(".js-dateSel").html(cDate.format("dddd, MMMM Do"));
+
+        $('.js-exList').html('');
+        localStorage.setItem('currentDate', cDate.format('YYYY-MM-DD'));
+        localStorage.setItem('dateString', cDate.format("dddd, MMMM Do"))
+        getSetDataFromAPI();
+        // retrieveSets(cDate.format('YYYY-MM-DD'));
+    });
+}
+
+function getSetDataFromAPI() {
+    console.log("retrieving sets")
+
+    let user = window.CACHE_MODULE.getAuthenticatedUserFromCache();
+
+    if (localStorage.getItem('currentDate') == null) {
+        let d = moment().format('YYYY-MM-DD')
+        axios.get(`/api/home/${user.userid}/${d}`)
+            .then(function(res) {
+                formatWorkout(res.data)
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    } else {
+        let d = localStorage.getItem('currentDate');
+        axios.get(`/api/home/${user.userid}/${d}`)
+            .then(function(res) {
+                formatWorkout(res.data)
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+}
+
+function retrieveSets(d) {
+
+    if (d == null) {
+        d = moment().format('YYYY-MM-DD');
+    } else {
+        d = d;
+    }
+
+    $('.ex-container').append(`<div class="this-date" date="${d}">`);
+
 }
 
 function formatWorkout(data) {
-
     data.map((item, index) => displayWorkout(item, index))
+
 }
 
 function displayWorkout(item, index) {
+
     let exercise = item.sets.exercise;
     let weight = item.sets.weight;
     let reps = item.sets.reps
@@ -70,59 +118,45 @@ function displayWorkout(item, index) {
 <!--end log-header-->`)
 }
 
-function currentDate() {
-    let d = moment().format("dddd, MMMM Do");
-    $(".js-dateSel").html(cDate);
-
+function displayDate() {
+    if (localStorage.getItem('dateString') == null) {
+        let cDate = moment().format("dddd, MMMM Do");
+        $(".js-dateSel").html(cDate);
+        console.log("Using today's date", cDate)
+    } else {
+        let cDate = localStorage.getItem('dateString');
+        $(".js-dateSel").html(cDate);
+        console.log("Using local storage date", cDate)
+    }
 }
 
-function changeDate() {
-    let count = 0;
-    let cDate = moment(new Date()).subtract(count, 'day');
-    $('.js-caretLFT').on('click', function() {
-
-        cDate = cDate.subtract(1, 'day');
-        count++
-        $(".js-dateSel").html(cDate.format("dddd, MMMM Do"));
-        let isoDate = cDate.startOf('day');
-        $('.js-exList').html('');
-        retrieveSets(isoDate.format("MM-DD-YYYY"));
-
-    });
-
-    $('.js-caretRT').on('click', () => {
-
-        cDate = cDate.add(1, 'day');
-
-        $(".js-dateSel").html(cDate.format("dddd, MMMM Do"));
-        let isoDate = cDate.startOf('day');
-        $('.js-exList').html('');
-        retrieveSets(isoDate.format("MM-DD-YYYY"));
-    });
-}
-
-function dateSelectTemplate() {
-
-}
+// function showSavedDate() {
+//     console.log('Getting saved date')
+//     let savedDate = localStorage.getItem('dateString');
+//     $('.js-dateSel').html(`${savedDate}`);
+// }
 
 function deleteSet() {
-    let userInfo = CACHE.getAuthenticatedUserFromCache()
+    let userInfo = CACHE.getAuthenticatedUserFromCache();
+
     $('body').on('click', '.delete', function() {
+        $('.js-exList').html('')
         let workoutId = $(this).parent('.log-header').attr('data-setID');
         HTTP.deleteWorkout({
             jwtToken: userInfo.jwtToken,
-            workoutId
+            workoutId,
+            deleteSuccess: getSetDataFromAPI()
         });
-        console.log(workoutId);
 
     });
 }
 
 function onPageLoad() {
     welcomeUser();
-    currentDate();
-    changeDate();
-    getWorkouts();
+    displayDate();
+    checkDate();
+    getSetDataFromAPI();
+    // getWorkouts();
     deleteSet();
 
 

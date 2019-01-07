@@ -29,7 +29,6 @@ function getUserExercises() {
 
     axios.get('/api/exercises')
         .then(function(response) {
-            // console.log(response.data)
             exerciseLoop(response.data)
         })
         .catch(function(error) {
@@ -45,6 +44,7 @@ function exerciseLoop(res) {
 
 function clearInput() {
     $('input').val("");
+
 }
 // Save exercise set to workout
 // capture name of exercise
@@ -68,11 +68,11 @@ function showSetAdd() {
 }
 
 function saveSet() {
-    console.log("Save Set Called")
     $('main').on('submit', '#saveSet', function(event) {
 
         event.preventDefault();
         getSetData();
+
 
     });
 }
@@ -83,20 +83,15 @@ function getSetData() {
     let reps = $('#POST-reps').val();
     let weight = $('#POST-weight').val();
     let exerciseName = $('#exerciseName').text();
-
-    let date = moment().format('YYYY-MM-DD');
-
+    let date = localStorage.getItem('currentDate');
+    console.log(date)
     let set = 1;
-    let success = retrieveSets(date);
-    console.log(userInfo.userid)
-    console.log(date);
-    console.log(reps);
-    console.log(weight);
-    console.log("Your excercise name is:", exerciseName);
+
+
+
 
     window.HTTP_MODULE.createWorkout({
         newWorkout: {
-            onSuccess: success,
             set: set,
             reps: reps,
             weight: weight,

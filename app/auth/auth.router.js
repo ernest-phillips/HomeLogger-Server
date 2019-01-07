@@ -26,11 +26,11 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-authRouter.get('/login', (req, res) => {
-    // console.log(__dirname)
-    // console.log("Your path", path.join(__dirname, '../public', './login.html'));
-    // res.sendFile('app/views/home.html');
-});
+// authRouter.get('/login', (req, res) => {
+//     // console.log(__dirname)
+//     // console.log("Your path", path.join(__dirname, '../public', './login.html'));
+//     // res.sendFile('app/views/home.html');
+// });
 
 authRouter.post('/login', localPassportMiddleware, (request, response) => {
     const user = request.user.serialize();

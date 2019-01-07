@@ -87,10 +87,8 @@ describe('Integration tests for: /api/workout', function() {
             });
     });
 
-    // Mocha Hook: Runs after EACH "it" test block.
     afterEach(function() {
-        // Be sure to always return a promise to Mocha when doing asynchronous work,
-        // Otherwise Mocha will just asume your work is done even if it isn't.
+
         return new Promise((resolve, reject) => {
             // Deletes the entire database.
             mongoose.connection.dropDatabase()
@@ -104,12 +102,9 @@ describe('Integration tests for: /api/workout', function() {
         });
     });
 
-    // Mocha Hook: Runs after ALL the "it" test blocks.
-    after(function() {
-        // Be sure to always return a promise to Mocha when doing asynchronous work,
-        // Otherwise Mocha will just asume your work is done even if it isn't.
 
-        // Shuts down our Express Server, since we don't need it anymore.
+    after(function() {
+
         return stopServer();
     });
 
@@ -221,8 +216,9 @@ describe('Integration tests for: /api/workout', function() {
 
     function createFakerworkout() {
         return {
-            title: faker.lorem.sentence(),
-            content: faker.lorem.paragraphs()
+            exercise: faker.lorem.word(),
+            set: faker.random.number(),
+            reps: faker.random.number()
         };
     }
 });

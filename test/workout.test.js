@@ -85,6 +85,7 @@ describe('Integration tests for: /api/home', function() {
     afterEach(function() {
 
         return new Promise((resolve, reject) => {
+            
             // Deletes the entire database.
             mongoose.connection.dropDatabase()
                 .then(result => {
@@ -102,7 +103,7 @@ describe('Integration tests for: /api/home', function() {
 
         return stopServer();
     });
-console.log("The body:",res.body[0].sets);
+
     it('Should return user workouts', function() {
         return chai.request(app)
             .get('/api/home')
@@ -112,8 +113,9 @@ console.log("The body:",res.body[0].sets);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('array');
                 expect(res.body).to.have.lengthOf.at.least(1);
-                const workout = res.body[0].sets;
             console.log("The body:",res.body[0].sets);
+                const workout = res.body[0].sets;
+            
                 expect(workout).to.include.keys('user', 'exercise', 'set', 'reps');
                 // expect(workout.user).to.be.a('object');
                 // expect(workout.user).to.include.keys('name', 'email', 'username');

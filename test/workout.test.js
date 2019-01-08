@@ -102,7 +102,7 @@ describe('Integration tests for: /api/home', function() {
 
         return stopServer();
     });
-
+console.log("The body:",res.body[0].sets);
     it('Should return user workouts', function() {
         return chai.request(app)
             .get('/api/home')
@@ -113,7 +113,7 @@ describe('Integration tests for: /api/home', function() {
                 expect(res.body).to.be.a('array');
                 expect(res.body).to.have.lengthOf.at.least(1);
                 const workout = res.body[0].sets;
-            console.log(res.body[0].sets);
+            console.log("The body:",res.body[0].sets);
                 expect(workout).to.include.keys('user', 'exercise', 'set', 'reps');
                 // expect(workout.user).to.be.a('object');
                 // expect(workout.user).to.include.keys('name', 'email', 'username');

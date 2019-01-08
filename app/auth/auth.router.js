@@ -49,15 +49,6 @@ authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
     });
 });
 
-<<<<<<< HEAD
-authRouter.post('/logout', localPassportMiddleware, (req, res) => {
-        res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-    }
-    module.exports = {
-        authRouter
-    });
-
-=======
 authRouter.post('/logout', (req, res) => {
 
     res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
@@ -65,7 +56,6 @@ authRouter.post('/logout', (req, res) => {
 
     })
 });
->>>>>>> 7867560ecc9fefea91206abd0e5963e313dce6b3
 module.exports = {
     authRouter
 };

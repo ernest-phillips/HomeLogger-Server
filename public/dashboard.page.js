@@ -130,11 +130,6 @@ function displayDate() {
     }
 }
 
-// function showSavedDate() {
-//     console.log('Getting saved date')
-//     let savedDate = localStorage.getItem('dateString');
-//     $('.js-dateSel').html(`${savedDate}`);
-// }
 
 function deleteSet() {
     let userInfo = CACHE.getAuthenticatedUserFromCache();
@@ -156,7 +151,7 @@ function onPageLoad() {
     displayDate();
     checkDate();
     getSetDataFromAPI();
-    // getWorkouts();
+
     deleteSet();
 
 

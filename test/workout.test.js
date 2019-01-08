@@ -23,22 +23,17 @@ const {
     Workout
 } = require('../app/workout/workout.model');
 
-const expect = chai.expect; // So we can do "expect" instead of always typing "chai.expect"
-chai.use(chaiHttp); // implements chai http plugin
+const expect = chai.expect;
+chai.use(chaiHttp);
 
-describe('Integration tests for: /api/workout', function() {
+describe('Integration tests for: /api/home', function() {
     let testUser, jwtToken;
 
-    // Mocha Hook: Runs before ALL the "it" test blocks.
     before(function() {
-        // Be sure to always return a promise to Mocha when doing asynchronous work,
-        // Otherwise Mocha will just asume your work is done even if it isn't.
 
-        // Starts our Express Server, so we can test it.
         return startServer(true);
     });
 
-    // Mocha Hook: Runs before EACH "it" test block.
     beforeEach(function() {
         testUser = createFakerUser();
 
@@ -110,23 +105,23 @@ describe('Integration tests for: /api/workout', function() {
 
     it('Should return user workouts', function() {
         return chai.request(app)
-            .get('/api/workout')
+            .get('/api/home')
             .set('Authorization', `Bearer ${jwtToken}`)
             .then(res => {
                 expect(res).to.have.status(HTTP_STATUS_CODES.OK);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('array');
                 expect(res.body).to.have.lengthOf.at.least(1);
-                const workout = res.body[0];
-                expect(workout).to.include.keys('user', 'exercise', 'set');
-                expect(workout.user).to.be.a('object');
-                expect(workout.user).to.include.keys('name', 'email', 'username');
-                expect(workout.user).to.deep.include({
-                    id: testUser.id,
-                    username: testUser.username,
-                    email: testUser.email,
-                    name: testUser.name
-                });
+                const workout = res.body[0].sets;
+                expect(workout).to.include.keys('user', 'exercise', 'set', 'reps');
+                // expect(workout.user).to.be.a('object');
+                // expect(workout.user).to.include.keys('name', 'email', 'username');
+                // expect(workout.user).to.nested.include({
+                //     id: testUser.id,
+                //     username: testUser.username,
+                //     email: testUser.email,
+                //     name: testUser.name
+                // });
             });
     });
 
@@ -139,49 +134,19 @@ describe('Integration tests for: /api/workout', function() {
                 foundWorkout = workouts[0];
 
                 return chai.request(app)
-                    .get(`/api/workout/${foundWorkout.id}`)
+                    .get(`/api/home/${foundWorkout.id}`)
                     .set('Authorization', `Bearer ${jwtToken}`);
             })
             .then(res => {
                 expect(res).to.have.status(HTTP_STATUS_CODES.OK);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('object');
-                expect(res.body).to.include.keys('user', 'title', 'content');
-                expect(res.body).to.deep.include({
-                    id: foundWorkout.id,
-                    exercise: foundWorkout.exercise
+                expect(res.body).to.include.keys('user', 'exercise', 'set', 'reps');
 
-                });
             });
     });
 
-    it('Should update a specific workout', function() {
-        let workoutToUpdate;
-        const newWorkoutData = createFakerWorkout();
-        return Workout.find()
-            .then(workouts => {
-                expect(workouts).to.be.a('array');
-                expect(workouts).to.have.lengthOf.at.least(1);
-                workoutToUpdate = workouts[0];
 
-                return chai.request(app)
-                    .put(`/api/workout/${workoutToUpdate.id}`)
-                    .set('Authorization', `Bearer ${jwtToken}`)
-                    .send(newWorkoutData);
-            })
-            .then(res => {
-                expect(res).to.have.status(HTTP_STATUS_CODES.NO_CONTENT);
-
-                return Workout.findById(workoutToUpdate.id);
-            })
-            .then(workout => {
-                expect(workout).to.be.a('object');
-                expect(workout).to.deep.include({
-                    id: workoutToUpdate.id,
-                    exercise: newWorkoutData.title,
-                });
-            });
-    });
 
     it('Should delete a specific workout', function() {
         let workoutToDelete;
@@ -192,7 +157,7 @@ describe('Integration tests for: /api/workout', function() {
                 workoutToDelete = workouts[0];
 
                 return chai.request(app)
-                    .delete(`/api/workout/${workoutToDelete.id}`)
+                    .delete(`/api/home/${workoutToDelete.id}`)
                     .set('Authorization', `Bearer ${jwtToken}`);
             })
             .then(res => {
@@ -214,11 +179,12 @@ describe('Integration tests for: /api/workout', function() {
         };
     }
 
-    function createFakerworkout() {
+    function createFakerWorkout() {
         return {
             exercise: faker.lorem.word(),
             set: faker.random.number(),
-            reps: faker.random.number()
+            reps: faker.random.number(),
+
         };
     }
 });

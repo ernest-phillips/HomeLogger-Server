@@ -13,9 +13,7 @@ const {
 } = require('../config.js');
 
 const authRouter = express.Router();
-console.log(__dirname)
-    //Receives user we can turn into JSON web token to be issued out 
-    //to users to access protected endpoints
+
 function createJwtToken(user) {
     return jwt.sign({
         user
@@ -26,11 +24,11 @@ function createJwtToken(user) {
     });
 }
 //Login endpoint
-// authRouter.get('/login', (req, res) => {
-//     // console.log(__dirname)
-//     // console.log("Your path", path.join(__dirname, '../public', './login.html'));
-//     // res.sendFile('app/views/home.html');
-// });
+authRouter.get('/login', (req, res) => {
+    const user = request.user.serialize();
+    const jwtToken = createJwtToken(user);
+    response.json({ jwtToken, user });
+});
 
 authRouter.post('/login', localPassportMiddleware, (request, response) => {
     const user = request.user.serialize();
@@ -52,7 +50,7 @@ authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
 });
 
 authRouter.post('/logout', (req, res) => {
-    console.log("logging out")
+
     res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
     res.json({
 

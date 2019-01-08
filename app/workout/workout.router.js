@@ -51,14 +51,12 @@ workoutRouter.get('/', (request, response) => {
 
     Workout.find()
         .then(workouts => {
-            // Step 2A: Return the correct HTTP status code, and the users correctly formatted via serialization.
 
             return response.status(HTTP_STATUS_CODES.OK).json(
                 workouts.map(workout => workout)
             );
         })
         .catch(error => {
-            // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
             return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
         });
 })
@@ -66,6 +64,17 @@ workoutRouter.get('/', (request, response) => {
 workoutRouter.get('/:user/:date', (req, res) => {
 
     Workout.find(req.params)
+        .then(workout => {
+            return res.status(HTTP_STATUS_CODES.OK).json(workout);
+        })
+        .catch(error => {
+            // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
+            return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
+        });
+});
+workoutRouter.get('/:workoutid', (req, res) => {
+
+    Workout.findById(req.params.workoutid)
         .then(workout => {
             return res.status(HTTP_STATUS_CODES.OK).json(workout);
         })

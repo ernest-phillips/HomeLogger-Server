@@ -1,5 +1,7 @@
 # Fit-Journal with NodeJS
 
+View project at www.fit-journal.herokuapp.com (currently still in development)
+
 Track your workout history whether it be resistance or cardiovascular training, all in one place!
 This project is built on Node and Express using CRUD standard practices.
 Create an account.

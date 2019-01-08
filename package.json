@@ -30,21 +30,19 @@
         "express": "^4.16.4",
         "express-handlebars": "^3.0.0",
         "faker": "^4.1.0",
+        "firacode": "^1.205.0",
         "handlebars": "^4.0.12",
         "joi": "^14.0.6",
         "jquery": "^3.3.1",
-        "jshint": "^2.9.6",
-        "jslint": "^0.12.0",
         "jsonwebtoken": "^8.3.0",
         "micromodal": "^0.3.2",
         "mocha": "^5.2.0",
         "moment": "^2.22.2",
         "mongoose": "^5.3.11",
         "morgan": "^1.9.1",
+        "nodemon": "^1.18.9",
         "passport": "^0.4.0",
         "passport-jwt": "^4.0.0",
-        "passport-local": "^1.0.0",
-        "nodemon": "^1.18.9"
-
+        "passport-local": "^1.0.0"
     }
 }

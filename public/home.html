@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard</title>
-
+    <link id="icon" rel="icon" type="image/png" href="/img/dumbbell_b.png">
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
@@ -15,52 +15,44 @@
     <div class="nav-bar"></div>
 
     <header class="header">
-        <div class="logo">Fit-Journal</div>
+        <div class="logo"><a href="/">Fit-Journal</a></div>
         <nav class="nav-login">
             <a href="" id="logout-btn" type="submit">Log Out</a>
-
         </nav>
     </header>
 
     <main>
+        <!-- <section class="welcome"></section> -->
 
         <section class="wo-container js-container">
-            <!--Date Navigation-->
-
+            <div class="welcome"></div>
             <section class="date-nav">
+
                 <i class="fas fa-caret-left js-caretLFT"></i>
-                <div class="date-sel js-dateSel"></div>
+                <div class="date-sel js-dateSel" data-setID=""></div>
                 <i class="fas fa-caret-right js-caretRT"></i>
             </section>
-
-            <section class="ex-list">
-                <div class="log-header">
-                    <h1 class="ex-head">Exercises</h1>
-                    <div class="stat-labels">
-                        <h3 class="log-stat-lbl">Sets </h3>
-                        <h3 class="log-stat-lbl">Reps </h3>
-                        <h3 class="log-stat-lbl">Weight </h3>
+            <!--END Date Navigation-->
+            <section class="workoutInfo">
+                <div class="ex-list">
+                    <div class="log-header">
+                        <h1 class="ex-head">Exercises</h1>
+                        <div class="stat-labels">
+                            <h3 class="log-stat-lbl">Set </h3>
+                            <h3 class="log-stat-lbl">Reps </h3>
+                            <h3 class="log-stat-lbl">Weight </h3>
+                        </div>
+                        <!--end stat-label-->
+                        <div class="delete"></div>
                     </div>
-                    <!--end stat-label-->
-                    <div class="delete"></div>
+                    <!--end log-header-->
                 </div>
-                <!--end log-header-->
+                <section class="ex-list js-exList">
+
+                </section>
+                <h4 class="add-ex js-addEx"><a href="/search.html">Add Exercise</a></h4>
             </section>
 
-            <section class="ex-list">
-                <div class="log-header">
-                    <h3 class="ex-name js-exName">Pushups</h3>
-                    <div class="stat-labels">
-                        <p class="log-stat js-setLbl">1</p>
-                        <p class="log-stat js-repsLbl">10</p>
-                        <p class="log-stat js-weightsLbl">0</p>
-                    </div>
-                    <!--end stat-label-->
-                    <div class="delete js-delete">x</div>
-                </div>
-                <!--end log-header-->
-                <h4 class="add-ex js-addEx"><a href="#">Add Exercise</a></h4>
-            </section>
 
         </section>
 
@@ -91,14 +83,14 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="/moment.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/utilities/cache.module.js"></script>
     <script src="/auth.page.js"></script>
     <!-- <script src="../utilities/render.module.js"></script> -->
     <script src="/utilities/http.module.js"></script>
-    <script src="/index.page.js"></script>
-
     <script src="/utilities/index.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="/search.js"></script> -->
+    <script src="/dashboard.page.js"></script>
     <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
     <script src="/home.js"></script>
 

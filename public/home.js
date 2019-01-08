@@ -1,11 +1,6 @@
-// let STATE = {};
-// All these modules are are defined in /public/utilities
-// const RENDER = window.RENDER_MODULE;
-const HTTP = window.HTTP_MODULE;
+$(document).ready(onPageLoadHome);
 
-$(document).ready(onPageLoad);
-
-function onPageLoad() {
+function onPageLoadHome() {
     updateAuthenticatedUI();
 
     // if (STATE.authUser) {
@@ -20,6 +15,7 @@ function onPageLoad() {
     // $('#workout-list').on('click', '#delete-workout-btn', onDeleteWorkoutBtnClick);
     // $('#workout-list').on('click', '#workout-card', onWorkoutCardClick);
 }
+
 
 function onLogoutBtnClick(event) {
     event.preventDefault();

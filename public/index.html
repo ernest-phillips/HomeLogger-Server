@@ -7,17 +7,57 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fit-Journal | Log It All!</title>
     <link rel="stylesheet" href="/css/main.css" />
-
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link id="icon" rel="icon" type="image/png" href="/img/dumbbell_b.png">
 </head>
 
 <body>
     <section class="nav-bar"></section>
-    <main>
-        <header class="header">
-            <div class="logo">Fit-Journal</div>
-            <nav class="nav-login"><a href="/login.html">Log In</a></nav>
-        </header>
 
+    <header class="header">
+        <div class="logo">Fit-Journal</div>
+        <nav class="nav-login">
+            <a href="/login.html" class="login">Log In</a>
+
+        </nav>
+    </header>
+    <main id="splash">
+
+        <div id="home-container">
+            <section id="jumbotron">
+                <h1 class="introduction">FIT-JOURNAL</h1>
+                <div class="home-container">
+                    <button class="home-reg">
+                        <a href="./signup.html">SIGN UP</a>
+                    </button>
+                    <p class="already"><a href="./login.html">Already Signed up? Login instead</a></p>
+                </div>
+
+            </section>
+            <section class="devices">
+                <div class="device-text">
+                    <p>Track workouts from your PC, Phone or Tablet</p>
+
+
+                </div>
+                <div class="device-imgs">
+                    <img class="mobile-img" src="./img/devices.png" alt="Mobile devices">
+                </div>
+            </section>
+            <section class="bg-info">
+                <div class="activites1">
+                    <h2>STRENGTH TRAINING</h2>
+                    <img class="strength" src="" alt="">
+                </div>
+                <div class="divided"></div>
+                <div class="activites2">
+                    <h2>CARDIO</h2>
+                    <img class="cardio" src="" alt="">
+                </div>
+
+            </section>
+            <!-- <section class="bg-info"></section> -->
+        </div>
 
 
     </main>
@@ -40,16 +80,19 @@
         </div>
         <div class="foot-col">
             <ul>
-                <li class="ftLinks"><a href="#">SIGN UP</a></li>
+                <li class="ftLinks"><a href="/signup.html">SIGN UP</a></li>
                 <li class="ftLinks"><a href="#">LOG IN</a></li>
             </ul>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/moment.js"></script>
     <script src="/utilities/cache.module.js"></script>
     <script src="/utilities/http.module.js"></script>
-    <script src="/index.page.js"></script>
+    <script src="/utilities/index.js"></script>
+
+
 
 
 </body>

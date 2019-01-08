@@ -18,11 +18,9 @@ const {
 exerciseRouter.post('/', (request, response) => {
 
     const newExercise = {
-
         exercise: request.body.exercise,
         ex_type: request.body.ex_type,
         bodypart: request.body.bodypart
-
     };
 
     const validation = Joi.validate(newExercise, ExerciseJoiSchema);

@@ -13,7 +13,7 @@ const userRouter = express.Router();
 
 // CREATE NEW USER
 userRouter.post('/', (request, response) => {
-    console.log("User Added")
+
     const newUser = {
         name: request.body.name,
         email: request.body.email,
@@ -24,7 +24,6 @@ userRouter.post('/', (request, response) => {
     // pass in user object and validate against UserJoiSchema
     const validation = Joi.validate(newUser, UserJoiSchema);
     if (validation.error) {
-        // Step 2A: If validation error is found, end the the request with a server error and error message.
         return response.status(HTTP_STATUS_CODES.BAD_REQUEST).json({
             error: validation.error
         });
@@ -50,16 +49,15 @@ userRouter.post('/', (request, response) => {
 
         User.create(newUser)
             .then(createdUser => {
-                // return response.status(HTTP_STATUS_CODES.CREATED).json(createdUser.serialize());
-
-                return response.redirect('/api/workout');
+                return response.status(HTTP_STATUS_CODES.CREATED).json(createdUser.serialize());
             })
-            .catch(error => {
-                console.error(error);
-                return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({
-                    error: error.message
-                });
+
+        .catch(error => {
+            console.error(error);
+            return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({
+                error: error.message
             });
+        });
     });
 });
 
@@ -68,32 +66,28 @@ userRouter.get('/', (request, response) => {
     console.log("Retrieving All Users");
     User.find()
         .then(users => {
-            // Step 2A: Return the correct HTTP status code, and the users correctly formatted via serialization.
 
             return response.status(HTTP_STATUS_CODES.OK).json(
                 users.map(user => user.serialize())
             );
-
-
         })
         .catch(error => {
-            // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
+
             return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).send(error);
         });
 });
 // RETRIEVE ONE USER
 userRouter.get('/:userid', (request, response) => {
-    // Step 1: Attempt to retrieve a specific user using Mongoose.Model.findById()
-    // https://mongoosejs.com/docs/api.html#model_Model.findById
+
     User.findById(request.params.userid)
         .then(user => {
-            // Step 2A: Return the correct HTTP status code, and the user correctly formatted via serialization.
-            // return response.status(HTTP_STATUS_CODES.OK).json(user.serialize());
-            return response.redirect('/api/workout');
+
+            console.log(request.params.userid)
+            return response.status(HTTP_STATUS_CODES.OK).json(user.serialize());
 
         })
         .catch(error => {
-            // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
+
             return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
         });
 });

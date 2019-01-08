@@ -1,11 +1,6 @@
-// All these modules are are defined in /public/utilities
-const RENDER = window.RENDER_MODULE;
-// const HTTP = window.HTTP_MODULE;
-// const CACHE = window.CACHE_MODULE;
+$(document).ready(onPageLoadAuth);
 
-$(document).ready(onPageLoad);
-
-function onPageLoad() {
+function onPageLoadAuth() {
     $('#sign-up-form').submit(onSignUpSubmit);
     $('#login-form').submit(onLoginSubmit);
     $('#logout-btn').on('click', onLogoutSubmit);

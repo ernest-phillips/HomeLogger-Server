@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fit-Journal | Log It All!</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link id="icon" rel="icon" type="image/png" href="/img/dumbbell_b.png">
+</head>
+
+<body>
+
+
+    <main id='splash-login'>
+
+
+
+        <section class="container js-container">
+            <div class="login-page">
+                <h1><a href="/">Fit-Journal</a></h1>
+                <div class="form">
+
+                    <h1>Create Free Account</h1>
+                    <form class="signup-form" action="/api/user" method="POST">
+                        <input class="item" id="name-txt" type="text" placeholder="name" name="name" autocomplete="false" />
+                        <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="false">
+                        <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="false" />
+                        <input class="item" id="email-txt" type="text" placeholder="email address" name="email" autocomplete="false" />
+                        <button class="login-btn" type="submit">Register</button>
+                        <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
+                    </form>
+                </div>
+            </div>
+
+
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="/moment.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/utilities/cache.module.js"></script>
+    <script src="/auth.page.js"></script>
+    <!-- <script src="../utilities/render.module.js"></script> -->
+    <script src="/utilities/http.module.js"></script>
+    <script src="/utilities/index.js"></script>
+    <script src="/dashboard.page.js"></script>
+    <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script src="/home.js"></script>
+</body>
+
+</html>

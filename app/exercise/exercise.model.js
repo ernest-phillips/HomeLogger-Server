@@ -47,6 +47,5 @@ const ExerciseJoiSchema = Joi.object().keys({
 });
 
 module.exports = {
-    Exercise,
-    ExerciseJoiSchema
+    Exercise
 };

@@ -44,6 +44,10 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter); //Redirects all calls to /api/user to userRouter
 app.use('/api/home', workoutRouter);
 app.use('/api/exercises', exerciseRouter);
+app.use(express.static('./public', {
+    extensions: ['html', 'htm']
+        // Other options here
+}));
 
 
 app.use('*', function(req, res) {
@@ -67,28 +71,22 @@ function startServer(testEnv) {
         } else {
             mongoUrl = MONGO_URL;
         }
-        // Step 1: attempt to connect to MongoDB with mongoose
-        mongoose.connect(mongoUrl, {
-            useNewUrlParser: true
-        }, err => {
-            if (err) {
-                // Step 2a: if there si an error starting mongo, log error, reject promise and stop code execution
-                console.error(err);
-                return reject(err);
-            } else {
-                // Step 2B: start express server
-                server = app.listen(PORT, () => {
-                    //STep 3A: log success message to console and resolve promise
-                    console.log(`Express sever listining on http://localhost:${PORT}`);
-                    resolve();
-                }).on('error', err => {
-                    // Step 3B: if there was a problem starting the express sever, disconnect from MongoDB immediately
-                    mongoose.disconnect();
+        mongoose.connect(mongoUrl, { useNewUrlParser: true },
+            err => {
+                if (err) {
                     console.error(err);
-                    reject(err);
-                });
-            }
-        });
+                    return reject(err);
+                } else {
+                    server = app.listen(PORT, () => {
+                        console.log(`Express sever listining on http://localhost:${PORT}`);
+                        resolve();
+                    }).on('error', err => {
+                        mongoose.disconnect();
+                        console.error(err);
+                        reject(err);
+                    });
+                }
+            });
     });
 }
 

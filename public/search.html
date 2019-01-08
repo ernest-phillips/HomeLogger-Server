@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard</title>
-
+    <link id="icon" rel="icon" type="image/png" href="/img/dumbbell_b.png">
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
@@ -29,27 +29,30 @@
                 <button type="button" class="search-btn">Add Exercise</button>
             </div>
             <div class="set-wkout">
-                <form action="/api/workout" class="js-setworkOut" method="POST">
-                    <h3 class="exerciseName"></h3>
-                    <div class="set-input">
-                        <label id="reps-lbl" for="POST-reps">Number of reps:</label>
-                        <input id="POST-reps" type="text" name="reps">
-                    </div>
-                    <div class="set-input">
-                        <label id="weight-lbl" for="POST-weight">Amount of weight:</label>
-                        <input id="POST-weight" type="text" name="weight">
-                    </div>
-                    <div class="form-save">
-                        <button class="save-set">Save Set</button>
-                    </div>
+                <form id="saveSet" action="/api/home" class="js-setworkOut" method="POST">
+                    <fieldset>
+
+                        <h3 id="exerciseName"></h3>
+                        <div class="set-input">
+                            <label id="reps-lbl" for="POST-reps">Number of reps:</label>
+                            <input id="POST-reps" type="number" name="reps">
+                        </div>
+                        <div class="set-input">
+                            <label id="weight-lbl" for="POST-weight">Amount of weight:</label>
+                            <input id="POST-weight" type="number" name="weight">
+                        </div>
+                        <div class="form-save">
+                            <button class="save-set" date="">Save Set</button>
+                        </div>
+                    </fieldset>
                 </form>
             </div>
-            <div class="js-container alphalist"></div>
+            <!-- <div class="js-container alphalist"></div>
             <ul>
                 <li>
                     <h3>A</h3>
                 </li>
-            </ul>
+            </ul> -->
 
         </section>
 
@@ -85,8 +88,9 @@
     <script src="/typeahead.js"></script>
     <!-- <script src="../utilities/render.module.js"></script> -->
     <script src="/utilities/http.module.js"></script>
-    <script src="/search.js"></script>
     <script src="/utilities/index.js"></script>
+    <script src="/dashboard.page.js"></script>
+    <script src="/search.js"></script>
     <script src="/home.js"></script>
 
 </body>

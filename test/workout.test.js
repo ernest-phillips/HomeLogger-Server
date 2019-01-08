@@ -109,22 +109,19 @@ describe('Integration tests for: /api/home', function() {
             .get('/api/home')
             .set('Authorization', `Bearer ${jwtToken}`)
             .then(res => {
+                console.log("The body:",res.body[0].sets);
                 expect(res).to.have.status(HTTP_STATUS_CODES.OK);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('array');
                 expect(res.body).to.have.lengthOf.at.least(1);
-            console.log("The body:",res.body[0].sets);
-                const workout = res.body[0].sets;
             
-                expect(workout).to.include.keys('user', 'exercise', 'set', 'reps');
-                // expect(workout.user).to.be.a('object');
-                // expect(workout.user).to.include.keys('name', 'email', 'username');
-                // expect(workout.user).to.nested.include({
-                //     id: testUser.id,
-                //     username: testUser.username,
-                //     email: testUser.email,
-                //     name: testUser.name
-                // });
+                const workout = res.body[0];
+                console.log("User workout:", workout)
+            
+                expect(workout).to.include.keys('user','sets');
+                expect(workout.sets).to.include.keys( 'exercise', 'set', 'reps')
+                expect(workout.user).to.be.a('string');
+                
             });
     });
 
@@ -132,6 +129,7 @@ describe('Integration tests for: /api/home', function() {
         let foundWorkout;
         return Workout.find()
             .then(workouts => {
+                
                 expect(workouts).to.be.a('array');
                 expect(workouts).to.have.lengthOf.at.least(1);
                 foundWorkout = workouts[0];
@@ -141,10 +139,12 @@ describe('Integration tests for: /api/home', function() {
                     .set('Authorization', `Bearer ${jwtToken}`);
             })
             .then(res => {
+                
                 expect(res).to.have.status(HTTP_STATUS_CODES.OK);
                 expect(res).to.be.json;
-                expect(res.body).to.be.a('object');
-                expect(res.body).to.include.keys('user', 'exercise', 'set', 'reps');
+                // expect(res.body).to.be.a('object');
+                expect(res.body).to.include.keys('user','sets');
+                expect(res.body.sets).to.include.keys('exercise', 'set', 'reps');
 
             });
     });
@@ -183,11 +183,6 @@ describe('Integration tests for: /api/home', function() {
     }
 
     function createFakerWorkout() {
-        return {
-            exercise: faker.lorem.word(),
-            set: faker.random.number(),
-            reps: faker.random.number(),
-
-        };
+        return  {sets:{exercise: faker.lorem.word(),set: faker.random.number(),reps: faker.random.number()}};
     }
 });

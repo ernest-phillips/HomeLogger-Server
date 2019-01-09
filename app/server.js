@@ -43,7 +43,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/home', workoutRouter);
-app.use('/api/exercises', exerciseRouter);
+
 app.use(express.static('./public', {
     extensions: ['html', 'htm']
 

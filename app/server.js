@@ -24,83 +24,81 @@ const {
     workoutRouter
 } = require('./workout/workout.router');
 const {
-    exerciseRouter
-} = require('./exercise/exercise.router')
 
 
-let server;
-const app = express(); //Initialize express server
-passport.use(localStrategy);
-passport.use(jwtStrategy);
+    let server;
+    const app = express(); //Initialize express server
+    passport.use(localStrategy);
+    passport.use(jwtStrategy);
 
-//MIDLEWARE
-app.use(morgan('combined'));
-app.use(express.json());
-app.use(express.static('./public'));
-app.use(express.urlencoded({ extended: true }));
+    //MIDLEWARE
+    app.use(morgan('combined'));
+    app.use(express.json());
+    app.use(express.static('./public'));
+    app.use(express.urlencoded({ extended: true }));
 
-//ROUTER SETUP
-app.use('/api/auth', authRouter);
-app.use('/api/user', userRouter);
-app.use('/api/home', workoutRouter);
+    //ROUTER SETUP
+    app.use('/api/auth', authRouter);
+    app.use('/api/user', userRouter);
+    app.use('/api/home', workoutRouter);
 
-app.use(express.static('./public', {
-    extensions: ['html', 'htm']
+    app.use(express.static('./public', {
+        extensions: ['html', 'htm']
 
-}));
+    }));
 
 
-app.use('*', function(req, res) {
-    res.status(HTTP_STATUS_CODES.NOT_FOUND).json({
-        error: 'Not Found.'
+    app.use('*', function(req, res) {
+        res.status(HTTP_STATUS_CODES.NOT_FOUND).json({
+            error: 'Not Found.'
+        });
     });
-});
 
-module.exports = {
-    app,
-    startServer,
-    stopServer
-};
+    module.exports = {
+        app,
+        startServer,
+        stopServer
+    };
 
-function startServer(testEnv) {
-    return new Promise((resolve, reject) => {
-        let mongoUrl;
+    function startServer(testEnv) {
+        return new Promise((resolve, reject) => {
+            let mongoUrl;
 
-        if (testEnv) {
-            mongoUrl = TEST_MONGO_URL;
-        } else {
-            mongoUrl = MONGO_URL;
-        }
-        mongoose.connect(mongoUrl, { useNewUrlParser: true },
-            err => {
-                if (err) {
-                    console.error(err);
-                    return reject(err);
-                } else {
-                    server = app.listen(PORT, () => {
-                        console.log(`Express sever listining on http://localhost:${PORT}`);
+            if (testEnv) {
+                mongoUrl = TEST_MONGO_URL;
+            } else {
+                mongoUrl = MONGO_URL;
+            }
+            mongoose.connect(mongoUrl, { useNewUrlParser: true },
+                err => {
+                    if (err) {
+                        console.error(err);
+                        return reject(err);
+                    } else {
+                        server = app.listen(PORT, () => {
+                            console.log(`Express sever listining on http://localhost:${PORT}`);
+                            resolve();
+                        }).on('error', err => {
+                            mongoose.disconnect();
+                            reject(err);
+                        });
+                    }
+                });
+        });
+    }
+
+    function stopServer() {
+        return mongoose
+            .disconnect()
+            .then(() => new Promise((resolve, reject) => {
+                server.close(err => {
+                    if (err) {
+                        console.error(err);
+                        return reject(err);
+                    } else {
+
                         resolve();
-                    }).on('error', err => {
-                        mongoose.disconnect();
-                        reject(err);
-                    });
-                }
-            });
-    });
-}
-
-function stopServer() {
-    return mongoose
-        .disconnect()
-        .then(() => new Promise((resolve, reject) => {
-            server.close(err => {
-                if (err) {
-                    console.error(err);
-                    return reject(err);
-                } else {
-
-                    resolve();
-                }
-            });
-        }));
-}
+                    }
+                });
+            }));
+    }

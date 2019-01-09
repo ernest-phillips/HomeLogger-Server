@@ -28,14 +28,10 @@ describe('Integration tests for: /api/auth', function() {
 
 
     before(function() {
-        // Be sure to always return a promise to Mocha when doing asynchronous work,
-        // Otherwise Mocha will just asume your work is done even if it isn't.
 
-        // Starts our Express Server, so we can test it.
         return startServer(true);
     });
 
-    // Mocha Hook: Runs before EACH "it" test block.
     beforeEach(function() {
         testUser = createFakerUser();
 

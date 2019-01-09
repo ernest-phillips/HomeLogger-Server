@@ -63,7 +63,6 @@ userRouter.post('/', (request, response) => {
 
 // RETRIEVE USERS
 userRouter.get('/', (request, response) => {
-    console.log("Retrieving All Users");
     User.find()
         .then(users => {
 
@@ -82,7 +81,6 @@ userRouter.get('/:userid', (request, response) => {
     User.findById(request.params.userid)
         .then(user => {
 
-            console.log(request.params.userid)
             return response.status(HTTP_STATUS_CODES.OK).json(user.serialize());
 
         })

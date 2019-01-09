@@ -1,5 +1,5 @@
 module.exports = {
-  PORT: process.env.PORT || 8080,
+  PORT: process.env.PORT || 5000,
   HTTP_STATUS_CODES: {
     OK: 200,
     CREATED: 201,

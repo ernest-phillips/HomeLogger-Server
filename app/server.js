@@ -23,7 +23,9 @@ const {
 const {
     workoutRouter
 } = require('./workout/workout.router');
-
+const {
+    exerciseRouter
+} = require('./exercise/exercise.router')
 
 
 let server;
@@ -41,10 +43,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/home', workoutRouter);
-
+app.use('/api/exercises', exerciseRouter);
 app.use(express.static('./public', {
     extensions: ['html', 'htm']
-
+        // Other options here
 }));
 
 
@@ -80,6 +82,7 @@ function startServer(testEnv) {
                         resolve();
                     }).on('error', err => {
                         mongoose.disconnect();
+                        console.error(err);
                         reject(err);
                     });
                 }
@@ -96,7 +99,7 @@ function stopServer() {
                     console.error(err);
                     return reject(err);
                 } else {
-
+                    console.log('Express sever stopped');
                     resolve();
                 }
             });

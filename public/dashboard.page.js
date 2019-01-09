@@ -1,6 +1,6 @@
 function welcomeUser() {
     let user = CACHE.getAuthenticatedUserFromCache();
-    $('.welcome').html(`<h4>Welcome <a href="#">${user.username}</a></h4>`)
+    $('.welcome').html(`<h3>Welcome <a href="#">${user.username}</a></h3>`)
 }
 
 function checkDate() {

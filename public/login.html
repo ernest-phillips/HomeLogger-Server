@@ -18,12 +18,14 @@
 
         <section class="container js-container">
             <div class="login-page">
-
+<h1 class="log-logo">
+                <a href="/">Fit-Journal</a>
+                </h1>
                 <div class="form">
                     <h1>Sign into your account</h1>
                     <form id="login-form" action="" method="POST">
-                        <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="false">
-                        <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="false" />
+                        <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="off" required/>
+                        <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="off" required />
                         <button class="login-btn" input=text>LOGIN</button>
                     </form>
                     <p class="message"> Not registered?
@@ -34,13 +36,18 @@
             </div>
         </section>
     </main>
-
+<footer>
+        <div class="foot-col">
+            <p>Fit-Journal website created by Ernest L. Phillips &copy; 2019 </p>
+            
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/moment.js"></script>
     <script src="/utilities/cache.module.js"></script>
     <script src="/typeahead.js"></script>
-    <!-- <script src="../utilities/render.module.js"></script> -->
+    
     <script src="/utilities/http.module.js"></script>
     <script src="/utilities/index.js"></script>
     <script src="/auth.page.js"></script>

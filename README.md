@@ -8,6 +8,8 @@ Create an account.
 Choose from a database of various exercises.
 View your workout history and progress.
 
+![alt text](./public/img/fit_j_thumb.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.

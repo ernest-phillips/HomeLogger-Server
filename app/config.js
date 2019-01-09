@@ -10,7 +10,7 @@ module.exports = {
     INTERNAL_SERVER_ERROR: 500,
   },
 
-  MONGO_URL: process.env.MONGO_URL || 'mongodb://ds237932.mlab.com:37932/fit-journal',
+  MONGO_URL: process.env.MONGO_URL || DATABASE_URL,
   TEST_MONGO_URL: process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test-fit-journal',
   JWT_SECRET: process.env.JWT_SECRET || 'default',
   JWT_EXPIRY: process.env.JWT_EXPIRY || '7d',

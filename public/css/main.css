@@ -85,7 +85,7 @@ main {
 .logo {
     justify-content: flex-start;
     width: 50%;
-    font-size: 2rem;
+    font-size: 3rem;
     padding-left: 40px;
     line-height: 40px;
 }
@@ -112,12 +112,12 @@ main {
     justify-content: flex-end;
     text-align: right;
     padding-right: 40px;
-    font-size: 2rem;
+    /* font-size: 3rem; */
 }
 
 .login {
     padding-right: 20px;
-    font-size: 1.5em;
+    font-size: 3rem;
 }
 
 .login {
@@ -842,11 +842,14 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
 }
-
+.highlight{
+    color: #Cdf3
+}
 .devices {
     background-color: rgba(106, 17, 203);
     display: flex;
     flex-direction: row;
+    justify-content: center;
     height: 400px;
     width: 100%;
     align-items: center;
@@ -856,8 +859,8 @@ input[type=number]::-webkit-outer-spin-button {
 .device-text {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 50%;
+    
+    width: 75%;
     padding-left: 40px;
     color: #fff;
     flex-direction: column;

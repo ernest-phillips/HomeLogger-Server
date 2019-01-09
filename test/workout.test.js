@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-// https://www.npmjs.com/package/chai
 const chai = require('chai');
-// http://www.chaijs.com/plugins/chai-http/
 const chaiHttp = require('chai-http');
 const jsonwebtoken = require('jsonwebtoken');
 const faker = require('faker');
@@ -85,7 +83,7 @@ describe('Integration tests for: /api/home', function() {
     afterEach(function() {
 
         return new Promise((resolve, reject) => {
-            
+
             // Deletes the entire database.
             mongoose.connection.dropDatabase()
                 .then(result => {
@@ -109,11 +107,16 @@ describe('Integration tests for: /api/home', function() {
             .get('/api/home')
             .set('Authorization', `Bearer ${jwtToken}`)
             .then(res => {
+<<<<<<< HEAD
                 console.log("The body:",res.body[0].sets);
+=======
+                console.log("The body:", res.body[0].sets);
+>>>>>>> dff35dff0e6fd194376bd54c2775744a4a60aa8b
                 expect(res).to.have.status(HTTP_STATUS_CODES.OK);
                 expect(res).to.be.json;
                 expect(res.body).to.be.a('array');
                 expect(res.body).to.have.lengthOf.at.least(1);
+<<<<<<< HEAD
             
                 const workout = res.body[0];
                 console.log("User workout:", workout)
@@ -122,6 +125,16 @@ describe('Integration tests for: /api/home', function() {
                 expect(workout.sets).to.include.keys( 'exercise', 'set', 'reps')
                 expect(workout.user).to.be.a('string');
                 
+=======
+
+                const workout = res.body[0];
+                console.log("User workout:", workout)
+
+                expect(workout).to.include.keys('user', 'sets');
+                expect(workout.sets).to.include.keys('exercise', 'set', 'reps')
+                expect(workout.user).to.be.a('string');
+
+>>>>>>> dff35dff0e6fd194376bd54c2775744a4a60aa8b
             });
     });
 
@@ -129,7 +142,11 @@ describe('Integration tests for: /api/home', function() {
         let foundWorkout;
         return Workout.find()
             .then(workouts => {
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> dff35dff0e6fd194376bd54c2775744a4a60aa8b
                 expect(workouts).to.be.a('array');
                 expect(workouts).to.have.lengthOf.at.least(1);
                 foundWorkout = workouts[0];
@@ -139,11 +156,19 @@ describe('Integration tests for: /api/home', function() {
                     .set('Authorization', `Bearer ${jwtToken}`);
             })
             .then(res => {
+<<<<<<< HEAD
                 
                 expect(res).to.have.status(HTTP_STATUS_CODES.OK);
                 expect(res).to.be.json;
                 // expect(res.body).to.be.a('object');
                 expect(res.body).to.include.keys('user','sets');
+=======
+
+                expect(res).to.have.status(HTTP_STATUS_CODES.OK);
+                expect(res).to.be.json;
+                // expect(res.body).to.be.a('object');
+                expect(res.body).to.include.keys('user', 'sets');
+>>>>>>> dff35dff0e6fd194376bd54c2775744a4a60aa8b
                 expect(res.body.sets).to.include.keys('exercise', 'set', 'reps');
 
             });
@@ -183,6 +208,10 @@ describe('Integration tests for: /api/home', function() {
     }
 
     function createFakerWorkout() {
+<<<<<<< HEAD
         return  {sets:{exercise: faker.lorem.word(),set: faker.random.number(),reps: faker.random.number()}};
+=======
+        return { sets: { exercise: faker.lorem.word(), set: faker.random.number(), reps: faker.random.number() } };
+>>>>>>> dff35dff0e6fd194376bd54c2775744a4a60aa8b
     }
 });

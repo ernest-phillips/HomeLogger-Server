@@ -25,7 +25,7 @@ exerciseRouter.post('/', (request, response) => {
 
     const validation = Joi.validate(newExercise, ExerciseJoiSchema);
     if (validation.error) {
-        console.log("Validation Error")
+
         return response.status(HTTP_STATUS_CODES.BAD_REQUEST).json({
             error: validation.error
         });
@@ -43,7 +43,7 @@ exerciseRouter.post('/', (request, response) => {
 
 // RETRIEVE Exercises
 exerciseRouter.get('/', (request, response) => {
-    console.log("Retrieving All Exercises");
+
     Exercise.find()
         .then(exercises => {
             return response.status(HTTP_STATUS_CODES.OK).json(
@@ -52,25 +52,20 @@ exerciseRouter.get('/', (request, response) => {
             );
         })
         .catch(error => {
-            // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
             return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
         });
 });
 // RETRIEVE ONE EXERCISE
 exerciseRouter.get('/:id', (request, response) => {
 
-    // Step 1: Attempt to retrieve a specific user using Mongoose.Model.findById()
-    // https://mongoosejs.com/docs/api.html#model_Model.findById
     Exercise.findById(request.params.id)
         .then(exercise => {
-            console.log(exercise)
-                // Step 2A: Return the correct HTTP status code, and the user correctly formatted via serialization.
-                // return response.status(HTTP_STATUS_CODES.OK).json(user.serialize());
+
+
             return response.json(exercise);
 
         })
         .catch(error => {
-            // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
             return response.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
         });
 });

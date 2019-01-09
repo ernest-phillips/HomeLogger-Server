@@ -1,6 +1,6 @@
 function welcomeUser() {
     let user = CACHE.getAuthenticatedUserFromCache();
-    $('.welcome').html(`<h4>Welcome <a href="#">${user.username}</a></h4>`)
+    $('.welcome').html(`<h3>Welcome <a href="#">${user.username}</a></h3>`)
 }
 
 function checkDate() {
@@ -8,23 +8,15 @@ function checkDate() {
 
     if (localStorage.getItem('currentDate') == null) {
         let cDate = moment(new Date()).subtract(count, 'day');
-        console.log("No local storage date: ", cDate)
         changeDate(count, cDate);
     } else {
         let cDate = moment(localStorage.getItem('currentDate'));
-        console.log("Moment Converted:", moment(localStorage.getItem('currentDate')));
         changeDate(count, cDate);
     }
-
-
-    // localStorage.setItem('currentDate', cDate.format('YYYY-MM-DD'));
-
-
 }
 
 function changeDate(count, cDate) {
 
-    console.log("The current date is:", cDate)
     $('.js-caretLFT').on('click', function() {
         cDate = cDate.subtract(1, 'day');
         count++
@@ -34,7 +26,6 @@ function changeDate(count, cDate) {
         localStorage.setItem('currentDate', cDate.format('YYYY-MM-DD'));
         localStorage.setItem('dateString', cDate.format("dddd, MMMM Do"))
         getSetDataFromAPI();
-        // retrieveSets(cDate.format('YYYY-MM-DD'));
 
     });
 
@@ -47,12 +38,10 @@ function changeDate(count, cDate) {
         localStorage.setItem('currentDate', cDate.format('YYYY-MM-DD'));
         localStorage.setItem('dateString', cDate.format("dddd, MMMM Do"))
         getSetDataFromAPI();
-        // retrieveSets(cDate.format('YYYY-MM-DD'));
     });
 }
 
 function getSetDataFromAPI() {
-    console.log("retrieving sets")
 
     let user = window.CACHE_MODULE.getAuthenticatedUserFromCache();
 
@@ -122,11 +111,9 @@ function displayDate() {
     if (localStorage.getItem('dateString') == null) {
         let cDate = moment().format("dddd, MMMM Do");
         $(".js-dateSel").html(cDate);
-        console.log("Using today's date", cDate)
     } else {
         let cDate = localStorage.getItem('dateString');
         $(".js-dateSel").html(cDate);
-        console.log("Using local storage date", cDate)
     }
 }
 
@@ -151,10 +138,7 @@ function onPageLoad() {
     displayDate();
     checkDate();
     getSetDataFromAPI();
-
     deleteSet();
-
-
 }
 
 

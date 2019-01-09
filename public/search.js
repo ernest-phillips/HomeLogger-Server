@@ -84,11 +84,7 @@ function getSetData() {
     let weight = $('#POST-weight').val();
     let exerciseName = $('#exerciseName').text();
     let date = localStorage.getItem('currentDate');
-    console.log(date)
     let set = 1;
-
-
-
 
     window.HTTP_MODULE.createWorkout({
         newWorkout: {

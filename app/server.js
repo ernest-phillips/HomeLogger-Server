@@ -34,14 +34,14 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 //MIDLEWARE
-app.use(morgan('combined')); //allows morgan to intercept and alog all http requests to console
-app.use(express.json()); // Required so AJAX request JSON data payload can be parsed and saved into request.body
+app.use(morgan('combined'));
+app.use(express.json());
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 
 //ROUTER SETUP
 app.use('/api/auth', authRouter);
-app.use('/api/user', userRouter); //Redirects all calls to /api/user to userRouter
+app.use('/api/user', userRouter);
 app.use('/api/home', workoutRouter);
 app.use('/api/exercises', exerciseRouter);
 app.use(express.static('./public', {
@@ -91,18 +91,14 @@ function startServer(testEnv) {
 }
 
 function stopServer() {
-    //Step 1: disconnect from MongoDB database using Mongoose
     return mongoose
         .disconnect()
         .then(() => new Promise((resolve, reject) => {
-            //Step 2: Shut down the ExpressJS sever
             server.close(err => {
                 if (err) {
-                    //Step 3A: if an error occurred while shutting down, print out the error to the console and resolve promise
                     console.error(err);
                     return reject(err);
                 } else {
-                    //Step 3B: If server shutdown correctly, log success message.
                     console.log('Express sever stopped');
                     resolve();
                 }

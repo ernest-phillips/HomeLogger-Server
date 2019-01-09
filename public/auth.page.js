@@ -21,7 +21,7 @@ function onSignUpSubmit(event) {
         userData,
         onSuccess: user => {
             alert(`User "${user.username}" created, you may now log in.`);
-            window.open('/index.html', '_self');
+            window.open('/login.html', '_self');
         },
         onError: err => {
             alert('There was a problem processing your request, please try again later.');

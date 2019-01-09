@@ -4,7 +4,6 @@ window.HTTP_MODULE = {
     loginUser,
     getUserWorkouts,
     createWorkout,
-    updateWorkout,
     deleteWorkout,
     logoutUser
 };
@@ -55,7 +54,6 @@ function loginUser(options) {
 
 
 function logoutUser(options) {
-    console.log("logout user called")
     const {
         userData,
         onSuccess,
@@ -89,7 +87,7 @@ function getUserWorkouts(options) {
         url: '/api/home',
         contentType: 'application/json',
         dataType: 'json',
-        data: console.log(data),
+        data: [],
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
@@ -111,7 +109,6 @@ function createWorkout(options) {
         onSuccess,
         onError
     } = options;
-    console.log(newWorkout)
     $.ajax({
         type: 'POST',
         url: '/api/home',
@@ -131,33 +128,7 @@ function createWorkout(options) {
     });
 }
 
-function updateWorkout(options) {
-    const {
-        jwtToken,
-        workoutId,
-        newWorkout,
-        onSuccess,
-        onError
-    } = options;
 
-    $.ajax({
-        type: 'PUT',
-        url: `/api/home/${workoutId}`,
-        contentType: 'application/json',
-        dataType: 'json',
-        data: JSON.stringify(newWorkout),
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
-        },
-        success: onSuccess,
-        error: err => {
-            console.error(err);
-            if (onError) {
-                onError();
-            }
-        }
-    });
-}
 
 function deleteWorkout(options) {
     const {

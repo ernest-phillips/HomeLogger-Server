@@ -4,13 +4,14 @@
     box-sizing: border-box;
 }
 
-html {
-    font-size: 10px;
-    font-family: "Proxima Nova Thin", Arial, Helvetica, sans-serif;
+html {   
+   font-size: 10px;   
 }
 
 body {
+    
     background-color: #131313;
+    font-family: "Proxima Nova Thin", Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -38,7 +39,7 @@ h4 {
 main {
     display: flex;
     width: 100%;
-    /* justify-content: center; */
+    
     margin: 0 auto;
     min-height: 1040px;
     background-color: #fff;
@@ -85,7 +86,7 @@ main {
 .logo {
     justify-content: flex-start;
     width: 50%;
-    font-size: 2rem;
+    font-size: 3rem;
     padding-left: 40px;
     line-height: 40px;
 }
@@ -112,12 +113,12 @@ main {
     justify-content: flex-end;
     text-align: right;
     padding-right: 40px;
-    font-size: 2rem;
+    
 }
 
 .login {
     padding-right: 20px;
-    font-size: 1.5em;
+    font-size: 3rem;
 }
 
 .login {
@@ -147,17 +148,18 @@ main {
 footer {
     background-color: #131313;
     width: 100%;
-    height: 300px;
+    max-height: 300px;
     color: aliceblue;
     display: flex;
-    justify-content: center;
-    /* border-top: #67B26F 3px solid; */
+    justify-content: center;   
     border-top: #FFF 3px solid;
+    padding: 20px;
 }
 
 .foot-col {
     flex-direction: column;
     margin: 30px 60px;
+    font-size: 2rem;
 }
 
 ul {
@@ -186,11 +188,7 @@ ul {
 }
 
 
-/* font-size: 50px;
-line-height:50px;
-color:#fff;
-max-width:370px;
-@media (max-width: 1024px) */
+
 
 
 /*LOGIN CSSS*/
@@ -204,7 +202,7 @@ max-width:370px;
 }
 
 .form {
-    margin-top: 100px;
+    margin-top: 20px;
     background-color: #e6e6ea;
     display: flex;
     flex-direction: column;
@@ -224,7 +222,19 @@ max-width:370px;
 .not-reg {
     background-color: beige;
     border-top: #92a2aa solid 2px;
-    /* margin-bottom: auto; */
+    
+}
+.log-logo{
+    display: flex;
+    margin-top: 40px;    
+}
+
+
+.log-logo a:visited{
+    color: #000;
+}
+.log-logo a:hover{
+    color: #6123a3
 }
 
 .item {
@@ -232,7 +242,7 @@ max-width:370px;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
-    width: 350px;
+    width: 100%;
     height: 70px;
     display: flex;
     margin-left: auto;
@@ -246,13 +256,14 @@ max-width:370px;
 }
 
 .login-btn {
-    width: 350px;
+    width: 100%;
     height: 70px;
     background-color: #4ca2cd;
     color: #fff;
     border: none;
     padding: 10px;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     border-radius: 5px;
     font-size: 3em;
     font-weight: 500;
@@ -263,20 +274,29 @@ max-width:370px;
 }
 
 #splash-login {
+    display: flex;
     background-color: #DFDCE3;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 #login-form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .login-page {
     background-color: transparent;
     height: 100%;
+    justify-content: center;
+    display:flex;
 }
-
+.signup-form{
+    width: 100%
+}
 .sign-up {
     padding: 10px;
     color: #FFF;
@@ -302,8 +322,7 @@ max-width:370px;
 }
 
 .log-header {
-    display: flex;
-    /*   justify-content: space-evenly; */
+    display: flex;    
     margin: 0px;
     height: 40px;
 }
@@ -341,14 +360,14 @@ max-width:370px;
 
 .ex-head {
     display: flex;
-    /*   justify-content: flex-start; */
+  
     width: 50%;
     padding-left: 10px;
 }
 
 .ex-name {
     display: flex;
-    /*   justify-content: flex-start; */
+    
     background-color: #DFDCE3;
     align-items: center;
     width: 50%;
@@ -361,10 +380,7 @@ max-width:370px;
 }
 
 
-/* .workoutInfo {
-    border: 1px solid gray;
-    padding: 10px;
-} */
+
 
 .ex-list {
     width: 95%;
@@ -427,7 +443,7 @@ max-width:370px;
     -moz-border-radius: 8px;
     border-radius: 8px;
     outline: none;
-    min-width: 75%;
+    width: 100%;
 }
 
 .typeahead {
@@ -524,7 +540,7 @@ max-width:370px;
 
 .date-sel {
     min-width: 200px;
-    /*   border: 2px solid lightgrey; */
+    
     text-align: center;
     align-items: center;
     font-size: 1.75em;
@@ -544,12 +560,12 @@ max-width:370px;
 
 .set-wkout {
     display: flex;
-    width: 300px;
+    width: 500px;
     min-height: 200px;
-    background-color: #ecc309;
-    /* border: #131313 2px solid; */
-    padding: 15px;
-    margin: 0 auto;
+    background-color: #ecc309;    
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
     border-radius: 5px;
     box-shadow: 1px 1px 5px #131313;
@@ -559,6 +575,8 @@ max-width:370px;
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hidden {
@@ -576,15 +594,19 @@ max-width:370px;
     margin-top: 100px;
     margin-bottom: 50px;
     width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .set-input {
     margin-top: 15px;
-    font-size: 1.25em;
+    font-size: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search-btn {
-    /* justify-content: flex-end; */
+   
     height: 50px;
     border: 0px;
     background-color: #465C8b;
@@ -660,7 +682,11 @@ max-width:370px;
 /* FORM styles */
 
 fieldset {
+    display: flex;
     border: none;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .avatar {
@@ -695,7 +721,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: cover;
     width: 100%;
     min-height: 600px;
-    /* border-top: solid #fff 5px; */
+    
 }
 
 .home-container {
@@ -735,10 +761,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 .bg-info {
     display: flex;
-    /* background-color: #DFDCE3; */
+    padding-top: 20px;
+    padding-bottom: 20px;
     background: rgb(2, 0, 36);
     background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(75, 75, 75, 1) 98%);
-    height: 550px;
+    max-height: 550px;
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
@@ -751,7 +778,7 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    /* line-height: 300px; */
+ 
     position: absolute;
     top: 20%;
     left: 50%;
@@ -777,6 +804,15 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     flex-direction: column;
 }
+#logout-btn{
+    font-size: 3rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+#logout-btn a:hover{color:yellow}
+#logout-btn a:visited{color:#fff}
+
 
 
 /* Splash Page Graphics */
@@ -784,10 +820,10 @@ input[type=number]::-webkit-outer-spin-button {
 .activites1 {
     display: flex;
     height: 390px;
-    width: 280px;
+    width: 45%;
     background: linear-gradient(rgba(106, 17, 203, 0.45), rgba(37, 117, 252, 0.45)), url('../img/strength-act.jpg');
     background-size: cover;
-    /* background-color: #E8B10C; */
+    
     flex-direction: column;
     padding-top: 30px;
     padding-left: 10px;
@@ -803,10 +839,10 @@ input[type=number]::-webkit-outer-spin-button {
 .activites2 {
     display: flex;
     height: 390px;
-    width: 280px;
+    width: 45%;
     background: linear-gradient(rgba(106, 17, 203, 0.45), rgba(37, 117, 252, 0.45)), url('../img/stairs-act.jpg');
     background-size: cover;
-    /* background-color: #E8B10C; */
+   
     flex-direction: column;
     padding-top: 30px;
     padding-left: 10px;
@@ -842,11 +878,14 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
 }
-
+.highlight{
+    color: #E8B10C;
+}
 .devices {
     background-color: rgba(106, 17, 203);
     display: flex;
     flex-direction: row;
+    justify-content: center;
     height: 400px;
     width: 100%;
     align-items: center;
@@ -856,8 +895,8 @@ input[type=number]::-webkit-outer-spin-button {
 .device-text {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 50%;
+    
+    width: 75%;
     padding-left: 40px;
     color: #fff;
     flex-direction: column;
@@ -878,12 +917,6 @@ input[type=number]::-webkit-outer-spin-button {
     max-height:
 }
 
-.already {
-    color: #fff;
-    margin-top: 20px;
-    font-size: 1.25px;
-    height: 15px;
-}
 
 .divided {
     width: 5px;
@@ -891,18 +924,34 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #fff;
 }
 
-
-/* .already a {} */
-
-.already a:hover {
-    color: #fff;
-}
-
-.already a:visited {
-    color: #fff;
-}
-
 .message {
     font-size: 1.75em;
     margin-top: 10px;
+}
+
+.message a:visited{
+    color: #4CA2CD;
+}
+.message a:hover{
+    color: #6123a3;
+}
+
+/* MOBILE STYLING */
+
+@media only screen and (max-width: 600px) {
+  html{
+      font-size: 7px
+  }
+.set-wkout{
+    width: 100%;
+}
+
+.wo-container,
+ .ex-list{ font-size: 3rem;}
+  .log-header{ font-size: 3rem;}
+  .ex-head{ font-size: 3rem;}
+  .stat-labels{ font-size: 3rem;}
+.add-ex{
+    font-size: 3rem;
+}
 }

@@ -25,6 +25,7 @@ function onSignUpSubmit(event) {
         },
         onError: err => {
             alert('There was a problem processing your request, please try again later.');
+
         }
     });
 }

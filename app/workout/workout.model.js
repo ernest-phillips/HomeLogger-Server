@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> dff35dff0e6fd194376bd54c2775744a4a60aa8b
 
 const workoutSchema = new mongoose.Schema({
     user: {

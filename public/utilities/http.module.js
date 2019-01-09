@@ -1,11 +1,12 @@
+// import axios from 'axios';
 window.HTTP_MODULE = {
     signupUser,
     loginUser,
     getUserWorkouts,
-    getWorkoutById,
     createWorkout,
     updateWorkout,
-    deleteWorkout
+    deleteWorkout,
+    logoutUser
 };
 
 function signupUser(options) {
@@ -31,7 +32,6 @@ function signupUser(options) {
 }
 
 function loginUser(options) {
-    console.log("login user called")
     const {
         userData,
         onSuccess,
@@ -52,7 +52,32 @@ function loginUser(options) {
         }
     });
 }
-// beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', Bearer ${jwtToken}); }
+
+
+function logoutUser(options) {
+    console.log("logout user called")
+    const {
+        userData,
+        onSuccess,
+        onError
+    } = options;
+
+    $.ajax({
+        type: 'POST',
+        url: '/api/auth/logout',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(userData),
+        success: onSuccess,
+        error: err => {
+            console.error(err);
+            if (onError) {
+                onError(err);
+            }
+        }
+    });
+}
+
 function getUserWorkouts(options) {
     const {
         jwtToken,
@@ -61,10 +86,10 @@ function getUserWorkouts(options) {
     } = options;
     $.ajax({
         type: 'GET',
-        url: '/api/workout',
+        url: '/api/home',
         contentType: 'application/json',
         dataType: 'json',
-        data: undefined,
+        data: console.log(data),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
@@ -78,28 +103,21 @@ function getUserWorkouts(options) {
     });
 }
 
-function getWorkoutById(options) {
-    const {
-        workoutId,
-        onSuccess
-    } = options;
-    $.getJSON(`/api/workout/${workoutId}`, onSuccess);
-}
-
 function createWorkout(options) {
+
     const {
         jwtToken,
-        newworkout,
+        newWorkout,
         onSuccess,
         onError
     } = options;
-
+    console.log(newWorkout)
     $.ajax({
         type: 'POST',
-        url: '/api/workout',
+        url: '/api/home',
         contentType: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(newworkout),
+        data: JSON.stringify(newWorkout),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
@@ -117,17 +135,17 @@ function updateWorkout(options) {
     const {
         jwtToken,
         workoutId,
-        newworkout,
+        newWorkout,
         onSuccess,
         onError
     } = options;
 
     $.ajax({
         type: 'PUT',
-        url: `/api/workout/${workoutId}`,
+        url: `/api/home/${workoutId}`,
         contentType: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(newworkout),
+        data: JSON.stringify(newWorkout),
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
@@ -145,19 +163,19 @@ function deleteWorkout(options) {
     const {
         workoutId,
         jwtToken,
-        onSuccess,
+        deleteSuccess,
         onError
     } = options;
     $.ajax({
         type: 'delete',
-        url: `/api/workout/${workoutId}`,
+        url: `/api/home/${workoutId}`,
         contentType: 'application/json',
         dataType: 'json',
         data: undefined,
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
-        success: onSuccess,
+        success: deleteSuccess,
         error: err => {
             console.error(err);
             if (onError) {

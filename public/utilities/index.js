@@ -1,6 +1,10 @@
 const STATE = {};
-
+const HTTP = window.HTTP_MODULE;
 const CACHE = window.CACHE_MODULE;
+const ETC = window.ETC_MODULE;
+const RENDER = window.RENDER_MODULE;
+// const axios = require('axios');
+
 $(document).ready(onPageLoad);
 
 
@@ -10,11 +14,5 @@ function onPageLoad() {
 
 function updateAuthenticatedUI() {
     const authUser = CACHE.getAuthenticatedUserFromCache();
-    if (authUser) {
-        STATE.authUser = authUser;
-        $('#nav-greeting').html(`Welcome, ${authUser.name}`);
-        $('#auth-menu').removeAttr('hidden');
-    } else {
-        $('#default-menu').removeAttr('hidden');
-    }
+
 }

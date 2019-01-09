@@ -6,65 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fit-Journal | Login</title>
-
-    <link rel="stylesheet" href="/main.css" />
-    <link rel="stylesheet" href="/login.css" />
+    <link id="icon" rel="icon" type="image/png" href="/img/dumbbell_b.png">
+    <link rel="stylesheet" href="/css/main.css" />
 
 </head>
 
 <body>
-    <main class="login-page">
+
+    <main id="splash-login">
+
+
         <section class="container js-container">
             <div class="login-page">
-                <h1>Sign into your account</h1>
-                <div class="form column">
+
+                <div class="form">
+                    <h1>Sign into your account</h1>
                     <form id="login-form" action="" method="POST">
-                        <input class="item" id="username-txt" type="text" placeholder="username" name="username">
-                        <input class="item" id="password-txt" type="password" placeholder="password" name="password" />
-                        <button class="login-btn" input=text>Login</button>
+                        <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="false">
+                        <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="false" />
+                        <button class="login-btn" input=text>LOGIN</button>
                     </form>
+                    <p class="message"> Not registered?
+                        <a class="js-signUp" href="/signup.html">Create an account </a>
+                    </p>
                 </div>
-                <p class="message"> Not registered?
-                    <a class="js-signUp" href="#">Create an account </a>
-                </p>
+
             </div>
-
-
-
-
         </section>
     </main>
-    <footer>
-        <div class="foot-col">
-            <ul>
-                <li class="ftLinks"><a href="#"> Features </a></li>
-                <li class="ftLinks"><a href="#"> About </a></li>
-                <li class="ftLinks"><a href="#"> Blog</a></li>
-                <li class="ftLinks"><a href="#"> Contact Us </a></li>
-            </ul>
-        </div>
-        <div class="foot-col">
-            <ul>
-                <li class="ftLinks"><a href="#">Facebook</a></li>
-                <li class="ftLinks"><a href="#">Instagram</a></li>
-                <li class="ftLinks"><a href="#">Twitter</a></li>
-                <li class="ftLinks"><a href="#">Youtube</a></li>
-            </ul>
-        </div>
-        <div class="foot-col">
-            <ul>
-                <li class="ftLinks"><a href="#">SIGN UP</a></li>
-                <li class="ftLinks"><a href="#">LOG IN</a></li>
-            </ul>
-        </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/moment.js"></script>
     <script src="/utilities/cache.module.js"></script>
-    <!-- <script src="/utilities/render.module.js"></script> -->
+    <script src="/typeahead.js"></script>
+    <!-- <script src="../utilities/render.module.js"></script> -->
     <script src="/utilities/http.module.js"></script>
+    <script src="/utilities/index.js"></script>
     <script src="/auth.page.js"></script>
-    <script src="/index.page.js"></script>
+    <script src="/search.js"></script>
     <script src="/home.js"></script>
 </body>
 

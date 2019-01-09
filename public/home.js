@@ -1,31 +1,30 @@
-let STATE = {};
-// All these modules are are defined in /public/utilities
-// const RENDER = window.RENDER_MODULE;
-// const HTTP = window.HTTP_MODULE;
-const CACHE = window.CACHE_MODULE;
+$(document).ready(onPageLoadHome);
 
-$(document).ready(onPageLoad);
-
-function onPageLoad() {
+function onPageLoadHome() {
     updateAuthenticatedUI();
 
-    if (STATE.authUser) {
-        HTTP.getUserworkouts({
-            jwtToken: STATE.authUser.jwtToken,
-            onSuccess: RENDER.renderWorkoutsList
-        });
-    }
+    // if (STATE.authUser) {
+    //     HTTP.getUserworkouts({
+    //         jwtToken: STATE.authUser.jwtToken,
+    //         onSuccess: console.log("User Authenticated")
+    //             // RENDER.renderWorkoutsList
+    //     });
+    // }
+    { /* <nav class="nav-login"><a id="logout-btn" href="">Log Out</a> </nav> */ }
 
-    $('#logout-btn').on('click', onLogoutBtnClick);
-    $('#workout-list').on('click', '#delete-workout-btn', onDeleteWorkoutBtnClick);
-    $('#workout-list').on('click', '#workout-card', onWorkoutCardClick);
+    // $('#workout-list').on('click', '#delete-workout-btn', onDeleteWorkoutBtnClick);
+    // $('#workout-list').on('click', '#workout-card', onWorkoutCardClick);
 }
 
+
 function onLogoutBtnClick(event) {
-    const confirmation = confirm('Are you sure you want to logout?');
-    if (confirmation) {
+    event.preventDefault();
+    console.log("Logout Clicked")
+    try {
         CACHE.deleteAuthenticatedUserFromCache();
-        window.open('/home.html', '_self');
+        window.open('/index.html', '_self')
+    } catch {
+        console.error(error);
     }
 }
 

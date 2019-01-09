@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard</title>
+    <link id="icon" rel="icon" type="image/png" href="/img/dumbbell_b.png">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="nav-bar"></div>
+
+    <header class="header">
+        <div class="logo">Fit-Journal</div>
+        <nav class="nav-login">
+            <a id="logout-btn" href="/logout">Log Out</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="ex-container ">
+            <div id="the-basics" class="">
+                <input class="search-ex typeahead" type="text" placeholder="Search Exercises" />
+                <button type="button" class="search-btn">Add Exercise</button>
+            </div>
+            <div class="set-wkout">
+                <form id="saveSet" action="/api/home" class="js-setworkOut" method="POST">
+                    <fieldset>
+
+                        <h3 id="exerciseName"></h3>
+                        <div class="set-input">
+                            <label id="reps-lbl" for="POST-reps">Number of reps:</label>
+                            <input id="POST-reps" type="number" name="reps">
+                        </div>
+                        <div class="set-input">
+                            <label id="weight-lbl" for="POST-weight">Amount of weight:</label>
+                            <input id="POST-weight" type="number" name="weight">
+                        </div>
+                        <div class="form-save">
+                            <button class="save-set" date="">Save Set</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- <div class="js-container alphalist"></div>
+            <ul>
+                <li>
+                    <h3>A</h3>
+                </li>
+            </ul> -->
+
+        </section>
+
+    </main>
+    <footer>
+        <div class="foot-col">
+            <ul>
+                <li class="ftLinks"><a href="#"> Features </a></li>
+                <li class="ftLinks"><a href="#"> About </a></li>
+                <li class="ftLinks"><a href="#"> Blog</a></li>
+                <li class="ftLinks"><a href="#"> Contact Us </a></li>
+            </ul>
+        </div>
+        <div class="foot-col">
+            <ul>
+                <li class="ftLinks"><a href="#">Facebook</a></li>
+                <li class="ftLinks"><a href="#">Instagram</a></li>
+                <li class="ftLinks"><a href="#">Twitter</a></li>
+                <li class="ftLinks"><a href="#">Youtube</a></li>
+            </ul>
+        </div>
+        <div class="foot-col">
+            <ul>
+                <li class="ftLinks"><a href="#">SIGN UP</a></li>
+                <li class="ftLinks"><a href="#">LOG IN</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/moment.js"></script>
+    <script src="/utilities/cache.module.js"></script>
+    <script src="/typeahead.js"></script>
+    <!-- <script src="../utilities/render.module.js"></script> -->
+    <script src="/utilities/http.module.js"></script>
+    <script src="/utilities/index.js"></script>
+    <script src="/dashboard.page.js"></script>
+    <script src="/search.js"></script>
+    <script src="/home.js"></script>
+
+</body>
+
+</html>

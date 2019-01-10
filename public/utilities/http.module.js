@@ -102,7 +102,7 @@ function getUserWorkouts(options) {
 }
 
 function createWorkout(options) {
-
+    console.log("Creating Workout")
     const {
         jwtToken,
         newWorkout,

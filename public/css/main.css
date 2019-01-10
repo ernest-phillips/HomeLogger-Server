@@ -964,3 +964,19 @@ input[type=number]::-webkit-outer-spin-button {
         width: 320px;
     }
 }
+
+
+/* INVALID FORMS */
+
+input:required:invalid {
+    border-color: #C00000;
+}
+
+.labels {
+    text-align: left;
+    font-size: 2rem;
+}
+
+.alert {
+    color: #C00000
+}

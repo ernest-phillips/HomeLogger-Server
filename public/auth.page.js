@@ -20,18 +20,19 @@ function onSignUpSubmit(event) {
     HTTP.signupUser({
         userData,
         onSuccess: user => {
-            alert(`User "${user.username}" created, you may now log in.`);
+
+            $('.alert').html(`User "${user.username}" created, you may now log in.`);
             window.open('/login.html', '_self');
         },
         onError: err => {
-            alert('There was a problem processing your request, please try again later.');
+            $('.alert').html('A user with that username and/or email already exists.')
+
 
         }
     });
 }
 
 function onLoginSubmit(event) {
-    console.log("OnLogin Running")
 
     event.preventDefault();
     const userData = {
@@ -46,11 +47,11 @@ function onLoginSubmit(event) {
             authenticatedUser.jwtToken = response.jwtToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
 
-            alert('Login succesful, redirecting you to homepage ...');
+            $('.alert').html('Login succesful, redirecting you to homepage ...');
             window.open('/home.html', '_self');
         },
         onError: err => {
-            alert('Incorrect username or password. Please try again.');
+            $('.alert').html('Incorrect username or password. Please try again.');
         }
     });
 }

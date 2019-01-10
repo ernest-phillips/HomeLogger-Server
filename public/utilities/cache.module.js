@@ -38,4 +38,6 @@ function deleteAuthenticatedUserFromCache() {
     localStorage.removeItem('username');
     localStorage.removeItem('name');
     localStorage.removeItem('email');
+    localStorage.removeItem('currentDate');
+    localStorage.removeItem('dateString');
 }

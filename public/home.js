@@ -36,20 +36,13 @@ function onWorkoutCardClick(event) {
 
 // Handle deleting Workouts
 function onDeleteWorkoutBtnClick(event) {
-    /**
-     * Because "onWorkoutDeleteClick" and "onWorkoutClick" both are listening for clicks inside of
-     * #Workout-card element, we need to call event.stopImmediatePropagation to avoid both
-     * event listeners firing when we click on the delete button inside #Workout-card.
-     */
+
     event.stopImmediatePropagation();
-    // Step 1: Get the Workout id to delete from it's parent.
     const workoutId = $(event.currentTarget)
         .closest('#workout-card')
         .attr('data-workout-id');
-    // Step 2: Verify use is sure of deletion
     const userSaidYes = confirm('Are you sure you want to delete this workout?');
     if (userSaidYes) {
-        // Step 3: Make ajax call to delete workout
         HTTP.deleteWorkout({
             workoutId: workoutId,
             jwtToken: STATE.authUser.jwtToken,

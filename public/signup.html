@@ -21,19 +21,23 @@
                 <h1 class="log-logo">
                     <a href="/">Fit-Journal</a>
                 </h1>
-                <div class="form">
+                <div class="form-wrapper">
 
-                    <h1>Create Free Account</h1>
-                    <form id="sign-up-form" class="signup-form" action="/api/user" method="POST">
 
-                        <input class="item" id="name-txt" type="text" placeholder="name" name="name" autocomplete="off" required/>
-                        <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="off" required/>
-                        <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                            required/>
-                        <input class="item" id="email-txt" type="text" placeholder="email address" name="email" autocomplete="off" />
-                        <button class="login-btn" type="submit">Register</button>
-                        <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
-                    </form>
+                    <div class="form">
+
+                        <h1>Create Free Account</h1>
+                        <form id="sign-up-form" class="signup-form" action="/api/user" method="POST">
+
+                            <input class="item" id="name-txt" type="text" placeholder="name" name="name" autocomplete="off" required/>
+                            <input class="item" id="username-txt" type="text" placeholder="username" name="username" autocomplete="off" required/>
+                            <input class="item" id="password-txt" type="password" placeholder="password" name="password" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                required/>
+                            <input class="item" id="email-txt" type="text" placeholder="email address" name="email" autocomplete="off" />
+                            <button class="login-btn" type="submit">Register</button>
+                            <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -53,7 +57,7 @@
     <script src="/utilities/index.js"></script>
     <script src="/dashboard.page.js"></script>
     <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
-    <script src="/home.js"></script>
+
 
 </body>
 

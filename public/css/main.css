@@ -4,12 +4,11 @@
     box-sizing: border-box;
 }
 
-html {   
-   font-size: 10px;   
+html {
+    font-size: 10px;
 }
 
 body {
-    
     background-color: #131313;
     font-family: "Proxima Nova Thin", Arial, Helvetica, sans-serif;
 }
@@ -39,7 +38,6 @@ h4 {
 main {
     display: flex;
     width: 100%;
-    
     margin: 0 auto;
     min-height: 1040px;
     background-color: #fff;
@@ -59,7 +57,7 @@ main {
 
 .wo-container {
     display: flex;
-    min-width: 800px;
+    width: 60%;
     background-color: #fff;
     margin: 0 auto;
     padding-top: 30px;
@@ -113,7 +111,6 @@ main {
     justify-content: flex-end;
     text-align: right;
     padding-right: 40px;
-    
 }
 
 .login {
@@ -151,7 +148,7 @@ footer {
     max-height: 300px;
     color: aliceblue;
     display: flex;
-    justify-content: center;   
+    justify-content: center;
     border-top: #FFF 3px solid;
     padding: 20px;
 }
@@ -188,9 +185,6 @@ ul {
 }
 
 
-
-
-
 /*LOGIN CSSS*/
 
 .login-page {
@@ -208,7 +202,7 @@ ul {
     flex-direction: column;
     justify-content: center;
     background: #FFFFFF;
-    width: 500px;
+    width: 100%;
     height: 100%;
     align-items: center;
     margin-left: auto;
@@ -222,18 +216,18 @@ ul {
 .not-reg {
     background-color: beige;
     border-top: #92a2aa solid 2px;
-    
 }
-.log-logo{
+
+.log-logo {
     display: flex;
-    margin-top: 40px;    
+    margin-top: 40px;
 }
 
-
-.log-logo a:visited{
+.log-logo a:visited {
     color: #000;
 }
-.log-logo a:hover{
+
+.log-logo a:hover {
     color: #6123a3
 }
 
@@ -292,11 +286,13 @@ ul {
     background-color: transparent;
     height: 100%;
     justify-content: center;
-    display:flex;
+    display: flex;
 }
-.signup-form{
+
+.signup-form {
     width: 100%
 }
+
 .sign-up {
     padding: 10px;
     color: #FFF;
@@ -322,7 +318,7 @@ ul {
 }
 
 .log-header {
-    display: flex;    
+    display: flex;
     margin: 0px;
     height: 40px;
 }
@@ -360,14 +356,12 @@ ul {
 
 .ex-head {
     display: flex;
-  
     width: 50%;
     padding-left: 10px;
 }
 
 .ex-name {
     display: flex;
-    
     background-color: #DFDCE3;
     align-items: center;
     width: 50%;
@@ -378,9 +372,6 @@ ul {
     padding-left: 20px;
     font-weight: normal;
 }
-
-
-
 
 .ex-list {
     width: 95%;
@@ -540,7 +531,6 @@ ul {
 
 .date-sel {
     min-width: 200px;
-    
     text-align: center;
     align-items: center;
     font-size: 1.75em;
@@ -562,7 +552,7 @@ ul {
     display: flex;
     width: 500px;
     min-height: 200px;
-    background-color: #ecc309;    
+    background-color: #ecc309;
     padding: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -606,7 +596,6 @@ ul {
 }
 
 .search-btn {
-   
     height: 50px;
     border: 0px;
     background-color: #465C8b;
@@ -721,7 +710,6 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: cover;
     width: 100%;
     min-height: 600px;
-    
 }
 
 .home-container {
@@ -745,6 +733,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #E8B10C;
     justify-content: center;
     font-family: 'Righteous', cursive;
+    align-items: center;
 }
 
 .home-reg a {
@@ -757,6 +746,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 .home-reg a:hover {
     color: #fff;
+}
+
+.form-wrapper {
+    max-width: 500px;
+    padding: 20px;
 }
 
 .bg-info {
@@ -778,7 +772,6 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: center;
     flex-direction: column;
     text-align: center;
- 
     position: absolute;
     top: 20%;
     left: 50%;
@@ -804,15 +797,20 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     flex-direction: column;
 }
-#logout-btn{
+
+#logout-btn {
     font-size: 3rem;
     color: #fff;
     text-decoration: none;
 }
 
-#logout-btn a:hover{color:yellow}
-#logout-btn a:visited{color:#fff}
+#logout-btn a:hover {
+    color: yellow
+}
 
+#logout-btn a:visited {
+    color: #fff
+}
 
 
 /* Splash Page Graphics */
@@ -823,7 +821,6 @@ input[type=number]::-webkit-outer-spin-button {
     width: 45%;
     background: linear-gradient(rgba(106, 17, 203, 0.45), rgba(37, 117, 252, 0.45)), url('../img/strength-act.jpg');
     background-size: cover;
-    
     flex-direction: column;
     padding-top: 30px;
     padding-left: 10px;
@@ -842,7 +839,6 @@ input[type=number]::-webkit-outer-spin-button {
     width: 45%;
     background: linear-gradient(rgba(106, 17, 203, 0.45), rgba(37, 117, 252, 0.45)), url('../img/stairs-act.jpg');
     background-size: cover;
-   
     flex-direction: column;
     padding-top: 30px;
     padding-left: 10px;
@@ -878,9 +874,11 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
 }
-.highlight{
+
+.highlight {
     color: #E8B10C;
 }
+
 .devices {
     background-color: rgba(106, 17, 203);
     display: flex;
@@ -895,7 +893,6 @@ input[type=number]::-webkit-outer-spin-button {
 .device-text {
     display: flex;
     flex-wrap: wrap;
-    
     width: 75%;
     padding-left: 40px;
     color: #fff;
@@ -917,7 +914,6 @@ input[type=number]::-webkit-outer-spin-button {
     max-height:
 }
 
-
 .divided {
     width: 5px;
     height: 80%;
@@ -929,29 +925,42 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 10px;
 }
 
-.message a:visited{
+.message a:visited {
     color: #4CA2CD;
 }
-.message a:hover{
+
+.message a:hover {
     color: #6123a3;
 }
+
 
 /* MOBILE STYLING */
 
 @media only screen and (max-width: 600px) {
-  html{
-      font-size: 7px
-  }
-.set-wkout{
-    width: 100%;
-}
-
-.wo-container,
- .ex-list{ font-size: 3rem;}
-  .log-header{ font-size: 3rem;}
-  .ex-head{ font-size: 3rem;}
-  .stat-labels{ font-size: 3rem;}
-.add-ex{
-    font-size: 3rem;
-}
+    html {
+        font-size: 7px
+    }
+    .set-wkout {
+        width: 100%;
+    }
+    .wo-container,
+    .ex-list {
+        /* font-size: 1.25rem; */
+    }
+    .log-header {
+        font-size: 3rem;
+    }
+    .ex-head {
+        font-size: 3rem;
+    }
+    .stat-labels,
+    .log-stat-lbl {
+        font-size: 1.5rem;
+    }
+    .add-ex {
+        font-size: 3rem;
+    }
+    .wo-container {
+        width: 320px;
+    }
 }

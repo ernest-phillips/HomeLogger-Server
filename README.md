@@ -1,8 +1,8 @@
-# Fit-Journal with NodeJS
+# Community Story Back-End (Node Server)
 
 View project at
 
-![alt text](./public/img/fit_j_thumb.png)
+![alt text](./public/homeScreen.PNG)
 
 ## Getting Started
 

@@ -25,9 +25,9 @@ function createJwtToken(user) {
 }
 //Login endpoint
 authRouter.get('/login', (req, res) => {
-    const user = request.user.serialize();
+    const user = req.user.serialize();
     const jwtToken = createJwtToken(user);
-    response.json({ jwtToken, user });
+    res.json({ jwtToken, user });
 });
 
 authRouter.post('/login', localPassportMiddleware, (request, response) => {
@@ -50,7 +50,6 @@ authRouter.post('/refresh', jwtPassportMiddleware, (request, response) => {
 });
 
 authRouter.post('/logout', (req, res) => {
-
     res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
     res.json({
 

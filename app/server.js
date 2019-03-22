@@ -20,12 +20,7 @@ const {
     jwtStrategy
 } = require('./auth/auth.strategy');
 
-const {
-    workoutRouter
-} = require('./workout/workout.router');
-const {
-    exerciseRouter
-} = require('./exercise/exercise.router')
+
 
 
 let server;
@@ -41,14 +36,24 @@ app.use(express.urlencoded({ extended: true }));
 
 //ROUTER SETUP
 app.use('/api/auth', authRouter);
-app.use('/api/user', userRouter);
-app.use('/api/home', workoutRouter);
-app.use('/api/exercises', exerciseRouter);
+app.use('/api/users', userRouter);
+
 app.use(express.static('./public', {
     extensions: ['html', 'htm']
         // Other options here
 }));
 
+// CORS
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+    if (req.method === 'OPTIONS') {
+      return res.send(204);
+    }
+    next();
+  });
+  
 
 app.use('*', function(req, res) {
     res.status(HTTP_STATUS_CODES.NOT_FOUND).json({

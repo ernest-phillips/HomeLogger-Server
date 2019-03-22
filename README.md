@@ -45,3 +45,12 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 ```
+## API Reference
+
+### /api/users
+{
+    "id": "1234567",
+    "name" : "Jphn Dough",
+    "email" : "user@email.com",
+    "username": "john.dough"
+}

@@ -2,7 +2,7 @@
 const express = require('express');
 //Create and issue json Web tokens
 const jwt = require('jsonwebtoken');
-const path = require('path');
+// const path = require('path');
 const {
     localPassportMiddleware,
     jwtPassportMiddleware

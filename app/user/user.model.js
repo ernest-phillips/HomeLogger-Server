@@ -3,10 +3,7 @@ const Joi = require('joi');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
+    
     email: {
         type: String,
         required: true
@@ -25,7 +22,6 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.serialize = function() {
     return {
         id: this._id,
-        name: this.name,
         email: this.email,
         username: this.username,
     };
@@ -48,7 +44,6 @@ userSchema.methods.validatePassword = function(password) {
 
 
 const UserJoiSchema = Joi.object().keys({
-    name: Joi.string().min(1).trim().required(),
     username: Joi.string().alphanum().min(4).max(30).trim().required(),
     password: Joi.string().min(8).max(30).trim().required(),
     email: Joi.string().email().trim().required()

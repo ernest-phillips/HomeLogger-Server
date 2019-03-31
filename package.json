@@ -1,48 +1,47 @@
 {
-    "name": "nodejs_capstone3",
-    "version": "1.0.0",
-    "description": "Thinkful Capstone 3",
-    "main": "server.js",
-    "scripts": {
-        "test": "mocha",
-        "start": "nodemon start.js"
-    },
-    "keywords": [
-        "nodejs",
-        "javascript",
-        "thinkful"
-    ],
-    "author": "Ernest L. Phillips",
-    "license": "ISC",
-    "devDependencies": {
-        "eslint": "^5.10.0",
-        "eslint-config-google": "^0.11.0"
-    },
-    "dependencies": {
-        "axios": "^0.18.0",
-        "bcrypt": "^3.0.2",
-        "bcryptjs": "^2.4.3",
-        "body-parser": "^1.18.3",
-        "chai": "^4.2.0",
-        "chai-http": "^4.2.0",
-        "date-fns": "^1.30.1",
-        "dotenv": "^6.1.0",
-        "express": "^4.16.4",
-        "express-handlebars": "^3.0.0",
-        "faker": "^4.1.0",
-        "firacode": "^1.205.0",
-        "handlebars": "^4.0.12",
-        "joi": "^14.0.6",
-        "jquery": "^3.3.1",
-        "jsonwebtoken": "^8.3.0",
-        "micromodal": "^0.3.2",
-        "mocha": "^5.2.0",
-        "moment": "^2.22.2",
-        "mongoose": "^5.3.11",
-        "morgan": "^1.9.1",
-        "nodemon": "^1.18.9",
-        "passport": "^0.4.0",
-        "passport-jwt": "^4.0.0",
-        "passport-local": "^1.0.0"
-    }
+  "name": "nodejs_capstone3",
+  "version": "1.0.0",
+  "description": "Thinkful Capstone 3",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon start.js"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "thinkful",
+    "react"
+  ],
+  "author": "Ernest L. Phillips",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-google": "^0.11.0",
+    "dotenv": "^6.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt": "^3.0.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "faker": "^4.1.0",
+    "firacode": "^1.205.0",
+    "handlebars": "^4.1.1",
+    "joi": "^14.0.6",
+    "jquery": "^3.3.1",
+    "jsonwebtoken": "^8.3.0",
+    "micromodal": "^0.3.2",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.3.11",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.9",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  }
 }

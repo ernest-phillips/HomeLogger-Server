@@ -1,6 +1,4 @@
-// https://www.npmjs.com/package/chai
 const chai = require('chai');
-// http://www.chaijs.com/plugins/chai-http/
 const chaiHttp = require('chai-http');
 
 const {

@@ -1,16 +1,9 @@
-//Connects to mongoDB
 const mongoose = require('mongoose');
-//Validates data
 const Joi = require('joi');
-//Encrypts passwords
 const bcrypt = require('bcryptjs');
 
-// Each Mongoose schema maps to a MongoDB collection and defines the shape of the documents within that collection.
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
+    
     email: {
         type: String,
         required: true
@@ -29,7 +22,6 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.serialize = function() {
     return {
         id: this._id,
-        name: this.name,
         email: this.email,
         username: this.username,
     };
@@ -52,7 +44,6 @@ userSchema.methods.validatePassword = function(password) {
 
 
 const UserJoiSchema = Joi.object().keys({
-    name: Joi.string().min(1).trim().required(),
     username: Joi.string().alphanum().min(4).max(30).trim().required(),
     password: Joi.string().min(8).max(30).trim().required(),
     email: Joi.string().email().trim().required()

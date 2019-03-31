@@ -6,23 +6,25 @@ const Schema = mongoose.Schema;
 const passageSchema = new Schema({
   author: { type: String, required: true },
   body: { type: String, required: true },
-  meta: { votes: Number }
+  votes: { type: Number }
 });
 
 passageSchema.methods.serialize = function() {
   return {
     id: this._id,
     author: this.author,
-    meta: this.meta
+    body: this.body,
+    votes: this.votes
   };
 };
 
 const PassageJoiSchema = Joi.object().keys({
   body: Joi.string()
-    .alphanum()
     .min(5)
-    .max(240)
-    .required()
+    .max(500)
+    .required(),
+  author: Joi.string(),
+  votes: Joi.number()
 });
 
 const Passage = mongoose.model("passage", passageSchema);

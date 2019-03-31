@@ -57,3 +57,5 @@ passageRouter.post("/", (req, res, next) => {
 });
 passageRouter.put("/:id");
 passageRouter.delete("/:id");
+
+module.exports = { passageRouter };

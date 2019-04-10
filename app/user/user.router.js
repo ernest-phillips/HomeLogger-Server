@@ -6,7 +6,7 @@ const { User, UserJoiSchema } = require("./user.model.js");
 const userRouter = express.Router();
 
 // CREATE NEW USER
-userRouter.post("/", (request, response) => {
+userRouter.post("/register", (request, response) => {
   const newUser = {
     email: request.body.email,
     username: request.body.username,

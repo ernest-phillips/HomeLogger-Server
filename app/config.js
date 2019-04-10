@@ -10,9 +10,11 @@ module.exports = {
     INTERNAL_SERVER_ERROR: 500,
   },
 
-  MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/community-story',
+  MONGO_URL:
+    process.env.MONGO_URL || 'mongodb://localhost:27017/community-story',
   TEST_MONGO_URL:
-    process.env.TEST_MONGO_URL || 'mongodb://localhost:27017/test-community-story',
+    process.env.TEST_MONGO_URL ||
+    'mongodb://localhost:27017/test-community-story',
   JWT_SECRET: process.env.JWT_SECRET || 'default',
   JWT_EXPIRY: process.env.JWT_EXPIRY || '7d',
 };

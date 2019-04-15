@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/passages", passageRouter);
-
+const jwtAuth = passport.authenticate('jwt', { session: false });
 app.use(
   express.static("./public", {
     extensions: ["html", "htm"]
@@ -46,6 +46,12 @@ app.use(function(req, res, next) {
     return res.send(204);
   }
   next();
+});
+
+app.get('/api/protected', jwtAuth, (req, res) => {
+  return res.json({
+    data: 'rosebud'
+  });
 });
 
 app.use("*", function(req, res) {

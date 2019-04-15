@@ -8,6 +8,7 @@ module.exports = {
     UNAUTHORIZED: 401,
     NOT_FOUND: 404,
     INTERNAL_SERVER_ERROR: 500,
+    CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || 'http://localhost:3000'
   },
 
   MONGO_URL:

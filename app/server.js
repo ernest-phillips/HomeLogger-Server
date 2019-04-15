@@ -2,6 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const cors = require('cors')
+const {CLIENT_ORIGIN} = require('./config')
 
 const {
   PORT,
@@ -38,6 +40,11 @@ app.use(
 );
 
 // CORS
+app.use(cors({
+  origin: CLIENT_ORIGIN
+})
+)
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");

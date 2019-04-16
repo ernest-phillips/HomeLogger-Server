@@ -2,8 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const passport = require("passport");
-const cors = require('cors')
-const {CLIENT_ORIGIN} = require('./config')
+const cors = require("cors");
+// const { CLIENT_ORIGIN } = require("./config");
 
 const {
   PORT,
@@ -11,6 +11,7 @@ const {
   MONGO_URL,
   TEST_MONGO_URL
 } = require("./config");
+
 const { authRouter } = require("./auth/auth.router");
 const { userRouter } = require("./user/user.router");
 const { localStrategy, jwtStrategy } = require("./auth/auth.strategy");
@@ -26,12 +27,24 @@ app.use(morgan("combined"));
 app.use(express.json());
 app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
+// CORS
+app.use(cors());
+// app.use(cors({ origin: CLIENT_ORIGIN }));
 
+// app.options(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+//   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+//   if (req.method === "OPTIONS") {
+//     return res.send(204);
+//   }
+//   next();
+// });
 //ROUTER SETUP
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/passages", passageRouter);
-const jwtAuth = passport.authenticate('jwt', { session: false });
+const jwtAuth = passport.authenticate("jwt", { session: false });
 app.use(
   express.static("./public", {
     extensions: ["html", "htm"]
@@ -39,25 +52,9 @@ app.use(
   })
 );
 
-// CORS
-app.use(cors({
-  origin: CLIENT_ORIGIN
-})
-)
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-  if (req.method === "OPTIONS") {
-    return res.send(204);
-  }
-  next();
-});
-
-app.get('/api/protected', jwtAuth, (req, res) => {
+app.get("/api/protected", jwtAuth, (req, res) => {
   return res.json({
-    data: 'rosebud'
+    data: "rosebud"
   });
 });
 

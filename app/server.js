@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const cors = require("cors");
-// const { CLIENT_ORIGIN } = require("./config");
+const { CLIENT_ORIGIN } = require("./config");
 
 const {
   PORT,
@@ -28,18 +28,18 @@ app.use(express.json());
 app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 // CORS
-app.use(cors());
-// app.use(cors({ origin: CLIENT_ORIGIN }));
+// app.use(cors());
+app.use(cors({ origin: CLIENT_ORIGIN }));
 
-// app.options(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-//   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-//   if (req.method === "OPTIONS") {
-//     return res.send(204);
-//   }
-//   next();
-// });
+app.options(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+  if (req.method === "OPTIONS") {
+    return res.send(204);
+  }
+  next();
+});
 //ROUTER SETUP
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);

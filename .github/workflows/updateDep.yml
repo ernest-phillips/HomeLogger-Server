@@ -1,8 +1,2 @@
 - name: Updates dependencies automatically
   uses: haya14busa/action-depup@v1.0.4
-  with:
-  repo-token: ${{ secrets.GITHUB_TOKEN }}
-  version_name: 
-     UPDATE_V2
-  repo:
-  ernest-phillips/community-story-be

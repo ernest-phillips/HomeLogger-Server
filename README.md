@@ -1,4 +1,4 @@
-# Community Story Back-End (Node Server)
+# HomeLogger Back-End (Node Server)
 
 View project at
 
@@ -50,7 +50,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ### /api/users
 {
     "id": "1234567",
-    "name" : "Jphn Dough",
+    "name" : "John Dough",
     "email" : "user@email.com",
     "username": "john.dough"
 }

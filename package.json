@@ -1,0 +1,27 @@
+{
+  "name": "homelogger-server",
+  "version": "1.0.2",
+  "description": "Test homelogger server environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernest-phillips/HomeLogger-Server.git"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "mongodb",
+    "express",
+    "insurance",
+    "react"
+  ],
+  "author": "E Phillips",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ernest-phillips/HomeLogger-Server/issues"
+  },
+  "homepage": "https://github.com/ernest-phillips/HomeLogger-Server#readme"
+}

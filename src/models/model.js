@@ -17,6 +17,9 @@ export const ContactSchema = new Schema({
     company: {
         type: String
     },
+    phone: {
+        type:Number
+    },
     created_date: {
         type: Date,
         default: Date.now

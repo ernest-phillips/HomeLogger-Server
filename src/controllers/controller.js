@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'; 
-import { ContactSchema } from '../models/model'
+import { ContactSchema } from '../models/model';
 
 const Contact = mongoose.model('Contact', ContactSchema);
 //CREATE
@@ -33,7 +33,7 @@ export const getContactID = (req,res) => {
 }
 // UPDATE
 export const updateContact = (req,res) => {
-    Contact.findOneAndUpdate({ _id: req.params.contactID }, {new: true , useFindAndModify: false}, (err, contact) =>{
+    Contact.findOneAndUpdate({ _id: req.params.contactID },req.body, {new: true , useFindAndModify: false}, (err, contact) =>{
         if(err) {
             res.send(err);
         }
@@ -42,3 +42,11 @@ export const updateContact = (req,res) => {
 }
 
 // DELETE
+export const deleteContact = (req,res) => {
+    Contact.remove({ _id: req.params.contactID }, (err, contact) =>{
+        if(err) {
+            res.send(err);
+        }
+        res.json({ message: `Successfully deleted contact`});
+    });
+}

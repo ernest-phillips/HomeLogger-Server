@@ -25,3 +25,33 @@ export const ContactSchema = new Schema({
         default: Date.now
     }
 });
+
+export const ItemSchema = new Schema ({
+    itemLoc:{
+        type: String,
+        required:`Info required.`
+    },
+    itemDesc:{
+        type: String,
+        required:`Info required.`
+    },
+    itemDate:{
+        type: Date
+    },
+    itemPrice:{
+        type: Number
+    },
+    itemValue:{
+        type: Number
+    },
+    itemModel:{
+        type: String,
+        required:`Info required.`
+    },
+    itemSerial:{
+        type: String
+    },
+    imgUrl:{
+        type: String
+    }
+})

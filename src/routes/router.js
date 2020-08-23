@@ -1,5 +1,6 @@
 import {addNewContact,
-    getContacts
+    getContacts, 
+    getContactID
 } from '../controllers/controller'
 
 const routes = (app) => {
@@ -14,6 +15,8 @@ const routes = (app) => {
         .post(addNewContact)
 
     app.route('/contact/:contactID')
+        .get(getContactID)
+
         .put((req, res) => 
         res.send("PUT request successful!"))
 

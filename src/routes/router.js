@@ -1,6 +1,7 @@
 import {addNewContact,
     getContacts, 
-    getContactID
+    getContactID,
+    updateContact
 } from '../controllers/controller'
 
 const routes = (app) => {
@@ -17,8 +18,7 @@ const routes = (app) => {
     app.route('/contact/:contactID')
         .get(getContactID)
 
-        .put((req, res) => 
-        res.send("PUT request successful!"))
+        .put(updateContact)
 
         .delete((req, res) => 
         res.send("DELETE request successful!"));

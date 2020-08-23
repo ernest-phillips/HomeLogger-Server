@@ -1,4 +1,6 @@
-import {addNewContact} from '../controllers/controller'
+import {addNewContact,
+    getContacts
+} from '../controllers/controller'
 
 const routes = (app) => {
   app.route(`/contact`)
@@ -7,9 +9,7 @@ const routes = (app) => {
             console.log(`request from: ${req.originalURL}`)
             console.log(`Request type: ${req.method}`)
             next();
-        }, (req,res,next) => {
-            res.send("GET request successful!")
-        })
+        }, getContacts)
 
         .post(addNewContact)
 

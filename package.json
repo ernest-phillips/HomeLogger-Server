@@ -4,7 +4,8 @@
   "description": "Test homelogger server environment",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js --exec babel-node -e js"
+    "start": "nodemon ./index.js --exec babel-node -e js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,13 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "jasmine": "^3.6.1",
-    "jest": "^26.4.2"
-  }
+    "jest": "^26.4.2",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
 }

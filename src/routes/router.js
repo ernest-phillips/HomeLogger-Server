@@ -1,27 +1,36 @@
-import {addNewContact,
-    getContacts, 
-    getContactID,
-    updateContact,
-    deleteContact
-} from '../controllers/controller'
+import {
+  addNewUser,
+  getUsers,
+  getUserID,
+  updateUser,
+  deleteUser,
+} from "../controllers/controller";
 
 const routes = (app) => {
-  app.route(`/contact`)
-        .get((req, res, next) => {
-            // middleware
-            console.log(`request from: ${req.originalURL}`)
-            console.log(`Request type: ${req.method}`)
-            next();
-        }, getContacts)
+  app
+    .route(`/user`)
+    .get((req, res, next) => {
+      // middleware
+      console.log(`request from: ${req.originalURL}`);
+      console.log(`Request type: ${req.method}`);
+      next();
+    }, getUsers)
 
-        .post(addNewContact)
+    .post(addNewUser);
 
-    app.route('/contact/:contactID')
-        .get(getContactID)
+  app
+    .route("/user/:userID")
+    .get(getUserID)
 
-        .put(updateContact)
-        
-        .delete(deleteContact);
+    .put(updateUser)
+
+    .delete(deleteUser);
+
+  app
+    .route("/items")
+    .get(getUserID)
+
+    .put(updateUser);
 };
 
 export default routes;

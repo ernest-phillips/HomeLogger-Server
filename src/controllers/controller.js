@@ -1,52 +1,56 @@
-import mongoose from 'mongoose'; 
-import { ContactSchema } from '../models/model';
+import mongoose from "mongoose";
+import { User } from "../models/model";
 
-const Contact = mongoose.model('Contact', ContactSchema);
 //CREATE
-export const addNewContact = (req,res) => {
-    let newContact = new Contact(req.body);
+export const addNewUser = (req, res) => {
+  let newUser = new User(req.body);
 
-    newContact.save((err, contact) =>{
-        if(err) {
-            res.send(err);
-        }
-        res.json(contact);
-    })
-}
+  newUser.save((err, user) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(user);
+  });
+};
 // RETRIEVE many
-export const getContacts = (req,res) => {
-    Contact.find({},(err, contact) =>{
-        if(err) {
-            res.send(err);
-        }
-        res.json(contact);
-    });
-}
+export const getUsers = (req, res) => {
+  User.find({}, (err, user) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(user);
+  });
+};
 // RETRIEVE One
-export const getContactID = (req,res) => {
-    Contact.findById(req.params.contactID,(err, contact) =>{
-        if(err) {
-            res.send(err);
-        }
-        res.json(contact);
-    });
-}
+export const getUserID = (req, res) => {
+  User.findById(req.params.userID, (err, user) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(user);
+  });
+};
 // UPDATE
-export const updateContact = (req,res) => {
-    Contact.findOneAndUpdate({ _id: req.params.contactID },req.body, {new: true , useFindAndModify: false}, (err, contact) =>{
-        if(err) {
-            res.send(err);
-        }
-        res.json(contact);
-    });
-}
+export const updateUser = (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.params.userID },
+    req.body,
+    { new: true, useFindAndModify: false },
+    (err, user) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(user);
+    }
+  );
+};
 
 // DELETE
-export const deleteContact = (req,res) => {
-    Contact.remove({ _id: req.params.contactID }, (err, contact) =>{
-        if(err) {
-            res.send(err);
-        }
-        res.json({ message: `Successfully deleted contact`});
-    });
-}
+export const deleteUser = (req, res) => {
+  User.remove({ _id: req.params.userID }, (err, user) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ message: `Successfully deleted user` });
+  });
+};

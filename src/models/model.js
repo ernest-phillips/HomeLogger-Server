@@ -1,57 +1,73 @@
-import mongoose from 'mongoose';  
+import mongoose from "mongoose";
+import { ObjectID } from "mongodb";
 
 const Schema = mongoose.Schema;
 
-export const ContactSchema = new Schema({
-    firstName: {
-        type: String,
-        required: 'Enter a first name'
-    }, 
-    lastName: {
-        type: String,
-        required: 'Enter a last name'
+const UserSchema = new Schema({
+  firstName: {
+    type: String,
+    required: "Enter a first name",
+  },
+  lastName: {
+    type: String,
+    required: "Enter a last name",
+  },
+  email: {
+    type: String,
+  },
+  company: {
+    type: String,
+  },
+  phone: {
+    type: Number,
+  },
+  // References item schema
+  items: [
+    {
+      type: ObjectID,
+      ref: "Item",
     },
-    email: {
-        type: String
-    },
-    company: {
-        type: String
-    },
-    phone: {
-        type:Number
-    },
-    created_date: {
-        type: Date,
-        default: Date.now
-    }
+  ],
+  created_date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-export const ItemSchema = new Schema ({
-    itemLoc:{
-        type: String,
-        required:`Info required.`
-    },
-    itemDesc:{
-        type: String,
-        required:`Info required.`
-    },
-    itemDate:{
-        type: Date
-    },
-    itemPrice:{
-        type: Number
-    },
-    itemValue:{
-        type: Number
-    },
-    itemModel:{
-        type: String,
-        required:`Info required.`
-    },
-    itemSerial:{
-        type: String
-    },
-    imgUrl:{
-        type: String
-    }
-})
+export const User = mongoose.model("User", UserSchema);
+
+const ItemSchema = new Schema({
+  user: {
+    type: ObjectID,
+    ref: "User",
+  },
+  itemLoc: {
+    type: String,
+    required: true,
+  },
+  itemDesc: {
+    type: String,
+    required: true,
+  },
+  itemDate: {
+    type: Date,
+  },
+  itemPrice: {
+    type: Number,
+  },
+  itemValue: {
+    type: Number,
+  },
+  itemModel: {
+    type: String,
+    required: true,
+  },
+  itemSerial: {
+    type: String,
+  },
+  imgUrl: {
+    type: String,
+  },
+});
+
+export const Item = mongoose.model("Item", ItemSchema);

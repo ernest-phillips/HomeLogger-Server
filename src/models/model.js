@@ -70,4 +70,4 @@ const ItemSchema = new Schema({
   },
 });
 
-export const Item = mongoose.model("Item", ItemSchema);
+export const Items = mongoose.model("Items", ItemSchema);

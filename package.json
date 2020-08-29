@@ -35,8 +35,6 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
     "jasmine": "^3.6.1",
     "jest": "^26.4.2",
     "supertest": "^4.0.2"

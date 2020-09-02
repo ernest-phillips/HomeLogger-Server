@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { ObjectID } from "mongodb";
+import { Items } from "../models/items.model.js";
 
 const Schema = mongoose.Schema;
 

@@ -4,10 +4,12 @@ import {
   getUserID,
   updateUser,
   deleteUser,
-  getItems,
+} from "../controllers/controller";
+import {
+  // getUserItems,
   addNewItem,
   getItemID,
-} from "../controllers/controller";
+} from "../controllers/item.controller";
 
 const routes = (app) => {
   app
@@ -30,21 +32,21 @@ const routes = (app) => {
     .delete(deleteUser);
 
   app
-    .route(`/items`)
+    .route(`/user/:userID/items`)
     .get((req, res, next) => {
       // middleware
       console.log(`request from: ${req.originalURL}`);
       console.log(`Request type: ${req.method}`);
       next();
-    }, getItems)
+    }, getItemID)
 
     .post(addNewItem);
 
-  app.route("/items").get(getItems);
+  // app.route("/items").get(getUserItems);
 
   // .put(updateItem);
 
-  app.route("/items/:itemID").get(getItemID);
+  // app.route("/items/:itemID").get(getItemID);
 };
 
 export default routes;

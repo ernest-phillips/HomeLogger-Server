@@ -29,9 +29,6 @@ const ItemSchema = new Schema({
     type: String,
     required: true,
   },
-  itemSerial: {
-    type: String,
-  },
   imgUrl: {
     type: String,
   },

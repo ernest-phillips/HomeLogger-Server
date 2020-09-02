@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { ObjectID } from "mongodb";
 
+const Schema = mongoose.Schema;
+
 const ItemSchema = new Schema({
   user: {
     type: ObjectID,

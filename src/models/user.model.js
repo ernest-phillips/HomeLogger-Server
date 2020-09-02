@@ -4,22 +4,17 @@ import { ObjectID } from "mongodb";
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  firstName: {
+  username: {
     type: String,
-    required: "Enter a first name",
-  },
-  lastName: {
-    type: String,
-    required: "Enter a last name",
+    required: true,
   },
   email: {
     type: String,
+    required: true,
   },
-  company: {
+  password: {
     type: String,
-  },
-  phone: {
-    type: Number,
+    required: true,
   },
   // References item schema
   items: [
@@ -35,39 +30,3 @@ const UserSchema = new Schema({
 });
 
 export const User = mongoose.model("User", UserSchema);
-
-const ItemSchema = new Schema({
-  user: {
-    type: ObjectID,
-    ref: "User",
-  },
-  itemLoc: {
-    type: String,
-    required: true,
-  },
-  itemDesc: {
-    type: String,
-    required: true,
-  },
-  itemDate: {
-    type: Date,
-  },
-  itemPrice: {
-    type: Number,
-  },
-  itemValue: {
-    type: Number,
-  },
-  itemModel: {
-    type: String,
-    required: true,
-  },
-  itemSerial: {
-    type: String,
-  },
-  imgUrl: {
-    type: String,
-  },
-});
-
-export const Items = mongoose.model("Items", ItemSchema);

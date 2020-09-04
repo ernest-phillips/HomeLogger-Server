@@ -9,6 +9,7 @@ import {
   // getUserItems,
   addNewItem,
   getItemID,
+  getUserItems,
 } from "../controllers/item.controller";
 
 const routes = (app) => {
@@ -38,7 +39,7 @@ const routes = (app) => {
       console.log(`request from: ${req.originalURL}`);
       console.log(`Request type: ${req.method}`);
       next();
-    }, getItemID)
+    }, getUserItems)
 
     .post(addNewItem);
 

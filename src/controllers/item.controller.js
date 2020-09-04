@@ -15,7 +15,12 @@ export const addNewItem = (req, res) => {
 };
 // Get
 export const getUserItems = (req, res) => {
-  Items.find({}, (err, item) => {
+  let foundItems = User.find({ user: req.params._id }).populate("items");
+  res.json(foundItems);
+};
+
+export const getItemID = (req, res) => {
+  Items.find(req.params.userID, (err, item) => {
     if (err) {
       res.send(err);
     }
@@ -23,13 +28,9 @@ export const getUserItems = (req, res) => {
   });
 };
 
-export const getItemID = (req, res) => {
-  let resj = res.json();
-
-  Items.find(req.params.userID, (err, item) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(item);
-  }).populate(Items);
-};
+// Items.find({}, (err, item) => {
+//     if (err) {
+//       res.send(err);
+//     }
+//     res.json(item);
+//   });

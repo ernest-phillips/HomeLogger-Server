@@ -14,3 +14,10 @@ users/{username}/items
 users/{username}/items/images
 /rooms
 users/{username}/rooms/items
+
+    "user": "5f4f2a16e01b2df50a23db47",
+    "itemLoc" : "living room",
+    "iteDesc" : "Blender",
+    "itemModel": "Nin 333"
+
+}

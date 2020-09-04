@@ -16,9 +16,6 @@ const routes = (app) => {
   app
     .route(`/user`)
     .get((req, res, next) => {
-      // middleware
-      console.log(`request from: ${req.originalURL}`);
-      console.log(`Request type: ${req.method}`);
       next();
     }, getUsers)
 
@@ -34,12 +31,7 @@ const routes = (app) => {
 
   app
     .route(`/user/:userID/items`)
-    .get((req, res, next) => {
-      // middleware
-      console.log(`request from: ${req.originalURL}`);
-      console.log(`Request type: ${req.method}`);
-      next();
-    }, getUserItems)
+    .get((req, res, next) => {}, getUserItems)
 
     .post(addNewItem);
 

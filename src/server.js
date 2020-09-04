@@ -10,12 +10,12 @@ const {
   TEST_MONGO_URL,
 } = require("./config");
 
-const { authRouter } = require("./auth/auth.router");
+// const { authRouter } = require("./auth/auth.router");
 
 let server;
 const app = express(); //Initialize express server
-passport.use(localStrategy);
-passport.use(jwtStrategy);
+// passport.use(localStrategy);
+// passport.use(jwtStrategy);
 
 //MIDLEWARE
 app.use(morgan("combined"));
@@ -24,10 +24,10 @@ app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 
 //ROUTER SETUP
-app.use("/api/auth", authRouter);
-app.use("/api/user", userRouter);
-app.use("/api/home", workoutRouter);
-app.use("/api/exercises", exerciseRouter);
+// app.use("/api/auth", authRouter);
+// app.use("/api/user", userRouter);
+// app.use("/api/home", workoutRouter);
+// app.use("/api/exercises", exerciseRouter);
 app.use(
   express.static("./public", {
     extensions: ["html", "htm"],
@@ -56,23 +56,29 @@ function startServer(testEnv) {
     } else {
       mongoUrl = MONGO_URL;
     }
-    mongoose.connect(mongoUrl, { useNewUrlParser: true }, (err) => {
-      if (err) {
-        console.error(err);
-        return reject(err);
-      } else {
-        server = app
-          .listen(PORT, () => {
-            console.log(`Express sever listening on http://localhost:${PORT}`);
-            resolve();
-          })
-          .on("error", (err) => {
-            mongoose.disconnect();
-            console.error(err);
-            reject(err);
-          });
+    mongoose.connect(
+      mongoUrl,
+      { useUnifiedTopology: true, useNewUrlParser: true },
+      (err) => {
+        if (err) {
+          console.error(err);
+          return reject(err);
+        } else {
+          server = app
+            .listen(PORT, () => {
+              console.log(
+                `Express sever listening on http://localhost:${PORT}`
+              );
+              resolve();
+            })
+            .on("error", (err) => {
+              mongoose.disconnect();
+              console.error(err);
+              reject(err);
+            });
+        }
       }
-    });
+    );
   });
 }
 

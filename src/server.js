@@ -10,8 +10,11 @@ const {
   TEST_MONGO_URL,
 } = require("./config");
 
+let router = express.Router();
+
 // const { authRouter } = require("./auth/auth.router");
 
+// this server used by startServer and stopServer functions
 let server;
 const app = express(); //Initialize express server
 // passport.use(localStrategy);
@@ -24,7 +27,13 @@ app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 
 //ROUTER SETUP
-app.use("");
+app.use("/hello", function (req, res) {
+  res.send("Hello world");
+});
+
+app.use("/goodbye", function (req, res) {
+  res.send("Goodbye");
+});
 // app.use("/api/auth", authRouter);
 
 app.use(
@@ -66,7 +75,7 @@ function startServer(testEnv) {
           server = app
             .listen(PORT, () => {
               console.log(
-                `Express sever listening on http://localhost:${PORT}`
+                `Express server listening on http://localhost:${PORT}`
               );
               resolve();
             })
@@ -90,7 +99,7 @@ function stopServer() {
             console.error(err);
             return reject(err);
           } else {
-            console.log("Express sever stopped");
+            console.log("Express server stopped");
             resolve();
           }
         });

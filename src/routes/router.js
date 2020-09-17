@@ -13,26 +13,17 @@ import {
 } from "../controllers/item.controller";
 
 const routes = (app) => {
-  app
-    .route(`/user`)
-    .get((req, res, next) => {
-      next();
-    }, getUsers)
-
-    .post(addNewUser);
+  app.route(`/user`).get((req, res, next) => { next();}, getUsers).post(addNewUser);
 
   app
-    .route("/user/:userID")
-    .get(getUserID)
-
-    .put(updateUser)
-
-    .delete(deleteUser);
+  .route("/user/:userID")
+  .get(getUserID)
+  .put(updateUser)
+  .delete(deleteUser);
 
   app
     .route(`/user/:userID/items`)
     .get((req, res, next) => {}, getUserItems)
-
     .post(addNewItem);
 
   // app.route("/items").get(getUserItems);
@@ -43,3 +34,6 @@ const routes = (app) => {
 };
 
 export default routes;
+import { HTTP_STATUS_CODES } from "../config";
+
+const userRouter 

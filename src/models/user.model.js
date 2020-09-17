@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { ObjectID } from "mongodb";
-import { Items } from "../models/items.model.js";
+import { Item } from "./item.model.js";
 
 const Schema = mongoose.Schema;
 
@@ -21,7 +21,7 @@ const UserSchema = new Schema({
   items: [
     {
       type: ObjectID,
-      ref: "Item",
+      ref: Item,
     },
   ],
   created_date: {

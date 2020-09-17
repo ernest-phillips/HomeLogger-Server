@@ -1,16 +1,14 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const passport = require("passport");
-
+// const passport = require("passport");
+const userRouter = require("./routes/router");
 const {
   PORT,
   HTTP_STATUS_CODES,
   MONGO_URL,
   TEST_MONGO_URL,
 } = require("./config");
-
-let router = express.Router();
 
 // const { authRouter } = require("./auth/auth.router");
 
@@ -27,6 +25,7 @@ app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 
 //ROUTER SETUP
+app.use("/user", userRouter);
 app.use("/hello", function (req, res) {
   res.send("Hello world");
 });

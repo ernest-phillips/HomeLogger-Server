@@ -1,10 +1,10 @@
-import { Items } from "../models/items.model";
+import { Item } from "../models/item.model";
 import mongoose from "mongoose";
 import { User } from "../models/user.model";
 
-// Create Items
+// Create item
 export const addNewItem = (req, res) => {
-  let newItem = new Items(req.body);
+  let newItem = new Item(req.body);
 
   newItem.save((err, item) => {
     if (err) {
@@ -14,13 +14,13 @@ export const addNewItem = (req, res) => {
   });
 };
 // Get
-export const getUserItems = (req, res) => {
-  let foundItems = User.find({ user: req.params._id }).populate("items");
-  res.json(foundItems);
+export const getUserItem = (req, res) => {
+  let foundItem = User.find({ user: req.params._id }).populate("Item");
+  res.json(foundItem);
 };
 
 export const getItemID = (req, res) => {
-  Items.find(req.params.userID, (err, item) => {
+  Item.find(req.params.userID, (err, item) => {
     if (err) {
       res.send(err);
     }
@@ -28,7 +28,7 @@ export const getItemID = (req, res) => {
   });
 };
 
-// Items.find({}, (err, item) => {
+// Item.find({}, (err, item) => {
 //     if (err) {
 //       res.send(err);
 //     }

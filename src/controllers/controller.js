@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
-import { User } from "../models/user.model";
+const mongoose = require("mongoose");
+const { User } = require("../models/user.model");
 
 //CREATE
-export const addNewUser = (req, res) => {
+const addNewUser = (req, res) => {
   let newUser = new User(req.body);
 
   newUser.save((err, user) => {
@@ -13,7 +13,7 @@ export const addNewUser = (req, res) => {
   });
 };
 // RETRIEVE many
-export const getUsers = (req, res) => {
+const getUsers = (req, res) => {
   User.find({}, (err, user) => {
     if (err) {
       res.send(err);
@@ -22,7 +22,7 @@ export const getUsers = (req, res) => {
   });
 };
 // RETRIEVE One
-export const getUserID = (req, res) => {
+const getUserID = (req, res) => {
   User.findById(req.params.userID, (err, user) => {
     if (err) {
       res.send(err);
@@ -31,7 +31,7 @@ export const getUserID = (req, res) => {
   });
 };
 // UPDATE
-export const updateUser = (req, res) => {
+const updateUser = (req, res) => {
   User.findOneAndUpdate(
     { _id: req.params.userID },
     req.body,
@@ -46,7 +46,7 @@ export const updateUser = (req, res) => {
 };
 
 // DELETE
-export const deleteUser = (req, res) => {
+const deleteUser = (req, res) => {
   User.remove({ _id: req.params.userID }, (err, user) => {
     if (err) {
       res.send(err);
@@ -54,3 +54,5 @@ export const deleteUser = (req, res) => {
     res.json({ message: `Successfully deleted user` });
   });
 };
+
+module.exports = { addNewUser, getUsers, getUserID, updateUser, deleteUser };

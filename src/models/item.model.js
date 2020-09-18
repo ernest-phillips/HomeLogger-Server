@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import { ObjectID } from "mongodb";
+const mongoose = require("mongoose");
+const { ObjectID } = require("mongodb");
 
 const Schema = mongoose.Schema;
 
@@ -8,7 +8,7 @@ const ItemSchema = new Schema({
   user: {
     type: ObjectID,
     ref: "User",
-  },Í
+  },
   location: {
     type: String,
     required: true,
@@ -23,10 +23,10 @@ const ItemSchema = new Schema({
   price: {
     type: Number,
   },
-  value: {
+  itemValue: {
     type: Number,
   },
-  model: {
+  itemModel: {
     type: String,
     required: true,
   },
@@ -35,4 +35,6 @@ const ItemSchema = new Schema({
   },
 });
 
-export const Item = mongoose.model("Item", ItemSchema);
+const Item = mongoose.model("Item", ItemSchema);
+
+module.exports = { Item };

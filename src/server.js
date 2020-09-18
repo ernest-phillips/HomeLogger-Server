@@ -3,6 +3,21 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 // const passport = require("passport");
 const userRouter = require("./routes/router");
+
+const {
+  addNewUser,
+  getUsers,
+  getUserID,
+  updateUser,
+  deleteUser,
+} = require("./controllers/controller");
+
+const {
+  addNewItem,
+  getItemID,
+  getUserItem,
+} = require("./controllers/item.controller");
+
 const {
   PORT,
   HTTP_STATUS_CODES,
@@ -10,14 +25,9 @@ const {
   TEST_MONGO_URL,
 } = require("./config");
 
-// const { authRouter } = require("./auth/auth.router");
-
 // this server used by startServer and stopServer functions
 let server;
-const app = express(); //Initialize express server
-// passport.use(localStrategy);
-// passport.use(jwtStrategy);
-
+const app = express();
 //MIDLEWARE
 app.use(morgan("combined"));
 app.use(express.json());
@@ -25,15 +35,30 @@ app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 
 //ROUTER SETUP
-app.use("/user", userRouter);
+// app.use("/user", function (req, res , next)
+// userRouter);
 app.use("/hello", function (req, res) {
   res.send("Hello world");
 });
 
-app.use("/goodbye", function (req, res) {
-  res.send("Goodbye");
-});
-// app.use("/api/auth", authRouter);
+// app.use("/goodbye", function (req, res) {
+//   res.send("Goodbye");
+// });
+
+app
+  .route(`/user`)
+  .get((req, res, next) => {
+    next();
+  }, getUsers)
+  .post(addNewUser);
+app.route("/user/:userID").get(getUserID).put(updateUser).delete(deleteUser);
+app
+  .route(`/user/:userID/items`)
+  .get((req, res, next) => {}, getUserItem)
+  .post(addNewItem);
+// app.route("/items").get(getUserItem).put(updateItem);
+
+app.route("/items/:itemID").get(getItemID);
 
 app.use(
   express.static("./public", {

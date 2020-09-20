@@ -1,0 +1,38 @@
+## API Model
+
+// users endpoint
+[
+    user: 
+    {
+        "id": 1,
+        "homes": 2, //ObjectID ref to homes count
+        "username":"user1",
+        "email":"me@me.com",
+        "password":"abc123",
+            
+    }
+]
+
+// homes endpoint 
+[
+    "home": {
+        "id": 1,
+        "address":"333 main street",
+        "rooms" : 4,
+        "lot-size": 1600,
+        "yearBuilt" : 1980,
+        "user_id": 1 //ObjectID ref to user
+
+    }
+]
+
+// rooms endpoint
+
+[
+   { 
+       "home_id": 1, //ObjectID ref to homes
+       "bedroom":[{list of item objects}],
+       "bathroom": [{}],
+       "bedroom2": [{}]
+}
+]

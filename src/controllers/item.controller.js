@@ -28,6 +28,14 @@ const getItemID = (req, res) => {
   });
 };
 
+const deleteItem = (req, res) => {
+  User.remove({ _id: req.params.itemID }, (err, item) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ message: `Successfully deleted item` });
+  });
+};
 // Item.find({}, (err, item) => {
 //     if (err) {
 //       res.send(err);

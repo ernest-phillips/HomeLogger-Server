@@ -34,6 +34,7 @@ app.use(express.json());
 app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 
+let rootURL = "api/v1"
 //ROUTER SETUP
 // app.use("/user", function (req, res , next)
 // userRouter);
@@ -51,7 +52,7 @@ app
     next();
   }, getUsers)
   .post(addNewUser);
-app.route("/user/:userID").get(getUserID).put(updateUser).delete(deleteUser);
+app.route(`/user/:userID`).get(getUserID).put(updateUser).delete(deleteUser);
 app
   .route(`/user/:userID/items`)
   .get((req, res, next) => {}, getUserItem)

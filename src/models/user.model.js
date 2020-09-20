@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectID } = require("mongodb");
-const { Item } = require("./item.model.js");
+const { Home } = require("./home.model.js");
 
 const Schema = mongoose.Schema;
 
@@ -18,10 +18,10 @@ const UserSchema = new Schema({
     required: true,
   },
   // References item schema
-  items: [
+  homes: [
     {
       type: ObjectID,
-      ref: Item,
+      ref: Home,
     },
   ],
   created_date: {

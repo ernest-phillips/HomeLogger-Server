@@ -16,7 +16,9 @@ export const seedUsers = async () => {
         })
       );
     }
-    console.log(users);
+    users.forEach((user) => {
+      User.create(user);
+    });
   } catch (error) {
     console.log(error);
   }

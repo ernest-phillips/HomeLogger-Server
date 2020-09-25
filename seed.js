@@ -1,6 +1,8 @@
 const faker = require("faker");
+const mongoose = require("mongoose");
+const { MONGO_URL } = require("./src/config");
 
-import { User } from "./src/models/user.model";
+const { User } = require("./src/models/user.model");
 
 export const seedUsers = async () => {
   try {
@@ -16,12 +18,24 @@ export const seedUsers = async () => {
         })
       );
     }
-    users.forEach((user) => {
-      User.create(user);
-    });
+
+    for (const user of users) {
+      await user.save();
+    }
   } catch (error) {
     console.log(error);
   }
 };
 
-seedUsers();
+console.log(MONGO_URL);
+
+async function main() {
+  await mongoose.connect(MONGO_URL, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  });
+  await seedUsers();
+
+  await mongoose.disconnect();
+}
+main();

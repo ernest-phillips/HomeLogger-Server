@@ -4,38 +4,43 @@ const { MONGO_URL } = require("./src/config");
 
 const { User } = require("./src/models/user.model");
 
-export const seedUsers = async () => {
-  try {
-    const quantity = 10;
-    const users = [];
+User.find().count({ type: "username" }, function (err, count) {
+  console.log(err);
+  console.log("Number of docs: ", count);
+});
 
-    for (let u = 0; u < quantity; u++) {
-      users.push(
-        new User({
-          email: faker.internet.email(),
-          password: faker.internet.password(),
-          username: faker.internet.userName(),
-        })
-      );
-    }
+// export const seedUsers = async () => {
+//   try {
+//     const quantity = 10;
+//     const users = [];
 
-    for (const user of users) {
-      await user.save();
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     for (let u = 0; u < quantity; u++) {
+//       users.push(
+//         new User({
+//           email: faker.internet.email(),
+//           password: faker.internet.password(),
+//           username: faker.internet.userName(),
+//         })
+//       );
+//     }
 
-console.log(MONGO_URL);
+//     for (const user of users) {
+//       await user.save();
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-async function main() {
-  await mongoose.connect(MONGO_URL, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  });
-  await seedUsers();
+// console.log(MONGO_URL);
 
-  await mongoose.disconnect();
-}
-main();
+// async function main() {
+//   await mongoose.connect(MONGO_URL, {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+//   });
+//   await seedUsers();
+
+//   await mongoose.disconnect();
+// }
+// main();

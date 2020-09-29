@@ -4,11 +4,8 @@ const { MONGO_URL } = require("./src/config");
 
 const { User } = require("./src/models/user.model");
 
-User.find().count({ type: "username" }, function (err, count) {
-  console.log(err);
-  console.log("Number of docs: ", count);
-});
-
+const numUsers = User.estimatedDocumentCount();
+console.log(numUsers);
 // export const seedUsers = async () => {
 //   try {
 //     const quantity = 10;

@@ -18,15 +18,8 @@ const UserSchema = new Schema({
     required: true,
   },
   // References item schema
-  homes: [
-    {
-      type: ObjectID,
-      ref: Home,
-    },
-  ],
-  created_date: {
-    type: Date,
-    default: Date.now,
+  homes: {
+    type: Number,
   },
 });
 

@@ -1,38 +1,40 @@
-## API Model
-
-// users endpoint
-[
-    user: 
-    {
-        "id": 1,
-        "homes": 2, //ObjectID ref to homes count
-        "username":"user1",
-        "email":"me@me.com",
-        "password":"abc123",
-            
-    }
-]
-
-// homes endpoint 
-[
-    "home": {
-        "id": 1,
-        "address":"333 main street",
-        "rooms" : 4,
-        "lot-size": 1600,
-        "yearBuilt" : 1980,
-        "user_id": 1 //ObjectID ref to user
-
-    }
-]
-
-// rooms endpoint
-
-[
-   { 
-       "home_id": 1, //ObjectID ref to homes
-       "bedroom":[{list of item objects}],
-       "bathroom": [{}],
-       "bedroom2": [{}]
-}
-]
+# Models
+User
+    has_many homes
+Home
+    belongs_to user
+Items
+    belongs_to home
+    belongs_to user
+# Relationships
+## has_many
+Conceptual: Source -- has_many --> Target
+Example: User -- has_many --> Home
+User
+  id
+  first_name
+  last_name
+Home
+  id
+  user_id
+  address
+## belongs_to 
+Conceptually: Source -- belongs_to --> Target
+Example: Home -- belongs_to --> User
+## has_and_belongs_to_many
+Conceptually: Source -- has_and_belongs_to_many --> Target
+Example: Doctor -- has_and_belongs_to_many --> Patient
+Doctor (doctors)
+  id
+  first_name: robert, ernest, viv
+  last_name
+  speciality
+Appointments (appointments)
+  id 
+  doctor_id 
+  patient_id
+Patient (patients)
+  id
+  first_name: ken, terry, bella
+  last_name
+  insurance

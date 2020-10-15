@@ -1,11 +1,11 @@
 # Models
 User
     has_many homes
-Home
-    belongs_to user
-Items
-    belongs_to home
-    belongs_to user
+    Home
+        belongs_to user
+        Items
+            belongs_to home
+            belongs_to user
 # Relationships
 ## has_many
 Conceptual: Source -- has_many --> Target

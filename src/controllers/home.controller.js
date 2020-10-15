@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
+const { User } = require("../models/home.model");
 const { Home } = require("../models/home.model");
 
 //CREATE
 const addNewHome = (req, res) => {
   let newHome = new Home(req.body);
+  newHome.user = req.params.userID;
 
   newHome.save((err, home) => {
     if (err) {
@@ -22,13 +24,23 @@ const getHomes = (req, res) => {
   });
 };
 // RETRIEVE One
+// const getHomeID = (req, res) => {
+//   Home.findById(req.params.homeID, (err, home) => {
+//     if (err) {
+//       res.send(err);
+//     }
+//     res.json(home);
+//   });
+// };
 const getHomeID = (req, res) => {
-  Home.findById(req.params.homeID, (err, home) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(home);
-  });
+  Home.findById(req.params.homeID)
+    .populate("user")
+    .exec((err, home) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(home);
+    });
 };
 // UPDATE
 const updateHome = (req, res) => {

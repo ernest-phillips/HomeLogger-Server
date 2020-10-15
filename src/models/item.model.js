@@ -5,34 +5,13 @@ const Schema = mongoose.Schema;
 
 // consider simplifying names of object keys ie. instead of "itemLoc" use "location"
 const ItemSchema = new Schema({
-  user: {
-    type: ObjectID,
-    ref: "User",
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-  },
-  price: {
-    type: Number,
-  },
-  itemValue: {
-    type: Number,
-  },
-  itemModel: {
-    type: String,
-    required: true,
-  },
-  imgUrl: {
-    type: String,
-  },
+  items: [
+    {
+      desc: { type: String },
+      price: { type: Number },
+      img_url: { type: String },
+    },
+  ],
 });
 
 const Item = mongoose.model("Item", ItemSchema);

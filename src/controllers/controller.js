@@ -1,3 +1,4 @@
+const e = require("express");
 const mongoose = require("mongoose");
 const { User } = require("../models/user.model");
 
@@ -12,24 +13,32 @@ const addNewUser = (req, res) => {
     res.json(user);
   });
 };
-// RETRIEVE many
+
 const getUsers = (req, res) => {
-  User.find({}, (err, user) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(user);
-  });
+  User.find()
+    .populate("homes")
+    .exec((err, user) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(user);
+    });
 };
+
 // RETRIEVE One
+
 const getUserID = (req, res) => {
-  User.findById(req.params.userID, (err, user) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(user);
-  });
+  User.findById(req.params.userID)
+    .populate("homes")
+    .exec((err, user) => {
+      if (err) {
+        res.send(err);
+      }
+      console.log(user.homes);
+      res.json(user);
+    });
 };
+
 // UPDATE
 const updateUser = (req, res) => {
   User.findOneAndUpdate(

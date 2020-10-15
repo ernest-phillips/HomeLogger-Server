@@ -26,19 +26,6 @@ export const seedUsers = async () => {
             password: faker.internet.password(),
             username: faker.internet.userName(),
           },
-          homes: [
-            {
-              street_name: { type: String },
-              city: { type: String },
-              zip: { type: Number },
-              square_feet: { type: Number },
-              img_url: [
-                {
-                  type: String,
-                },
-              ],
-            },
-          ],
         })
       );
     }

@@ -19,6 +19,14 @@ const {
 } = require("./controllers/item.controller");
 
 const {
+  addNewHome,
+  getHomes,
+  getHomeID,
+  updateHome,
+  deleteHome,
+} = require("./controllers/home.controller");
+
+const {
   PORT,
   HTTP_STATUS_CODES,
   MONGO_URL,
@@ -34,7 +42,7 @@ app.use(express.json());
 app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 
-let rootURL = "api/v1"
+let rootURL = "api/v1";
 //ROUTER SETUP
 // app.use("/user", function (req, res , next)
 // userRouter);
@@ -59,7 +67,10 @@ app
   .post(addNewItem);
 // app.route("/items").get(getUserItem).put(updateItem);
 
-app.route("/items/:itemID").get(getItemID);
+app.route(`/homes`).get(getHomes);
+app.route(`/homes/:homeID`).get(getHomeID);
+app.route(`/homes/:userID`).post(addNewHome);
+app.route(`/items/:itemID`).get(getItemID);
 
 app.use(
   express.static("./public", {
@@ -131,4 +142,3 @@ function stopServer() {
       })
   );
 }
-

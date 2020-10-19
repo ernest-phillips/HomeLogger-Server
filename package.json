@@ -32,7 +32,9 @@
     "express-handlebars": "^3.0.0",
     "faker": "^4.1.0",
     "firacode": "^1.205.0",
-    "handlebars": "^4.5.3",
+
+    "handlebars": "^4.4.5",
+
     "joi": "^14.0.6",
     "jquery": "^3.5.0",
     "jsonwebtoken": "^8.3.0",

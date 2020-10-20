@@ -16,7 +16,7 @@ const addNewUser = (req, res) => {
 
 const getUsers = (req, res) => {
   User.find()
-    .populate("homes")
+    // .populate("homes")
     .exec((err, user) => {
       if (err) {
         res.send(err);

@@ -19,13 +19,11 @@ export const seedUsers = async () => {
     for (let u = 0; u < quantity; u++) {
       users.push(
         new User({
-          user: {
-            first_name: faker.name.firstName(),
-            last_name: faker.name.lastName(),
-            email: faker.internet.email(),
-            password: faker.internet.password(),
-            username: faker.internet.userName(),
-          },
+          first_name: faker.name.firstName(),
+          last_name: faker.name.lastName(),
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          username: faker.internet.userName(),
         })
       );
     }

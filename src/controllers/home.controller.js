@@ -23,19 +23,12 @@ const getHomes = (req, res) => {
     res.json(home);
   });
 };
-// RETRIEVE One
-// const getHomeID = (req, res) => {
-//   Home.findById(req.params.homeID, (err, home) => {
-//     if (err) {
-//       res.send(err);
-//     }
-//     res.json(home);
-//   });
-// };
+
 const getHomeID = (req, res) => {
   Home.findById(req.params.homeID)
-    .populate("user")
+    .populate("items")
     .exec((err, home) => {
+      console.log("populated", home.populated("items"));
       if (err) {
         res.send(err);
       }

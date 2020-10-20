@@ -5,7 +5,9 @@ const { User } = require("../models/user.model");
 // Create item
 const addNewItem = (req, res) => {
   let newItem = new Item(req.body);
-
+  console.log(req.body);
+  newItem.home = req.params.homeID;
+  console.log(newItem);
   newItem.save((err, item) => {
     if (err) {
       res.send(err);
@@ -14,18 +16,30 @@ const addNewItem = (req, res) => {
   });
 };
 // Get
+
+const getItems = (req, res) => {
+  Item.find({}, (err, item) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(item);
+  });
+};
+
 const getUserItem = (req, res) => {
   let foundItem = User.find({ user: req.params._id }).populate("Item");
   res.json(foundItem);
 };
 
 const getItemID = (req, res) => {
-  Item.find(req.params.userID, (err, item) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(item);
-  });
+  Item.findOne({ _id: req.params.itemID })
+    // .populate("home")
+    .exec((err, item) => {
+      if (err) {
+        res.send(err);
+      }
+      res.send(item);
+    });
 };
 
 const deleteItem = (req, res) => {
@@ -42,4 +56,4 @@ const deleteItem = (req, res) => {
 //     }
 //     res.json(item);
 //   });
-module.exports = { addNewItem, getUserItem, getItemID };
+module.exports = { getItems, addNewItem, getUserItem, getItemID };

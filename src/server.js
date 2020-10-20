@@ -16,6 +16,7 @@ const {
   addNewItem,
   getItemID,
   getUserItem,
+  getItems,
 } = require("./controllers/item.controller");
 
 const {
@@ -61,16 +62,19 @@ app
   }, getUsers)
   .post(addNewUser);
 app.route(`/user/:userID`).get(getUserID).put(updateUser).delete(deleteUser);
-app
-  .route(`/user/:userID/items`)
-  .get((req, res, next) => {}, getUserItem)
-  .post(addNewItem);
+// app
+//   .route(`/items/:itemID`)
+//   .get((req, res, next) => {}, getUserItem)
+//   .post(addNewItem);
 // app.route("/items").get(getUserItem).put(updateItem);
 
 app.route(`/homes`).get(getHomes);
 app.route(`/homes/:homeID`).get(getHomeID);
 app.route(`/homes/:userID`).post(addNewHome);
+
+app.route(`/items/:homeID`).post(addNewItem);
 app.route(`/items/:itemID`).get(getItemID);
+app.route(`/items`).get(getItems);
 
 app.use(
   express.static("./public", {

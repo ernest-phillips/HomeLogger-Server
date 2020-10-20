@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { ObjectID } = require("mongodb");
 const { User } = require("./user.model");
+const { Item, ItemSchema } = require("./item.model");
 
 const Schema = mongoose.Schema;
 
@@ -18,6 +19,7 @@ const HomeSchema = new Schema({
     type: ObjectID,
     ref: "User",
   },
+  items: [{ type: ObjectID, ref: "Item" }],
 });
 
 const Home = mongoose.model("Home", HomeSchema);

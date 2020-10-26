@@ -1,10 +1,11 @@
 const e = require("express");
 const mongoose = require("mongoose");
-const { User } = require("../models/user.model");
+// const { User } = require("../models/user.model");
+const { Result } = require("../models/results.model");
 
 //CREATE
 const addNewUser = (req, res) => {
-  let newUser = new User(req.body);
+  let newUser = new Result(req.body);
 
   newUser.save((err, user) => {
     if (err) {
@@ -12,10 +13,12 @@ const addNewUser = (req, res) => {
     }
     res.json(user);
   });
+  console.log("New User:", newUser);
 };
 
 const getUsers = (req, res) => {
-  User.find()
+  console.log(Result);
+  Result.find()
     // .populate("homes")
     .exec((err, user) => {
       if (err) {
@@ -27,9 +30,9 @@ const getUsers = (req, res) => {
 
 // RETRIEVE One
 
-const getUserID = (req, res) => {
-  User.findById(req.params.userID)
-    .populate("homes")
+const getUser = (req, res) => {
+  Result.findById(req.params.userID)
+    // .populate("homes")
     .exec((err, user) => {
       if (err) {
         res.send(err);
@@ -41,6 +44,7 @@ const getUserID = (req, res) => {
 
 // UPDATE
 const updateUser = (req, res) => {
+  console.log("The body says", req.body);
   User.findOneAndUpdate(
     { _id: req.params.userID },
     req.body,
@@ -64,4 +68,4 @@ const deleteUser = (req, res) => {
   });
 };
 
-module.exports = { addNewUser, getUsers, getUserID, updateUser, deleteUser };
+module.exports = { addNewUser, getUsers, getUser, updateUser, deleteUser };

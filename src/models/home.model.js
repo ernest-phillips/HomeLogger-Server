@@ -19,6 +19,7 @@ const HomeSchema = new Schema({
     type: ObjectID,
     ref: "User",
   },
+
   items: [{ type: ObjectID, ref: "Item" }],
 });
 

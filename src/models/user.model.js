@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 const { ObjectID } = require("mongodb");
-const { Home } = require("./home.model.js");
-const { v4: uuidv4 } = require("uuid");
 
 const Schema = mongoose.Schema;
-const userID = uuidv4();
 
 const UserSchema = new Schema({
   first_name: { type: String },
@@ -14,6 +11,16 @@ const UserSchema = new Schema({
   homes: [{ type: ObjectID, ref: "Home" }],
 });
 
+UserSchema.methods.serialize = function () {
+  return {
+    id: this._id,
+    first_name: this.first_name,
+    last_name: this.last_name,
+    username: this.username,
+    password: this.password,
+    homes: this.homes,
+  };
+};
 const User = mongoose.model("User", UserSchema);
 
 module.exports = { User };

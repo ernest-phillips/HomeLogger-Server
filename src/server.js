@@ -2,12 +2,15 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 // const passport = require("passport");
-const userRouter = require("./routes/router");
 
+const {
+  addNewResult,
+  updateResult,
+} = require("./controllers/results.controller");
 const {
   addNewUser,
   getUsers,
-  getUserID,
+  getUser,
   updateUser,
   deleteUser,
 } = require("./controllers/controller");
@@ -61,20 +64,15 @@ app
     next();
   }, getUsers)
   .post(addNewUser);
-app.route(`/user/:userID`).get(getUserID).put(updateUser).delete(deleteUser);
-// app
-//   .route(`/items/:itemID`)
-//   .get((req, res, next) => {}, getUserItem)
-//   .post(addNewItem);
-// app.route("/items").get(getUserItem).put(updateItem);
-
+app.route(`/user/:userID`).get(getUser).put(updateUser).delete(deleteUser);
 app.route(`/homes`).get(getHomes);
 app.route(`/homes/:homeID`).get(getHomeID);
-app.route(`/homes/:userID`).post(addNewHome);
+app.route(`/homes/user/:userID`).post(addNewHome).put(updateHome);
 
-app.route(`/items/:homeID`).post(addNewItem);
-app.route(`/items/:itemID`).get(getItemID);
-app.route(`/items`).get(getItems);
+app.route(`/results`).post(addNewResult);
+// app.route(`/results/:resultID`).put(updateResult);
+// app.route(`/results/:resultID/homes/`).post(addHomes);
+app.route(`/results/:resultID/homes/:homeID`).put(updateHome);
 
 app.use(
   express.static("./public", {

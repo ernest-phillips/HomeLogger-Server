@@ -3,6 +3,8 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 // const passport = require("passport");
 
+const { userRouter } = require("./routes/user.router");
+
 const {
   addNewResult,
   updateResult,
@@ -48,31 +50,24 @@ app.use(express.urlencoded({ extended: true }));
 
 let rootURL = "api/v1";
 //ROUTER SETUP
-// app.use("/user", function (req, res , next)
-// userRouter);
-app.use("/hello", function (req, res) {
-  res.send("Hello world");
-});
 
-// app.use("/goodbye", function (req, res) {
-//   res.send("Goodbye");
-// });
+app.use("/user", userRouter);
 
-app
-  .route(`/user`)
-  .get((req, res, next) => {
-    next();
-  }, getUsers)
-  .post(addNewUser);
-app.route(`/user/:userID`).get(getUser).put(updateUser).delete(deleteUser);
-app.route(`/homes`).get(getHomes);
-app.route(`/homes/:homeID`).get(getHomeID);
-app.route(`/homes/user/:userID`).post(addNewHome).put(updateHome);
+// app
+//   .route(`/user`)
+//   .get((req, res, next) => {
+//     next();
+//   }, getUsers)
+//   .post(addNewUser);
+// app.route(`/user/:userID`).get(getUser).put(updateUser).delete(deleteUser);
+// app.route(`/homes`).get(getHomes);
+// app.route(`/homes/:homeID`).get(getHomeID);
+// app.route(`/homes/user/:userID`).post(addNewHome).put(updateHome);
 
-app.route(`/results`).post(addNewResult);
+// app.route(`/results`).post(addNewResult);
 // app.route(`/results/:resultID`).put(updateResult);
 // app.route(`/results/:resultID/homes/`).post(addHomes);
-app.route(`/results/:resultID/homes/:homeID`).put(updateHome);
+// app.route(`/results/:resultID/homes/:homeID`).put(updateHome);
 
 app.use(
   express.static("./public", {

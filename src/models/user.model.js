@@ -21,6 +21,6 @@ UserSchema.methods.serialize = function () {
     homes: this.homes,
   };
 };
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model("user", UserSchema);
 
 module.exports = { User };

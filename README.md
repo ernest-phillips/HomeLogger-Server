@@ -22,7 +22,7 @@ None at this time
 
 - [Node.js](https://nodejs.org/en/docs/) - JavaScript runtime
 - [Express](https://expressjs.com/en/api.html) -web application framework
-- [Travis CI](https://docs.travis-ci.com/) - Used for continuous integration
+- Github Actions for CI
 - [MongoDB](https://docs.mongodb.com/manual/) - Used for database management
 
 ## Contributing

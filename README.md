@@ -1,10 +1,6 @@
 <<<<<<< HEAD
 # HomeLogger Back-End (Node Server)
 
-View project at
-
-![alt text](./public/homeScreen.PNG)
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -27,7 +23,7 @@ None at this time
 
 - [Node.js](https://nodejs.org/en/docs/) - JavaScript runtime
 - [Express](https://expressjs.com/en/api.html) -web application framework
-- [Travis CI](https://docs.travis-ci.com/) - Used for continuous integration
+- Github Actions for CI
 - [MongoDB](https://docs.mongodb.com/manual/) - Used for database management
 
 ## Contributing

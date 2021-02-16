@@ -15,7 +15,6 @@ const {
 const { authRouter } = require("./auth/auth.router");
 const { userRouter } = require("./user/user.router");
 const { localStrategy, jwtStrategy } = require("./auth/auth.strategy");
-const { passageRouter } = require("./passage/passage.router");
 
 let server;
 const app = express(); //Initialize express server
@@ -43,7 +42,6 @@ app.options(function(req, res, next) {
 //ROUTER SETUP
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
-app.use("/api/passages", passageRouter);
 const jwtAuth = passport.authenticate("jwt", { session: false });
 app.use(
   express.static("./public", {

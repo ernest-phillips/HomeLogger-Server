@@ -21,7 +21,6 @@
     "eslint-config-google": "^0.11.0"
   },
   "dependencies": {
-    "axios": "^0.18.1",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -40,6 +39,7 @@
     "mocha": "^5.2.0",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
+    "mquery": ">=3.2.3",
     "nodemon": "^1.18.9",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",

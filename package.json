@@ -28,7 +28,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-handlebars": "^3.0.0",
     "faker": "^4.1.0",
     "firacode": "^1.205.0",
